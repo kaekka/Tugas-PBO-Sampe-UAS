@@ -26,3 +26,5 @@ Aplikasi berbasis Java untuk mengelola dan menampilkan data novel dengan berbaga
    mkdir bin
    javac -d bin src/novel/*.java src/App/Main.java
    java -cp bin App.Main
+
+By : Kelompok 5
