@@ -124,7 +124,7 @@ public class Main {
         System.out.printf("║ %-91s ║\n", "Masukkan judul novel yang dicari:");
         System.out.println(garisBawah);
         System.out.print(">> ");
-        String judulDicari = scanner.nextLine();
+        String judulDicari = scanner.nextLine().toLowerCase();
 
         // Gabungkan semua novel
         ArrayList<Novel> semuaNovel = new ArrayList<>(listNovel);
