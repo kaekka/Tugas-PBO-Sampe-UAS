@@ -1,18 +1,28 @@
-## Getting Started
+# 📚 NovelKu
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Aplikasi berbasis Java untuk mengelola dan menampilkan data novel dengan berbagai fitur pencarian dan penyaringan.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## 🔍 Fitur
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- 🔎 Cari berdasarkan **Judul**
+- 🎭 Cari berdasarkan **Genre**
+- 📋 Tampilkan **Semua Novel**
+- 💰 Tampilkan Novel urut berdasarkan **Harga**
+- 🌟 Daftar **Novel Best Seller**
+- 📱 Daftar **Novel Digital**
+- 🏷️ Daftar Novel yang sedang **Diskon**
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+---
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
+## ▶️ Cara Menjalankan
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+1. Pastikan Java sudah terinstal di komputer Anda.
+2. Buka terminal di folder root proyek.
+3. Buat folder `bin` (hanya sekali):
+   ```bash
+   mkdir bin
+   javac -d bin src/novel/*.java src/App/Main.java
+   java -cp bin App.Main
