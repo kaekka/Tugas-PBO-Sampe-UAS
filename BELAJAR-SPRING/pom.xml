@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>belajar-pring</artifactId>
+	<artifactId>belajar-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>belajar-pring</name>
+	<name>belajar-spring</name>
 	<description>percobaan pertama kuliah tamu</description>
 	<url/>
 	<licenses>
@@ -46,6 +46,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+ 		<dependency>
+        <groupId>nz.net.ultraq.thymeleaf</groupId>
+        <artifactId>thymeleaf-layout-dialect</artifactId>
+        <version>3.3.0</version>
+    	</dependency>
 	</dependencies>
 
 	<build>
