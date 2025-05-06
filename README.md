@@ -44,7 +44,7 @@ Aplikasi berbasis Java untuk mengelola dan menampilkan data novel dengan berbaga
 
 | [<img src="https://avatars.githubusercontent.com/u/200600912?v=4" width="250"/>](https://github.com/jennn1-jr) | [<img src="https://avatars.githubusercontent.com/u/200634165?v=4" width="250"/>](https://github.com/POKSI77) |[<img src="https://avatars.githubusercontent.com/u/207866322?v=4" width="250"/>](https://github.com/PrimaRahma)  |
 | --- | --- | --- |
-| **Jenar Aditiya Bagaskara** | **Muhammad Dwi Saputri** | **Prima Miftakhul Rahma** |
+| **Jenar Aditiya Bagaskara** | **Muhammad Dwi Saputra** | **Prima Miftakhul Rahma** |
 
 | [<img src="https://avatars.githubusercontent.com/u/189825267?v=4" width="250"/>](https://github.com/fnovians) |[<img src="https://avatars.githubusercontent.com/u/207881192?v=4" width="250"/>](https://github.com/LofeYN) | [<img src="https://avatars.githubusercontent.com/u/208329697?v=4" width="250"/>](https://github.com/renza22) |
 | --- | --- | --- |
