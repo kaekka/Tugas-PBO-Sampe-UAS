@@ -1,27 +1,25 @@
 package com.example.belajar_spring;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.example.belajar_spring.service.MahasiswaService;
+import com.example.belajar_spring.service.JurusanService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class BelajarController {
     
-    //bikin tampilan hello world aja
+    @Autowired
+    private MahasiswaService mahasiswaService;
+    
+    @Autowired
+    private JurusanService jurusanService;
+    
     @GetMapping("/")
-    public String hello() {
-        return "Hello World";
+    public String showDashboard(Model model) {
+        model.addAttribute("totalMahasiswa", mahasiswaService.getAllMahasiswa().size());
+        model.addAttribute("totalJurusan", jurusanService.getAllJurusan().size());
+        return "dashboard";
     }
-
-    //opsional aja ini bisa custom hello blablabla
-    @GetMapping("/hello/{name}")
-    public String helloName (@PathVariable String name) {
-        return "Hello " + name;
-    }
-
-    @GetMapping("/welcome")
-    public String showWelcome () {
-        return "welcome";
-    }
-
 }

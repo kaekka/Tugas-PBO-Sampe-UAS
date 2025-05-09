@@ -18,7 +18,7 @@ public class MahasiswaController {
     @GetMapping
     public String listMahasiswa(Model model) {
         model.addAttribute("mahasiswaList", mahasiswaService.getAllMahasiswa());
-        return "mahasiswa";
+        return "mahasiswa/index";
     }
 
     @GetMapping("/add")
@@ -26,7 +26,7 @@ public class MahasiswaController {
         model.addAttribute("mahasiswa", new Mahasiswa());
         model.addAttribute("jurusanList", mahasiswaService.getAllJurusan());
         model.addAttribute("isEdit", false);
-        return "form-mahasiswa";
+        return "mahasiswa/add";
     }
 
     @PostMapping("/add")
@@ -47,7 +47,7 @@ public class MahasiswaController {
         model.addAttribute("mahasiswa", mahasiswa);
         model.addAttribute("jurusanList", mahasiswaService.getAllJurusan());
         model.addAttribute("isEdit", true);
-        return "form-mahasiswa";
+        return "mahasiswa/add";
     }
 
     @PostMapping("/edit/{id}")
