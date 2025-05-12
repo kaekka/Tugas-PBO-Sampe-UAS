@@ -26,6 +26,7 @@ Aplikasi berbasis Java untuk mengelola dan menampilkan data novel dengan berbaga
 - 🌟 Daftar **Novel Best Seller**
 - 📱 Daftar **Novel Digital**
 - 🏷️ Daftar Novel yang sedang **Diskon**
+- 🧾 Cetak Struk Pembelian
 
 ---
 
