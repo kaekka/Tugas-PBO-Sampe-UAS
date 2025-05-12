@@ -1,6 +1,6 @@
 # 📚 NovelKu
 
-Aplikasi berbasis Java untuk mengelola dan menampilkan data novel dengan berbagai fitur pencarian dan penyaringan.
+Aplikasi berbasis Java untuk mengelola dan menampilkan data novel dengan berbagai fitur pencarian dan penyaringan. Aplikasi NovelKu memungkinkan pengguna untuk menjelajahi koleksi novel, mencari berdasarkan judul atau genre, melihat novel yang sedang diskon, dan melakukan pembelian.
 
 ---
 
