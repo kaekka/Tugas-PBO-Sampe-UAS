@@ -7,9 +7,10 @@ import Kelompok5.PBO.Novel_Web.models.Novel;
 import Kelompok5.PBO.Novel_Web.models.NovelBestSeller;
 import Kelompok5.PBO.Novel_Web.models.NovelDigital;
 
-public class main {
-    static {
+public class Main {
+    public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
+
             ArrayList<Novel> listNovel = new ArrayList<>();
             listNovel.add(new Novel("Solo Leveling", "fantasi", 95000, 10, 2021, 300));
             listNovel.add(new Novel("The Lord of the Rings", "adventure", 70000, 0, 1954, 450));
@@ -27,13 +28,12 @@ public class main {
             ArrayList<NovelDigital> listDigital = new ArrayList<>();
             listDigital.add(new NovelDigital("Ebook Adventure", "fantasi", 60000, 0, 2022, 300));
             listDigital.add(new NovelDigital("Digital Mystery", "thriller", 55000, 15, 2021, 350));
-            listDigital.add(new NovelDigital("Sci-Fi Saga", "science fiction", 70000, 0, 2023, 400));
-
-            // Contoh panggilan metode jika kamu punya menu
-            // tampilkanMenu(scanner, listNovel, listBestSeller, listDigital);
+            listDigital.add(new NovelDigital("Sci-Fi Saga", "science fiction", 70000, 0, 2023, 400));;
         }
     }
-        public static void cariNovelByJudul(
+
+    //case 1
+    public static void cariNovelByJudul(
             Scanner scanner,
             ArrayList<Novel> listNovel,
             ArrayList<NovelBestSeller> listBestSeller,
@@ -88,5 +88,255 @@ public class main {
             System.out.printf("║ %-91s ║\n", keterangan);
             System.out.println(garisBawah);
         }
+    }
+
+    //case 2
+    public static void cariNovelByGenre(
+            Scanner scanner,
+            ArrayList<Novel> listNovel,
+            ArrayList<NovelBestSeller> listBestSeller,
+            ArrayList<NovelDigital> listDigital) {
+
+        String garisAtas = "╔" + "═".repeat(93) + "╗";
+        String garisTengah = "╠" + "═".repeat(93) + "╣";
+        String garisBawah = "╚" + "═".repeat(93) + "╝";
+        String judulTabel = " MASUKKAN GENRE NOVEL YANG INGIN DICARI ";
+        int padding = (93 - judulTabel.length()) / 2;
+
+        // Tampilan input dalam tabel
+        System.out.println("\n" + garisAtas);
+        System.out.printf("║%" + padding + "s%s%" + (93 - padding - judulTabel.length()) + "s║\n", "", judulTabel, "");
+        System.out.println(garisTengah);
+        System.out.printf("║ %-91s ║\n", "Masukkan genre novel yang dicari:");
+        System.out.println(garisBawah);
+        System.out.print(">> ");
+        String genreDicari = scanner.nextLine().toLowerCase();
+
+        // Gabungkan semua novel
+        ArrayList<Novel> semuaNovel = new ArrayList<>(listNovel);
+        semuaNovel.addAll(listBestSeller);
+        semuaNovel.addAll(listDigital);
+
+        // Filter berdasarkan genre
+        ArrayList<Novel> hasilGenre = new ArrayList<>();
+        for (Novel novel : semuaNovel) {
+            if (novel.getGenre().toLowerCase().contains(genreDicari)) {
+                hasilGenre.add(novel);
+            }
+        }
+
+        // Tampilkan hasil
+        String hasilHeader = " HASIL PENCARIAN NOVEL BERDASARKAN GENRE ";
+        int hasilPadding = (93 - hasilHeader.length()) / 2;
+
+        System.out.println("\n" + garisAtas);
+        System.out.printf("║%" + hasilPadding + "s%s%" + (93 - hasilPadding - hasilHeader.length()) + "s║\n", "", hasilHeader, "");
+        System.out.println(garisTengah);
+        System.out.printf("║ %-15s │ %-38s │ %-13s │ %-6s │ %-6s ║\n",
+                "Genre", "Judul", "Harga", "Tahun", "Halaman");
+        System.out.println(garisTengah);
+
+        if (!hasilGenre.isEmpty()) {
+            for (Novel novel : hasilGenre) {
+                System.out.printf("║ %-15s │ %-38s │ Rp %,10.0f │ %-6d │ %-7d ║\n",
+                        novel.getGenre(),
+                        novel.getJudul(),
+                        novel.getHarga(),
+                        novel.getTahunTerbit(),
+                        novel.getJumlahHalaman());
+            }
+            System.out.println(garisBawah);
+        } else {
+            System.out.printf("║ %-15s │ %-38s │ %-13s │ %-6s │ %-7s ║\n",
+                    "-", "-", "-", "-", "-");
+            System.out.println(garisTengah);
+            String keterangan = "Novel dengan genre \"" + genreDicari + "\" tidak ditemukan.";
+            System.out.printf("║ %-91s ║\n", keterangan);
+            System.out.println(garisBawah);
+        }
+    }
+
+    //case 3
+    public static void tampilkanDaftarNovel(
+            ArrayList<Novel> listNovel,
+            ArrayList<NovelBestSeller> listBestSeller,
+            ArrayList<NovelDigital> listDigital) {
+
+        ArrayList<Novel> semuaNovel = new ArrayList<>();
+        semuaNovel.addAll(listNovel);
+        semuaNovel.addAll(listBestSeller);
+        semuaNovel.addAll(listDigital);
+
+        String garisAtas = "╔" + "═".repeat(93) + "╗";
+        String garisTengah = "╠" + "═".repeat(93) + "╣";
+        String garisBawah = "╚" + "═".repeat(93) + "╝";
+
+        System.out.println("\n" + garisAtas);
+
+        String judul = " DAFTAR NOVEL ";
+        int lebarKolom = 93;
+        int paddingKiri = (lebarKolom - judul.length()) / 2;
+        int paddingKanan = lebarKolom - paddingKiri - judul.length();
+        System.out.printf("║%" + paddingKiri + "s%s%" + paddingKanan + "s║\n", "", judul, "");
+
+        System.out.println(garisTengah);
+        System.out.printf("║ %-38s │ %-15s │ %-13s │ %-6s │ %-6s ║\n",
+                "Judul", "Genre", "Harga", "Tahun", "Halaman");
+        System.out.println(garisTengah);
+
+        for (Novel novel : semuaNovel) {
+            System.out.printf("║ %-38s │ %-15s │ Rp %,10.0f │ %-6d │ %-7d ║\n",
+                    novel.getJudul(),
+                    novel.getGenre(),
+                    novel.getHarga(),
+                    novel.getTahunTerbit(),
+                    novel.getJumlahHalaman());
+        }
+
+        System.out.println(garisBawah);
+    }
+
+    //case 4
+    public static void tampilkanDaftarNovelSorted(
+            ArrayList<Novel> listNovel,
+            ArrayList<NovelBestSeller> listBestSeller,
+            ArrayList<NovelDigital> listDigital) {
+
+        ArrayList<Novel> semuaNovel = new ArrayList<>();
+        semuaNovel.addAll(listNovel);
+        semuaNovel.addAll(listBestSeller);
+        semuaNovel.addAll(listDigital);
+
+        // Sorting berdasarkan harga
+        semuaNovel.sort((n1, n2) -> Double.compare(n1.getHarga(), n2.getHarga()));
+
+        String garisAtas = "╔" + "═".repeat(93) + "╗";
+        String garisTengah = "╠" + "═".repeat(93) + "╣";
+        String garisBawah = "╚" + "═".repeat(93) + "╝";
+
+        System.out.println("\n" + garisAtas);
+        String judul = " DAFTAR NOVEL ";
+        int lebarKolom = 93;
+        int paddingKiri = (lebarKolom - judul.length()) / 2;
+        int paddingKanan = lebarKolom - paddingKiri - judul.length();
+        System.out.printf("║%" + paddingKiri + "s%s%" + paddingKanan + "s║\n", "", judul, "");
+
+        System.out.println(garisTengah);
+        System.out.printf("║ %-38s │ %-15s │ %-13s │ %-6s │ %-6s ║\n",
+                "Judul", "Genre", "Harga", "Tahun", "Halaman");
+
+        System.out.println(garisTengah);
+
+        for (Novel novel : semuaNovel) {
+            System.out.printf("║ %-38s │ %-15s │ Rp %,10.0f │ %-6d │ %-7d ║\n",
+                    novel.getJudul(),
+                    novel.getGenre(),
+                    novel.getHarga(),
+                    novel.getTahunTerbit(),
+                    novel.getJumlahHalaman());
+        }
+
+        System.out.println(garisBawah);
+    }
+
+    //case 5
+    public static void tampilkanDaftarNovelBestSeller(ArrayList<NovelBestSeller> listBestSeller) {
+        String garisAtas = "╔" + "═".repeat(93) + "╗";
+        String garisTengah = "╠" + "═".repeat(93) + "╣";
+        String garisBawah = "╚" + "═".repeat(93) + "╝";
+
+        System.out.println("\n" + garisAtas);
+
+        String judul = "DAFTAR NOVEL BEST SELLER";
+        int padding = (93 - judul.length()) / 2;
+        String judulTengah = " ".repeat(padding) + judul + " ".repeat(93 - padding - judul.length());
+        System.out.printf("║%s║\n", judulTengah);
+
+        System.out.println(garisTengah);
+        System.out.printf("║ %-38s │ %-15s │ %-13s │ %-6s │ %-6s ║\n",
+                "Judul", "Genre", "Harga", "Tahun", "Halaman");
+        System.out.println(garisTengah);
+
+        for (NovelBestSeller novel : listBestSeller) {
+            System.out.printf("║ %-38s │ %-15s │ Rp %,10.0f │ %-6d │ %-7d ║\n",
+                    novel.getJudul(),
+                    novel.getGenre(),
+                    novel.getHarga(),
+                    novel.getTahunTerbit(),
+                    novel.getJumlahHalaman());
+        }
+
+        System.out.println(garisBawah);
+    }
+
+    //case 6
+    public static void tampilakanDaftarNovelDigital(ArrayList<NovelDigital> listDigital) {
+        String garisAtas = "╔" + "═".repeat(93) + "╗";
+        String garisTengah = "╠" + "═".repeat(93) + "╣";
+        String garisBawah = "╚" + "═".repeat(93) + "╝";
+
+        System.out.println("\n" + garisAtas);
+        String judul = "DAFTAR NOVEL DIGITAL";
+        int totalWidth = 93;
+        int padding = (totalWidth - judul.length()) / 2;
+        System.out.printf("║%" + padding + "s%s%" + (totalWidth - padding - judul.length()) + "s║\n", "", judul, "");
+        System.out.println(garisTengah);
+        System.out.printf("║ %-38s │ %-15s │ %-13s │ %-6s │ %-6s ║\n",
+                "Judul", "Genre", "Harga", "Tahun", "Halaman");
+        System.out.println(garisTengah);
+
+        for (NovelDigital novel : listDigital) {
+            System.out.printf("║ %-38s │ %-15s │ Rp %,10.0f │ %-6d │ %-7d ║\n",
+                    novel.getJudul(),
+                    novel.getGenre(),
+                    novel.getHarga(),
+                    novel.getTahunTerbit(),
+                    novel.getJumlahHalaman());
+        }
+
+        System.out.println(garisBawah);
+    }
+
+    //case 7
+    public static void tampilkanNovelDiskon(
+            ArrayList<Novel> listNovel,
+            ArrayList<NovelBestSeller> listBestSeller,
+            ArrayList<NovelDigital> listDigital) {
+
+        ArrayList<Novel> semuaDiskon = new ArrayList<>();
+        listNovel.stream().filter(n -> n.getDiskon() > 0).forEach(semuaDiskon::add);
+        listBestSeller.stream().filter(n -> n.getDiskon() > 0).forEach(semuaDiskon::add);
+        listDigital.stream().filter(n -> n.getDiskon() > 0).forEach(semuaDiskon::add);
+
+        String garisAtas = "╔" + "═".repeat(105) + "╗";
+        String garisTengah = "╠" + "═".repeat(105) + "╣";
+        String garisBawah = "╚" + "═".repeat(105) + "╝";
+
+        System.out.println("\n" + garisAtas);
+        String judul = "DAFTAR NOVEL DISKON";
+        int totalWidth = 105;
+        int padding = (totalWidth - judul.length()) / 2;
+        System.out.printf("║%" + padding + "s%s%" + (totalWidth - padding - judul.length()) + "s║\n", "", judul, "");
+        System.out.println(garisTengah);
+        System.out.printf("║ %-30s │ %-10s │ %-12s │ %-6s │ %-7s │ %-7s │ %-13s ║\n",
+                "Judul", "Genre", "Harga Normal", "Tahun", "Halaman", "Diskon", "Harga Diskon");
+        System.out.println(garisTengah);
+
+        for (Novel novel : semuaDiskon) {
+            double harga = novel.getHarga();
+            int diskon = novel.getDiskon();
+            double hargaSetelahDiskon = harga - (harga * diskon / 100.0);
+
+            System.out.printf("║ %-30s │ %-10s │ Rp %,9.0f │ %-6d │ %-7d │ %5d%% │ Rp %,11.0f ║\n",
+                    novel.getJudul(),
+                    novel.getGenre(),
+                    harga,
+                    novel.getTahunTerbit(),
+                    novel.getJumlahHalaman(),
+                    diskon,
+                    hargaSetelahDiskon);
+        }
+
+        System.out.println(garisBawah);
     }
 }
