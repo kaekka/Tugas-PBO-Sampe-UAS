@@ -20,10 +20,13 @@ public class Main {
             listNovel.add(new Novel("Danur", "horror", 60000, 0, 2017, 320));
             listNovel.add(new Novel("The Chronicles of Narnia", "fantasi", 72000, 0, 1950, 420));
             listNovel.add(new Novel("Dilan: Dia adalah Dilanku tahun 1990", "romance", 55000, 0, 2018, 300));
+            listNovel.add(new Novel("Charlie dan Pabrik Coklat", "adventure", 75555, 5, 1964, 215));
+            
 
             ArrayList<NovelBestSeller> listBestSeller = new ArrayList<>();
             listBestSeller.add(new NovelBestSeller("Harry Potter", "fantasi", 100000, 0, 1997, 500));
             listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "inspiratif", 58000, 10, 2005, 400));
+            listBestSeller.add(new NovelBestSeller("Seporsi Mie Ayam Sebelum mati", "romance", 60000, 0, 2025, 216));
 
             ArrayList<NovelDigital> listDigital = new ArrayList<>();
             listDigital.add(new NovelDigital("Ebook Adventure", "fantasi", 60000, 0, 2022, 300));

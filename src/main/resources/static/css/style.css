@@ -1,0 +1,16 @@
+.footer {
+    width: 100%; /* Pastikan footer mengambil lebar penuh */
+    text-align: right; /* Atur teks ke sebelah kanan */
+    padding: 20px; /* Tambahkan padding untuk ruang */
+    background-color: #000; /* Warna latar belakang */
+    color: #fff; /* Warna teks */
+}
+
+.footer .container {
+    max-width: 1200px; /* Atur lebar maksimum untuk konten */
+    margin: 0 auto; /* Pusatkan konten */
+}
+
+.footer h5, .footer p {
+    margin: 0; /* Hapus margin untuk menghindari pemotongan */
+}
