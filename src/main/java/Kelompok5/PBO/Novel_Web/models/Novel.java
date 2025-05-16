@@ -86,10 +86,10 @@ public class Novel {
     }
 
     public String toStringWithDiscount() {
-        // Menghitung harga setelah diskon sebagai tipe double
+        
         double hargaSetelahDiskon = harga - (harga * diskon / 100.0);
 
-        // Gunakan formatRupiah untuk mencetak harga dengan format yang benar
+        
         DecimalFormat formatRupiah = new DecimalFormat("Rp#,###");
 
         return String.format(

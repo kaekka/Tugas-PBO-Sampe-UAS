@@ -32,7 +32,7 @@ public class Main {
         }
     }
 
-    //case 1
+    
     public static void cariNovelByJudul(
             Scanner scanner,
             ArrayList<Novel> listNovel,
@@ -45,7 +45,7 @@ public class Main {
         String judulTabel = " MASUKKAN JUDUL NOVEL YANG INGIN DICARI ";
         int padding = (93 - judulTabel.length()) / 2;
 
-        // Tampilan input dalam tabel
+        
         System.out.println("\n" + garisAtas);
         System.out.printf("║%" + padding + "s%s%" + (93 - padding - judulTabel.length()) + "s║\n", "", judulTabel, "");
         System.out.println(garisTengah);
@@ -54,14 +54,14 @@ public class Main {
         System.out.print(">> ");
         String judulDicari = scanner.nextLine().toLowerCase();
 
-        // Gabungkan semua novel
+        
         ArrayList<Novel> semuaNovel = new ArrayList<>(listNovel);
         semuaNovel.addAll(listBestSeller);
         semuaNovel.addAll(listDigital);
 
         Novel hasil = Novel.cariNovelByJudul(semuaNovel, judulDicari);
 
-        // Tampilkan hasil
+        
         String hasilHeader = " HASIL PENCARIAN NOVEL BERDASARKAN JUDUL ";
         int hasilPadding = (93 - hasilHeader.length()) / 2;
 
@@ -90,7 +90,7 @@ public class Main {
         }
     }
 
-    //case 2
+    
     public static void cariNovelByGenre(
             Scanner scanner,
             ArrayList<Novel> listNovel,
@@ -103,7 +103,7 @@ public class Main {
         String judulTabel = " MASUKKAN GENRE NOVEL YANG INGIN DICARI ";
         int padding = (93 - judulTabel.length()) / 2;
 
-        // Tampilan input dalam tabel
+        
         System.out.println("\n" + garisAtas);
         System.out.printf("║%" + padding + "s%s%" + (93 - padding - judulTabel.length()) + "s║\n", "", judulTabel, "");
         System.out.println(garisTengah);
@@ -112,12 +112,12 @@ public class Main {
         System.out.print(">> ");
         String genreDicari = scanner.nextLine().toLowerCase();
 
-        // Gabungkan semua novel
+        
         ArrayList<Novel> semuaNovel = new ArrayList<>(listNovel);
         semuaNovel.addAll(listBestSeller);
         semuaNovel.addAll(listDigital);
 
-        // Filter berdasarkan genre
+        
         ArrayList<Novel> hasilGenre = new ArrayList<>();
         for (Novel novel : semuaNovel) {
             if (novel.getGenre().toLowerCase().contains(genreDicari)) {
@@ -125,7 +125,7 @@ public class Main {
             }
         }
 
-        // Tampilkan hasil
+        
         String hasilHeader = " HASIL PENCARIAN NOVEL BERDASARKAN GENRE ";
         int hasilPadding = (93 - hasilHeader.length()) / 2;
 
@@ -156,7 +156,7 @@ public class Main {
         }
     }
 
-    //case 3
+    
     public static void tampilkanDaftarNovel(
             ArrayList<Novel> listNovel,
             ArrayList<NovelBestSeller> listBestSeller,
@@ -196,7 +196,7 @@ public class Main {
         System.out.println(garisBawah);
     }
 
-    //case 4
+    
     public static void tampilkanDaftarNovelSorted(
             ArrayList<Novel> listNovel,
             ArrayList<NovelBestSeller> listBestSeller,
@@ -207,7 +207,7 @@ public class Main {
         semuaNovel.addAll(listBestSeller);
         semuaNovel.addAll(listDigital);
 
-        // Sorting berdasarkan harga
+        
         semuaNovel.sort((n1, n2) -> Double.compare(n1.getHarga(), n2.getHarga()));
 
         String garisAtas = "╔" + "═".repeat(93) + "╗";
@@ -239,7 +239,7 @@ public class Main {
         System.out.println(garisBawah);
     }
 
-    //case 5
+    
     public static void tampilkanDaftarNovelBestSeller(ArrayList<NovelBestSeller> listBestSeller) {
         String garisAtas = "╔" + "═".repeat(93) + "╗";
         String garisTengah = "╠" + "═".repeat(93) + "╣";
@@ -269,7 +269,7 @@ public class Main {
         System.out.println(garisBawah);
     }
 
-    //case 6
+    
     public static void tampilakanDaftarNovelDigital(ArrayList<NovelDigital> listDigital) {
         String garisAtas = "╔" + "═".repeat(93) + "╗";
         String garisTengah = "╠" + "═".repeat(93) + "╣";
@@ -297,7 +297,7 @@ public class Main {
         System.out.println(garisBawah);
     }
 
-    //case 7
+    
     public static void tampilkanNovelDiskon(
             ArrayList<Novel> listNovel,
             ArrayList<NovelBestSeller> listBestSeller,

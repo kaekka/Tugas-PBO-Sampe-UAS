@@ -1,0 +1,42 @@
+<header th:fragment="navbar">
+
+<nav class="navbar bg-light border-end border-dark border-4 shadow-brutal position-fixed top-0 start-0 h-100 p-3" style="width: 250px; z-index: 1030;">
+    <div class="d-flex flex-column align-items-start gap-4 h-100">
+
+        
+        <a class="navbar-brand" href="#">
+            <div class="logo-wrapper">
+                <img th:src="@{/asset/logo.png}" alt="Logo" class="default-logo" style="width: 100px;">
+                <img th:src="@{/asset/logo2.png}" alt="Logo Hover" class="hover-logo d-none">
+            </div>
+        </a>
+
+        
+        <ul class="nav nav-pills flex-column w-100">
+            <li class="nav-item">
+                <a class="nav-link active text-danger" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-hover" href="#">About</a>
+            </li>
+           
+        </ul>
+
+        
+        <a class="btn btn-outline-light border-3 btn-brutal-blue w-100" href="#">
+            <i class="fa-solid fa-cart-shopping me-2"></i> Cart
+        </a>
+
+         
+        <div th:if="${session.loggedInUser}" class="mt-auto w-100">
+            <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-person-circle fs-4 me-2 text-dark"></i>
+                <span th:text="${session.loggedInUser}" class="text-dark">Username</span>
+            </div>
+            <a href="/auth/logout" class="btn btn-outline-dark border-3 btn-brutal w-100">Logout</a>
+        </div>
+
+    </div>
+</nav>
+
+</header>

@@ -10,22 +10,22 @@ import Kelompok5.PBO.Novel_Web.models.NovelDigital;
 import Kelompok5.PBO.Novel_Web.utils.NovelFunction;
 
 public class App {
-    // Daftar untuk menyimpan novel
+   
     static ArrayList<Novel> listNovel = new ArrayList<>(); 
     static ArrayList<NovelBestSeller> listBestSeller = new ArrayList<>();
     static ArrayList<NovelDigital> listDigital = new ArrayList<>();
 
     public static void main(String[] args) {
-        // Menampilkan menu awal
+       
         NovelFunction.tampilkanMenu();
         Scanner scanner = new Scanner(System.in);
 
-        // Loop untuk menunggu input pengguna
+        
         while (true) {
             NovelFunction.tampilkanMenu();
             int pilihan = scanner.nextInt();
 
-            // Switch untuk memilih menu
+            
             switch (pilihan) {
                 case 1 -> Main.cariNovelByJudul(scanner, listNovel, listBestSeller, listDigital);
                 case 2 -> Main.cariNovelByGenre(scanner, listNovel, listBestSeller, listDigital); 
