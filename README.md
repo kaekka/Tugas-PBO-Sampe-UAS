@@ -20,6 +20,7 @@ Aplikasi berbasis Java untuk mengelola dan menampilkan data novel dengan berbaga
 ## 🔍 Fitur
 
 - 🔎 Cari berdasarkan **Judul**
+- 👤 Profile identitas
 - 🎭 Cari berdasarkan **Genre**
 - 📋 Tampilkan **Semua Novel**
 - 💰 Tampilkan Novel urut berdasarkan **Harga**
