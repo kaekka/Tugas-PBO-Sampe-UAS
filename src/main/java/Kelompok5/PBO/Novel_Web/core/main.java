@@ -31,7 +31,7 @@ public class Main {
             ArrayList<NovelDigital> listDigital = new ArrayList<>();
             listDigital.add(new NovelDigital("Ebook Adventure", "fantasi", 60000, 0, 2022, 300));
             listDigital.add(new NovelDigital("Digital Mystery", "thriller", 55000, 15, 2021, 350));
-            listDigital.add(new NovelDigital("Sci-Fi Saga", "science fiction", 70000, 0, 2023, 400));;
+            listDigital.add(new NovelDigital("Sci-Fi Saga", "science fiction", 70000, 0, 2023, 400));
         }
     }
 
