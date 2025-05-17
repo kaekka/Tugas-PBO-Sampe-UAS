@@ -11,6 +11,6 @@
     margin: 0 auto; /* Pusatkan konten */
 }
 
-.footer h5, .footer p {
+.footer h6, .footer p {
     margin: 0; /* Hapus margin untuk menghindari pemotongan */
 }
