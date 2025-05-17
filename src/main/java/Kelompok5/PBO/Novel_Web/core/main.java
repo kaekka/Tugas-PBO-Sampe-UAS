@@ -12,7 +12,7 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)) {
 
             ArrayList<Novel> listNovel = new ArrayList<>();
-            listNovel.add(new Novel("Solo Leveling", "fantasi", 95000, 10, 2021, 300));
+            listNovel.add(new Novel("Seporsi Mie Ayam Sebelum mati", "romance", 60000, 0, 2025, 216));
             listNovel.add(new Novel("The Lord of the Rings", "adventure", 70000, 0, 1954, 450));
             listNovel.add(new Novel("The Godfather", "crime", 50000, 0, 1969, 400));
             listNovel.add(new Novel("Omniscient Reader's Viewpoint", "modern", 78000, 8, 2021, 450));
@@ -26,7 +26,7 @@ public class Main {
             ArrayList<NovelBestSeller> listBestSeller = new ArrayList<>();
             listBestSeller.add(new NovelBestSeller("Harry Potter", "fantasi", 100000, 0, 1997, 500));
             listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "inspiratif", 58000, 10, 2005, 400));
-            listBestSeller.add(new NovelBestSeller("Seporsi Mie Ayam Sebelum mati", "romance", 60000, 0, 2025, 216));
+            listBestSeller.add(new NovelBestSeller("Solo Leveling", "fantasi", 95000, 10, 2021, 300));
 
             ArrayList<NovelDigital> listDigital = new ArrayList<>();
             listDigital.add(new NovelDigital("Ebook Adventure", "fantasi", 60000, 0, 2022, 300));

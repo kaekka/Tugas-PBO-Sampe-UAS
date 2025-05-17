@@ -10,8 +10,8 @@ public class WebApp {
         return "Welcome to Novelku Web App!";
     }
 
-    @GetMapping("/index")
-    public String showIndex() {
-        return "index";
-    }
+    //@GetMapping("/index")
+    //public String showIndex() {
+      //  return "index";
+   // }
 }
