@@ -1,13 +1,10 @@
-d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Novelku</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-
- <!-- Import Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -19,8 +16,9 @@ d<!DOCTYPE html>
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            font-family: 'poppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
+
         .container {
             text-align: center;
             background-color: white;
@@ -28,14 +26,15 @@ d<!DOCTYPE html>
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
+
         .title {
             font-size: 3rem;
-            font-weight: bold;
             margin-bottom: 30px;
+            font-weight: 400;
         }
 
-        .title span {
-            font-weight: 700; /* Bold untuk "KU" */
+        .title .bold {
+            font-weight: 700;
         }
 
         .icon {
@@ -43,6 +42,7 @@ d<!DOCTYPE html>
             height: auto;
             margin-bottom: 30px;
         }
+
         .button {
             display: block;
             width: 100%;
@@ -53,17 +53,35 @@ d<!DOCTYPE html>
             font-size: 1.2rem;
             cursor: pointer;
         }
+
         .login {
             background-color: transparent;
             color: black;
-            border: 2px solid #000; /* adjusted border for login button */
+            border: 2px solid #000;
         }
+
         .register {
             background-color: black;
             color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 15px 0;
+            border-radius: 5px;
+            width: 100%;
         }
-        .button:hover {
+
+        .button:hover,
+        .register:hover {
             opacity: 0.8;
+        }
+
+        ::placeholder {
+            color: #999; /* abu-abu */
+            opacity: 1;
+        }
+
+        input.form-control {
+            background-color: #f9f9f9;
         }
     </style>
 </head>
@@ -71,21 +89,18 @@ d<!DOCTYPE html>
 <body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="neo-card p-5" style="width: 100%; max-width: 400px;">
-            <h2 class="title">NOVEL<span>KU</span></h2>
+            <h2 class="title">NOVEL<span class="bold">KU</span></h2>
             <form th:action="@{/auth/login}" method="post">
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input id="username" name="username" type="text" class="form-control border border-dark neo-card">
+                    <input id="username" name="username" type="text" placeholder="Username" class="form-control border border-dark neo-card">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input id="password" name="password" type="password" class="form-control border border-dark neo-card">
+                    <input id="password" name="password" type="password" placeholder="Password" class="form-control border border-dark neo-card">
                 </div>
                 <button type="submit" class="button login">Log In</button>
-                <p class="mt-3 text-center">Belum punya akun?
-                    <a href="/auth/register" class="button register">Register</a>
-                </p>
-                <p th:if="${error}" th:text="${error}" class="text-danger text-center"></p>
+                <p class="mt-3 text-center">Belum punya akun?</p>
+                <a href="/auth/register" class="register">Register</a>
+                <p th:if="${error}" th:text="${error}" class="text-danger text-center mt-3"></p>
             </form>
         </div>
     </div>
