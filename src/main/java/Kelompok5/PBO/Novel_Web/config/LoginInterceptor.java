@@ -13,7 +13,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         
         String uri = request.getRequestURI();
-        if (uri.startsWith("/auth") ) {
+        if (uri.startsWith("/") ) {
             return true;
         }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,13 +89,13 @@
 <body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="neo-card p-5" style="width: 100%; max-width: 400px;">
-            <!-- Ikon buku -->
+            
             <img th:src="@{/asset/book.png}" alt="Logo" class="default-logo" style="width: 100px;">
             
-            <!-- Judul -->
+            
             <h2 class="title">NOVEL<span class="bold">KU</span></h2>
 
-            <!-- Form -->
+            
             <form th:action="@{/auth/login}" method="post">
                 <div class="mb-3">
                     <input id="username" name="username" type="text" placeholder="Username" class="form-control border border-dark neo-card">
