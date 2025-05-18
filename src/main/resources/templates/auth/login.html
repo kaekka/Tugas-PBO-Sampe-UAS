@@ -1,119 +1,201 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Novelku</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Novelku</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
 
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            font-family: 'Poppins', sans-serif;
-        }
+    body {
+      background: linear-gradient(to bottom right, #000000, #c19759);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
-        .container {
-            text-align: center;
-            background-color: white;
-            padding: 60px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
 
-        .icon {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      padding: 50px 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      color: #fff;
+    }
 
-        .title {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            font-weight: 400;
-        }
+    .title {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
 
-        .title .bold {
-            font-weight: 700;
-        }
+    .title .bold {
+      font-weight: 700;
+      color: #2d1f0a;
+    }
 
-        .button {
-            display: block;
-            width: 100%;
-            padding: 20px;
-            margin: 15px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
+    .form-control {
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      transition: all 0.3s ease;
+    }
 
-        .login {
-            background-color: transparent;
-            color: black;
-            border: 2px solid #000;
-        }
+    .form-control:focus {
+      box-shadow: 0 0 10px rgba(255,255,255,0.4);
+      background: rgba(255, 255, 255, 0.35);
+    }
 
-        .register {
-            background-color: black;
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 15px 0;
-            border-radius: 5px;
-            width: 100%;
-        }
+    .form-control::placeholder {
+      color: #ddd;
+    }
 
-        .button:hover,
-        .register:hover {
-            opacity: 0.8;
-        }
+    /* Container untuk password + icon */
+    .password-wrapper {
+      position: relative;
+    }
 
-        ::placeholder {
-            color: #999;
-            opacity: 1;
-        }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #ddd;
+      font-size: 1.2rem;
+      user-select: none;
+      transition: color 0.3s;
+    }
 
-        input.form-control {
-            background-color: #f9f9f9;
-        }
-    </style>
+    .toggle-password:hover {
+      color: #fff;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 15px;
+      background-color: #c19759;
+      color: white;
+      border: none;
+      border-radius: 100px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-login:hover {
+      background-color: #a67841;
+    }
+
+    .register-link {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .register-link a {
+      color: #f2e6d0;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="neo-card p-5" style="width: 100%; max-width: 400px;">
+  <div id="particles-js"></div>
 
-                <!-- Logo SVG BookStack -->
-            <div class="svg-logo" style="width: 70px; margin: 0 auto 1px;">
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; fill: #ffffff;">
-                <title>BookStack</title>
-                <path d="M.3013 17.6146c-.1299-.3387-.5228-1.5119-.1337-2.4314l9.8273 5.6738a.329.329 0 0 0 .3299 0L24 12.9616v2.3542l-13.8401 7.9906-9.8586-5.6918zM.1911 8.9628c-.2882.8769.0149 2.0581.1236 2.4261l9.8452 5.6841L24 9.0823V6.7275L10.3248 14.623a.329.329 0 0 1-.3299 0L.1911 8.9628zm13.1698-1.9361c-.1819.1113-.4394.0015-.4852-.2064l-.2805-1.1336-2.1254-.1752a.33.33 0 0 1-.1378-.6145l5.5782-3.2207-1.7021-.9826L.6979 8.4935l9.462 5.463 13.5104-7.8004-4.401-2.5407-5.9084 3.4113zm-.1821-1.7286.2321.938 5.1984-3.0014-2.0395-1.1775-4.994 2.8834 1.3099.108a.3302.3302 0 0 1 .2931.2495zM24 9.845l-13.6752 7.8954a.329.329 0 0 1-.3299 0L.1678 12.0667c-.3891.919.003 2.0914.1332 2.4311l9.8589 5.692L24 12.1993V9.845z"/>
-            </svg>
-            </div>
+  <div class="container">
 
-            <h2 class="title">NOVEL<span class="bold">KU</span></h2>
-
-            
-            <form th:action="@{/auth/login}" method="post">
-                <div class="mb-3">
-                    <input id="username" name="username" type="text" placeholder="Username" class="form-control border border-dark neo-card">
-                </div>
-                <div class="mb-3">
-                    <input id="password" name="password" type="password" placeholder="Password" class="form-control border border-dark neo-card">
-                </div>
-                <button type="submit" class="button login">Log In</button>
-                <p class="mt-3 text-center">Belum punya akun?</p>
-                <a href="/auth/register" class="register">Register</a>
-                <p th:if="${error}" th:text="${error}" class="text-danger text-center mt-3"></p>
-            </form>
-        </div>
+    <!-- Logo SVG -->
+    <div class="svg-logo" style="width: 70px; margin: 0 auto 15px;">
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; fill: #ffffff;">
+        <title>BookStack</title>
+        <path d="M.3013 17.6146c-.1299-.3387-.5228-1.5119-.1337-2.4314l9.8273 5.6738a.329.329 0 0 0 .3299 0L24 12.9616v2.3542l-13.8401 7.9906-9.8586-5.6918zM.1911 8.9628c-.2882.8769.0149 2.0581.1236 2.4261l9.8452 5.6841L24 9.0823V6.7275L10.3248 14.623a.329.329 0 0 1-.3299 0L.1911 8.9628zm13.1698-1.9361c-.1819.1113-.4394.0015-.4852-.2064l-.2805-1.1336-2.1254-.1752a.33.33 0 0 1-.1378-.6145l5.5782-3.2207-1.7021-.9826L.6979 8.4935l9.462 5.463 13.5104-7.8004-4.401-2.5407-5.9084 3.4113zm-.1821-1.7286.2321.938 5.1984-3.0014-2.0395-1.1775-4.994 2.8834 1.3099.108a.3302.3302 0 0 1 .2931.2495zM24 9.845l-13.6752 7.8954a.329.329 0 0 1-.3299 0L.1678 12.0667c-.3891.919.003 2.0914.1332 2.4311l9.8589 5.692L24 12.1993V9.845z"/>
+      </svg>
     </div>
+
+    <div class="title">NOVEL<span class="bold">KU</span></div>
+
+    <form th:action="@{/auth/login}" method="post">
+      <div class="mb-3">
+        <input id="username" name="username" type="text" placeholder="*Username" class="form-control" required />
+      </div>
+      <div class="mb-3 password-wrapper">
+        <input id="password" name="password" type="password" placeholder="*Password" class="form-control" required />
+        <span id="togglePassword" class="toggle-password" title="Show/Hide Password">&#128065;</span>
+      </div>
+      <button type="submit" class="btn-login">Log In</button>
+      <div class="register-link">
+        Belum punya akun? <a href="/auth/register">Daftar</a>
+      </div>
+      <p th:if="${error}" th:text="${error}" class="text-danger text-center mt-3"></p>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.4 },
+        "size": { "value": 3, "random": true },
+        "move": {
+          "enable": true, "speed": 1.5, "direction": "none", "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 80, "duration": 0.4 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Toggle Password Show/Hide
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function () {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // optionally toggle icon here:
+      this.textContent = type === 'password' ? '\u{1F441}' : '\u{1F576}'; // eye or sunglasses emoji
+    });
+  </script>
 </body>
 </html>
