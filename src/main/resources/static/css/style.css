@@ -61,6 +61,62 @@
   display: none;
 }
 
+/* Card Buku */
+.card-novel {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #3b3b3b;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 250px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.card-novel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(193, 151, 89, 0.25);
+}
+
+.card-novel .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #3b3b3b;
+}
+
+.card-novel .card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #f1c27d;
+}
+
+.card-novel .card-text {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.card-novel .card-footer {
+  border-top: 1px solid #333;
+  background-color: #1e1e1e;
+  font-size: 0.85rem;
+  color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-novel .btn-outline-warning {
+  border-color: #c19759;
+  color: #c19759;
+  font-weight: 500;
+}
+
+.card-novel .btn-outline-warning:hover {
+  background-color: #c19759;
+  color: black;
+}
+
+
 
 .footer {
     width: 100%; /* Pastikan footer mengambil lebar penuh */
