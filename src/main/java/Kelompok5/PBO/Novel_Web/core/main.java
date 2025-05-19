@@ -24,9 +24,11 @@ public class Main {
             
 
             ArrayList<NovelBestSeller> listBestSeller = new ArrayList<>();
-            listBestSeller.add(new NovelBestSeller("Harry Potter", "fantasi", 100000, 0, 1997, 500));
+            listBestSeller.add(new NovelBestSeller("Harry Potter and the Sorcerer's Stone", "fantasi", 100000, 0, 1997, 500));
             listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "inspiratif", 58000, 10, 2005, 400));
             listBestSeller.add(new NovelBestSeller("Solo Leveling", "fantasi", 95000, 10, 2021, 300));
+            listBestSeller.add(new NovelBestSeller("Bumi", "fantasi", 80000, 5, 2014, 440));
+            listBestSeller.add(new NovelBestSeller("Laut Bercerita", "romance", 78000, 0, 2017, 394));
 
             ArrayList<NovelDigital> listDigital = new ArrayList<>();
             listDigital.add(new NovelDigital("Ebook Adventure", "fantasi", 60000, 0, 2022, 300));
