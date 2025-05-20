@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Detail Buku</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     body {
@@ -55,9 +55,9 @@
     }
 
     .book-details h3 {
-      font-weight: 400;
-      margin-top: 0;
-      color: #555;
+    font-weight: 600;
+    font-size: 18px;
+    color: #444;
     }
 
     .description {
@@ -122,22 +122,33 @@
       height: 24px;
       color: #5a4741;
     }
+
+    .stars {
+    color: #f39c12; 
+    font-size: 18px; 
+    }
+
+
   </style>
 </head>
 <body>
 
 <div class="container">
   <div class="book-image">
-    <img src="https://i.imgur.com/9MK2dz1.jpg" alt="Harry Potter Cover" />
+    <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg" alt="Harry Potter Cover" />
   </div>
   <div class="book-details">
-    <h1>Harry Potter: Half Blood Prince</h1>
+    <h1>Harry Potter and the Sorcerer's Stone</h1>
     <h3>J.K. Rowling</h3>
+        <div class="novel-rating">
+            <span class="stars">★ ★ ★ ★ ★</span>
+            <span class="novel-voters">(2.997 voters)</span>
+        </div>
     <p class="description">
-      Get ready to uncover the dark secrets and betrayals in the book. A thrilling adventure awaits you.
+      Harry Potter and the Sorcerer's Stone mengisahkan seorang anak yatim piatu bernama Harry Potter yang pada ulang tahunnya yang ke-11 mengetahui bahwa ia adalah seorang penyihir. Ia diterima di sekolah sihir Hogwarts, di mana ia menemukan teman sejati, menghadapi tantangan magis, dan mulai mengungkap rahasia masa lalunya. Di tahun pertamanya, Harry bersama Ron dan Hermione mencoba mencegah batu bertuah yang kuat jatuh ke tangan penyihir jahat, Lord Voldemort.
     </p>
     <div class="actions">
-      <div class="price">Rp79.000</div>
+      <div class="price">Rp100.000</div>
       <button class="cart-btn">
         <i data-lucide="shopping-cart"></i> Tambah ke Keranjang
       </button>

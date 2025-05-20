@@ -332,6 +332,31 @@
     opacity: 1;
     }
 
+    .cart-icon .tooltip-text {
+    white-space: nowrap;
+    visibility: hidden;
+    width: 150px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    pointer-events: none;
+    }
+
+    .cart-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    }
+
     .novel-container::-webkit-scrollbar {
       display: none;
     }
@@ -353,20 +378,16 @@
     margin-bottom: 20px;
     }
 
-    /* Buat seluruh isi card bisa diklik tapi tidak terlihat seperti link */
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* Tambahan efek hover agar terasa interaktif */
     .novel-card:hover {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transform: translateY(-2px);
       cursor: pointer;
     }
-
-
 
   </style>
 
@@ -441,7 +462,10 @@
           <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg" alt="The Great Gatsby" class="novel-cover">
           <div class="cover-icons">
             <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+            <button class="icon-btn cart-icon " title="Tambah ke Keranjang">
+              <i class="fas fa-cart-plus"></i>
+              <span class="tooltip-text">Tambah ke Keranjang</span>
+            </button>
             <button class="icon-btn genre-icon">
               <i class="fas fa-tags"></i>
               <span class="tooltip-text">Lihat genre serupa</span>
@@ -465,7 +489,7 @@
        <!-- Novel Card 2-->
       <div class="novel-card">
         <div class="left-section">
-          <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg" alt="The Great Gatsby" class="novel-cover">
+          <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg" alt="Solo Leveling" class="novel-cover">
           <div class="cover-icons">
             <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
             <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
@@ -491,7 +515,7 @@
        <!-- Novel Card 3 -->
       <div class="novel-card">
         <div class="left-section">
-          <img src="https://upload.wikimedia.org/wikipedia/id/8/8e/Laskar_pelangi_sampul.jpg" alt="The Great Gatsby" class="novel-cover">
+          <img src="https://upload.wikimedia.org/wikipedia/id/8/8e/Laskar_pelangi_sampul.jpg" alt="Laskar Pelangi" class="novel-cover">
           <div class="cover-icons">
             <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
             <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
@@ -517,7 +541,7 @@
       <!-- Novel Card 4 -->
       <div class="novel-card">
         <div class="left-section">
-          <img src="https://cdn.gramedia.com/uploads/items/9786020332956_Bumi-New-Cover.jpg" alt="The Great Gatsby" class="novel-cover">
+          <img src="https://cdn.gramedia.com/uploads/items/9786020332956_Bumi-New-Cover.jpg" alt="Bumi" class="novel-cover">
           <div class="cover-icons">
             <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
             <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
@@ -543,7 +567,7 @@
       <!-- Novel Card 5 -->
       <div class="novel-card">
         <div class="left-section">
-          <img src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.jpg" alt="The Great Gatsby" class="novel-cover">
+          <img src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.jpg" alt="Laut Bercerita" class="novel-cover">
           <div class="cover-icons">
             <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
             <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
