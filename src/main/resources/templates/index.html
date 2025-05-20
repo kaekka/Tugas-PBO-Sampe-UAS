@@ -353,6 +353,20 @@
     margin-bottom: 20px;
     }
 
+    /* Buat seluruh isi card bisa diklik tapi tidak terlihat seperti link */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Tambahan efek hover agar terasa interaktif */
+    .novel-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+
+
 
   </style>
 
@@ -421,6 +435,7 @@
     <div class="novel-container" id="scrollContainer">
 
       <!-- Novel Card 1-->
+       <a href="detail-novel.html">
       <div class="novel-card">
         <div class="left-section">
           <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg" alt="The Great Gatsby" class="novel-cover">
@@ -445,6 +460,7 @@
           <button class="btn-see-book">See The Book</button>
         </div>
       </div>
+       </a>
 
        <!-- Novel Card 2-->
       <div class="novel-card">
