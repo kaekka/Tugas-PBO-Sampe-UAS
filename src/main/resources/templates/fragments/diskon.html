@@ -27,19 +27,18 @@
 
     .container {
       display: flex;
+      flex-direction: column;
       background-color: var(--white);
       border-radius: 16px;
       box-shadow: 0 4px 16px var(--shadow);
       padding: 2rem;
       gap: 2rem;
-      align-items: flex-start;
       max-width: 1000px;
       margin: 0 auto;
     }
 
     /* Left: Promo Diskon */
     .left {
-      flex: 1;
       background-color: var(--cream);
       border-radius: 12px;
       padding: 1.5rem;
@@ -144,63 +143,85 @@
       color: #555;
     }
 
-    /* Right: Book List */
-    .right {
-      flex: 1.5;
-      max-height: 400px;
-      overflow-y: auto;
+    /* Scrollable Book Carousel */
+    .scroll-section {
+      margin-top: 1rem;
+    }
+
+    .scroll-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .scroll-wrapper {
       display: flex;
-      flex-direction: column;
       gap: 1rem;
-      padding-right: 0.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
     }
 
-    .book-item {
-      display: flex;
-      gap: 1rem;
-      background-color: var(--cream);
-      border-radius: 12px;
-      padding: 1rem;
-      align-items: center;
-      box-shadow: 0 2px 8px var(--shadow);
-      transition: transform 0.2s ease;
+    .scroll-wrapper::-webkit-scrollbar {
+      height: 8px;
     }
 
-    .book-item:hover {
-      transform: translateY(-2px);
-    }
-
-    .book-cover {
-      width: 60px;
-      height: 90px;
-      background-color: var(--highlight);
-      border-radius: 6px;
-      flex-shrink: 0;
-    }
-
-    .book-info h3 {
-      font-size: 1rem;
-      color: var(--black);
-      margin-bottom: 0.3rem;
-    }
-
-    .book-info p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .right::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .right::-webkit-scrollbar-thumb {
+    .scroll-wrapper::-webkit-scrollbar-thumb {
       background: var(--highlight);
       border-radius: 10px;
     }
 
+    .book-card {
+      flex: 0 0 auto;
+      width: 200px;
+      background-color: var(--cream);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-snap-align: start;
+      cursor: pointer;
+    }
+
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .book-cover {
+      width: 100%;
+      height: 100px;
+      background-color: var(--highlight);
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+    }
+
+    .book-info h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--black);
+    }
+
+    .book-info .author {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.3rem;
+    }
+
+    .book-info .price {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .book-info .price del {
+      color: #999;
+      margin-right: 0.4rem;
+    }
+
     @media (max-width: 768px) {
-      .container {
+      .promo-content {
         flex-direction: column;
+        text-align: center;
       }
     }
   </style>
@@ -231,34 +252,40 @@
       </div>
     </div>
 
-    <!-- Right: Book List -->
-    <div class="right">
-      <div class="book-item">
-        <div class="book-cover"></div>
-        <div class="book-info">
-          <h3>The Great Gatsby</h3>
-          <p>F. Scott Fitzgerald · $10</p>
+    <!-- Right: Scrollable Book List -->
+    <div class="scroll-section">
+      <div class="scroll-wrapper">
+        <div class="book-card">
+          <div class="book-cover"></div>
+          <div class="book-info">
+            <h3>The Great Gatsby</h3>
+            <p class="author">F. Scott Fitzgerald</p>
+            <p class="price"><del>$15</del> <strong>$10</strong></p>
+          </div>
         </div>
-      </div>
-      <div class="book-item">
-        <div class="book-cover"></div>
-        <div class="book-info">
-          <h3>To Kill a Mockingbird</h3>
-          <p>Harper Lee · $12</p>
+        <div class="book-card">
+          <div class="book-cover"></div>
+          <div class="book-info">
+            <h3>To Kill a Mockingbird</h3>
+            <p class="author">Harper Lee</p>
+            <p class="price"><del>$18</del> <strong>$12</strong></p>
+          </div>
         </div>
-      </div>
-      <div class="book-item">
-        <div class="book-cover"></div>
-        <div class="book-info">
-          <h3>1984</h3>
-          <p>George Orwell · $11</p>
+        <div class="book-card">
+          <div class="book-cover"></div>
+          <div class="book-info">
+            <h3>1984</h3>
+            <p class="author">George Orwell</p>
+            <p class="price"><del>$16</del> <strong>$11</strong></p>
+          </div>
         </div>
-      </div>
-      <div class="book-item">
-        <div class="book-cover"></div>
-        <div class="book-info">
-          <h3>The Hobbit</h3>
-          <p>J.R.R. Tolkien · $13</p>
+        <div class="book-card">
+          <div class="book-cover"></div>
+          <div class="book-info">
+            <h3>The Hobbit</h3>
+            <p class="author">J.R.R. Tolkien</p>
+            <p class="price"><del>$19</del> <strong>$13</strong></p>
+          </div>
         </div>
       </div>
     </div>
