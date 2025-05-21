@@ -1,206 +1,240 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Us - DuniaCerita</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <title>About Me - Anime Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fefefe;
-      color: #333;
+      font-family: 'Nunito', sans-serif;
+      background-color: #fdf6e3;
+      color: #000000;
       margin: 0;
+      padding: 20px;
+      animation: fadeIn 1s ease-in;
     }
 
-    .hero-section {
-      background: linear-gradient(to right, #000, #2c2c2c);
-      color: #fff;
-      text-align: center;
-      padding: 70px 20px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-section h1 {
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      box-shadow: 0 0 25px rgba(193, 151, 89, 0.3);
+    }
+
+    h1 {
+      font-size: 24px;
       color: #c19759;
-      font-weight: bold;
-      font-size: 2.7rem;
+      border-bottom: 2px dashed #c19759;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
     }
 
-    .hero-section p {
-      max-width: 700px;
-      margin: 20px auto 0;
-      color: #e7dfc6;
-    }
-
-    .team-section {
-      padding: 60px 20px;
-      background-color: #fdfbf8;
-    }
-
-    .team-section h2 {
-      color: #c19759;
-      font-weight: bold;
+    .about {
+      display: flex;
+      gap: 20px;
       margin-bottom: 30px;
     }
 
-    .team-member {
-      background-color: #fff;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: center;
-    }
-
-    .team-member:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .team-member img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
+    .about img {
+      width: 150px;
+      border-radius: 10px;
       object-fit: cover;
-      margin-bottom: 15px;
-      border: 3px solid #c19759;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .team-member h5 {
+    .about img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .about p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333333;
+    }
+
+    .card {
+      background-color: #fff9f0;
+      border-left: 5px solid #c19759;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      gap: 15px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 16px;
       color: #c19759;
-      font-weight: 600;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
     }
 
-    .team-member p {
-      margin-bottom: 0;
-      color: #777;
-      font-size: 0.9rem;
+    .card:hover .card-title {
+      color: #a9783e;
     }
 
-    .legal-section {
-      background-color: #f5f1ec;
-      padding: 40px 20px;
-      text-align: center;
+    .details {
+      font-size: 13px;
+      color: #000000;
     }
 
-    .legal-section h5 {
-      color: #c19759;
-      font-weight: 600;
-    }
-
-    .legal-section a {
-      color: #333;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    .social-links a {
-      font-size: 1.4rem;
-      color: #000;
-      margin: 10px;
-      transition: color 0.3s;
-    }
-
-    .social-links a:hover {
-      color: #c19759;
+    .posted {
+      font-size: 12px;
+      color: #555555;
+      margin-top: 10px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      text-align: right;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
 
- <!-- Hero Section -->
-<section class="hero-section d-flex align-items-center text-center" style="background: linear-gradient(135deg, #f8f4ee, #fff); padding: 80px 20px;">
   <div class="container">
-    <img src="/asset/book2.png" alt="Logo DuniaCerita" width="120" class="mb-4">
-    <h1 class="fw-bold" style="color: #c19759; font-size: 2.8rem;">Tentang DuniaCerita</h1>
-    <p class="mt-3 text-muted" style="max-width: 720px; margin: auto; font-size: 1.1rem;">
-      DuniaCerita adalah ruang imajinasi tempat kami menyatukan cerita dan teknologi. Dibangun oleh tim muda penuh semangat, kami ingin menghadirkan platform membaca yang menarik, interaktif, dan penuh makna bagi generasi digital.
-    </p>
+    <h1>:: about me</h1>
+    <div class="about">
+      <img src="https://i.pinimg.com/originals/61/4d/94/614d94f2e74fc98bfe5573192681fdcf.png" alt="profile-img">
+      <p>Hello! My name is Rimu but feel free to call me whatever you like. My given nicknames include Rimmu or Rimmy. I'm a chill introvert who enjoys drawing anime girls, watching shows, editing AMVs, and creating GFXs. I'm a soft soul, happy with my boyfriend, and a big fan of relaxing lo-fi music. I also love ramen and boba tea!</p>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/1.jpg" alt="Jeanne Card">
+      <div class="card-content">
+        <div class="card-title">JEANNE D'ARC — FALLEN MAIDEN</div>
+        <div class="details">
+          Element: Dark<br>
+          Race: Human<br>
+          Specialty: Saber<br>
+          Style: Attack
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/2.jpg" alt="Zoe Card">
+      <div class="card-content">
+        <div class="card-title">ZOEY — ARBITRATOR'S SUMMER HOLIDAY</div>
+        <div class="details">
+          Element: Dark<br>
+          Race: Primal Beast<br>
+          Specialty: Saber<br>
+          Style: Special
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/3.jpg" alt="Narmaya Card">
+      <div class="card-content">
+        <div class="card-title">NARMAYA — DARK ANGEL</div>
+        <div class="details">
+          Element: Dark<br>
+          Race: Draph<br>
+          Specialty: Saber<br>
+          Style: Attack
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/4.jpg" alt="Djeeta Card">
+      <div class="card-content">
+        <div class="card-title">DJEEETA — FLUTTERING SWORDSWOMAN</div>
+        <div class="details">
+          Element: Dark<br>
+          Race: Human<br>
+          Specialty: Saber<br>
+          Style: Attack
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/5.jpg" alt="Syva Card">
+      <div class="card-content">
+        <div class="card-title">SYVA — LOVE-CRAZED KNIGHT</div>
+        <div class="details">
+          Element: Dark<br>
+          Race: Human<br>
+          Specialty: Saber<br>
+          Style: Attack
+        </div>
+      </div>
+    </div>
+
+ <div class="card">
+      <img src="https://i.imgur.com/5.jpg" alt="Syva Card">
+      <div class="card-content">
+        <div class="card-title">SYVA — LOVE-CRAZED KNIGHT</div>
+        <div class="details">
+          Element: Dark<br>
+          Race: Human<br>
+          Specialty: Saber<br>
+          Style: Attack
+        </div>
+      </div>
+    </div>
+
+     <div class="card">
+      <img src="https://i.imgur.com/5.jpg" alt="Syva Card">
+      <div class="card-content">
+        <div class="card-title">SYVA — LOVE-CRAZED KNIGHT</div>
+        <div class="details">
+          Element: Dark<br>
+          Race: Human<br>
+          Specialty: Saber<br>
+          Style: Attack
+        </div>
+      </div>
+    </div>
+
+    <div class="posted">
+      POSTED: August 1, 2018 @ 11:35 PM
+    </div>
   </div>
-</section>
-
-  <!-- Team Section -->
-  <section class="team-section">
-    <div class="container">
-      <h2 class="text-center">Tim Kami</h2>
-      <div class="row justify-content-center g-4">
-        <!-- Anggota Tim -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="team-member">
-            <img src="image.jpg" alt="Eka">
-            <h5>Eka Verarina</h5>
-            <p>24111814004</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Prima">
-            <h5>Prima Miftakhul Rahma</h5>
-            <p>24111814005</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Jenar">
-            <h5>Jenar Aditiya Bagaskara</h5>
-            <p>24111814093</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Dwi">
-            <h5>Muhammad Dwi Saputra</h5>
-            <p>24111814080</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Farid">
-            <h5>Farid Ade Novian</h5>
-            <p>24111814140</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Dzacky">
-            <h5>Muhammad Dzacky Maulana Yahya</h5>
-            <p>24111814127</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Renza">
-            <h5>Renza Alvianino</h5>
-            <p>24111814011</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Legal Section -->
-  <section class="legal-section">
-    <div class="container">
-      <h5>Legal & Tautan</h5>
-      <p>
-        <a href="#">Terms of Service</a> |
-        <a href="#">Privacy Policy</a>
-      </p>
-      <div class="social-links mt-3">
-        <a href="https://github.com/kaekka/Tugas-PBO-Sampe-UAS"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.figma.com/proto/zR1LEuAXZH7NprVEacycza/Prototype-Novelku?node-id=8-18"><i class="fab fa-figma"></i></a>
-        <a href="https://getbootstrap.com/"><i class="fab fa-bootstrap"></i></a>
-      </div>
-    </div>
-  </section>
 
 </body>
 </html>
