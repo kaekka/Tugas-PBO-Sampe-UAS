@@ -14,4 +14,9 @@ public class WebApp {
     public String login() {
         return "redirect:/auth/login"; 
     }
+
+    @GetMapping("index")
+    public String index() {
+        return "index"; 
+    }
 }
