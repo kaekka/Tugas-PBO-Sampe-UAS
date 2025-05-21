@@ -8,7 +8,7 @@ import Kelompok5.PBO.Novel_Web.models.NovelBestSeller;
 import Kelompok5.PBO.Novel_Web.models.NovelDigital;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void Main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
 
             ArrayList<Novel> listNovel = new ArrayList<>();
