@@ -405,7 +405,7 @@
         <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Koleksi</a></li>
-          <li class="nav-item"><a class="nav-link" href="keranjang.html">Keranjang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Keranjang</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Settingan</a></li>
         </ul>
         <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 justify-content-lg-end mt-3 mt-lg-0">
@@ -598,157 +598,6 @@
   </div>
 </section>
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Genre Buku</title>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfaf5;
-      margin: 0;
-      padding: 40px 20px;
-      color: #1a1a1a;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
-    }
-
-    .genre-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 28px;
-      padding: 10px;
-    }
-
-    .genre-item {
-      text-align: center;
-      flex: 0 0 auto;
-      width: 80px;
-      cursor: pointer;
-      position: relative;
-    }
-
-.genre-icon {
-  background: white;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s;
-  position: relative;
-  color: #c19759;
-  font-size: 16px;
-  margin: 0 auto; /* Pusatkan ikon */
-}
-
-.genre-icon:hover {
-  transform: scale(1.1);
-  color: #c19759;
-}
-
-    .genre-icon svg {
-      width: 28px;
-      height: 28px;
-      color: #1a1a1a;
-      transition: all 0.3s ease;
-    }
-
-    .genre-item:hover .genre-icon {
-      background-color: #c19759;
-      transform: scale(1.05);
-    }
-
-    .genre-item:hover .genre-icon svg,
-    .genre-item.active .genre-icon svg {
-      color: #fff;
-    }
-
-    .genre-item.active .genre-icon {
-      background-color: #c19759;
-    }
-
-    .genre-label {
-      font-size: 13px;
-      font-weight: 500;
-      color: #1a1a1a;
-    }
-  </style>
-</head>
-<body>
-
-<!-- fragments/genre.html -->
-<div th:fragment="genreFragment">
-  <div class="genre-container">
-    <!-- All -->
-    <div class="genre-item active" title="Semua Genre">
-      <div class="genre-icon">
-        <i data-lucide="book-open"></i>
-      </div>
-      <div class="genre-label">All</div>
-    </div>
-
-   <!-- Romansa -->
-    <div class="genre-item" title="Romansa">
-      <div class="genre-icon">
-        <i data-lucide="heart"></i>
-      </div>
-      <div class="genre-label">Romansa</div>
-    </div>
-
-    <!-- Fantasi -->
-    <div class="genre-item" title="Fantasi">
-      <div class="genre-icon">
-        <i data-lucide="wand-2"></i>
-      </div>
-      <div class="genre-label">Fantasi</div>
-    </div>
-
-    <!-- Horor -->
-    <div class="genre-item" title="Horor">
-      <div class="genre-icon">
-        <i data-lucide="skull"></i>
-      </div>
-      <div class="genre-label">Horor</div>
-    </div>
-
-    <!-- Edukasi -->
-    <div class="genre-item" title="Edukasi">
-      <div class="genre-icon">
-        <i data-lucide="graduation-cap"></i>
-      </div>
-      <div class="genre-label">Edukasi</div>
-    </div>
-
-    <!-- Komedi -->
-    <div class="genre-item" title="Komedi">
-      <div class="genre-icon">
-        <i data-lucide="smile"></i>
-      </div>
-      <div class="genre-label">Komedi</div>
-    </div>
-  </div>
-</div>
-
-  <script>
-    lucide.createIcons();
-  </script>
-
-</body>
-</html>
-
   <!-- Footer -->
 <footer class="mt-5 py-4 bg-black text-center text-white border-top border-secondary">
   <div class="container">
@@ -803,4 +652,3 @@
 
 </body>
 </html>
-

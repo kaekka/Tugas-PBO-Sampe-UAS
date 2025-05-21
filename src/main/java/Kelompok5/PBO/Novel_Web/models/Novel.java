@@ -5,14 +5,16 @@ import java.util.ArrayList;
 
 public class Novel {
     protected String judul;
+    protected String penulis;
     private final String genre;
     private double harga;
     public int diskon;
-    private final int tahunTerbit;
-    private final int jumlahHalaman;
+    protected int tahunTerbit;
+    protected int jumlahHalaman;
 
-    public Novel(String judul, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman) {
+    public Novel(String judul,String penulis, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman) {
         this.judul = judul;
+        this.penulis = penulis;
         this.genre = genre;
         this.harga = harga;
         this.diskon = diskon;
@@ -20,8 +22,18 @@ public class Novel {
         this.jumlahHalaman = jumlahHalaman;
     }
 
+    public void displayInfo(){
+        System.out.println("Judul       :" + judul);
+        System.out.println("penulis     :" + penulis);
+        System.out.println("harga       :" + harga);
+    }
+
     public String getJudul() {
         return judul;
+    }
+
+    public String getPenulis(){
+        return penulis;
     }
 
     public String getGenre() {
