@@ -11,8 +11,9 @@ public class Novel {
     public int diskon;
     protected int tahunTerbit;
     protected int jumlahHalaman;
+    private String coverurl;
 
-    public Novel(String judul,String penulis, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman) {
+    public Novel(String judul,String penulis, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman, String coverUrl) {
         this.judul = judul;
         this.penulis = penulis;
         this.genre = genre;
@@ -20,6 +21,7 @@ public class Novel {
         this.diskon = diskon;
         this.tahunTerbit = tahunTerbit;
         this.jumlahHalaman = jumlahHalaman;
+        this.coverurl = coverUrl;
     }
 
     public void displayInfo(){
@@ -71,6 +73,11 @@ public class Novel {
     public int getJumlahHalaman() {
         return jumlahHalaman;
     }
+
+    public String getCoverUrl() {
+    return coverurl;
+    }
+
 
     public static Novel cariNovelByJudul(ArrayList<Novel> daftar, String judul) {
         for (Novel m : daftar) {

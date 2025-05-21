@@ -3,8 +3,8 @@ package Kelompok5.PBO.Novel_Web.models;
 import java.text.DecimalFormat;
 
 public class NovelDigital extends Novel{
-    public NovelDigital(String judul, String penulis, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman) {
-        super(judul, penulis, genre, harga, diskon, tahunTerbit, jumlahHalaman);
+    public NovelDigital(String judul, String penulis, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman, String coverul) {
+        super(judul, penulis, genre, harga, diskon, tahunTerbit, jumlahHalaman, coverul);
     }
 
     @Override

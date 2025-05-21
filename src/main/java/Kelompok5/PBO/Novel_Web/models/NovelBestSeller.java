@@ -4,8 +4,8 @@ import java.text.DecimalFormat;
 
 public class NovelBestSeller extends Novel {
 
-    public NovelBestSeller(String judul, String penulis, String genre, Object object, double harga, int diskon, int tahunTerbit, int jumlahHalaman) {
-        super(judul, penulis, genre, harga, diskon, tahunTerbit, jumlahHalaman);
+    public NovelBestSeller(String judul, String penulis, String genre, Object object, double harga, int diskon, int tahunTerbit, int jumlahHalaman, String coverUrl) {
+        super(judul, penulis, genre, harga, diskon, tahunTerbit, jumlahHalaman, coverUrl);
     }
 
     @Override
