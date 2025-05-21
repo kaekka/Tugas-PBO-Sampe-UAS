@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -24,6 +23,7 @@
       font-weight: 400;
       font-size: 1.5rem;
       text-decoration: none;
+      pointer-events: none;
     }
 
     .navbar-brand span.fw-bold {
@@ -125,85 +125,87 @@
         margin-top: 1rem;
       }
     }
+
+    /* Hapus hover effect untuk brand */
+    .navbar-brand:hover {
+      color: white !important;
+    }
   </style>
 </head>
 <body>
 
-  <body>
+<nav class="navbar navbar-expand-lg px-4 py-2">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      NOVEL<span class="fw-bold">KU</span>
+    </a>
 
-  <nav class="navbar navbar-expand-lg px-4 py-2">
-    <div class="container-fluid">
-      <!-- Logo -->
-      <a class="navbar-brand" href="#">
-        NOVEL<span class="fw-bold">KU</span>
-      </a>
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <!-- Toggle button -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Koleksi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Keranjang</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Settingan</a>
+        </li>
+      </ul>
 
-      <!-- Navbar content -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Koleksi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Keranjang</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Settingan</a>
-          </li>
-        </ul>
-
-        <!-- Right side: search, cart, user -->
-        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 justify-content-lg-end mt-3 mt-lg-0">
-          <!-- Search -->
-          <div class="search-wrapper">
-            <input type="text" placeholder="Cari novel..." class="form-control form-control-sm" />
-            <i class="bi bi-search"></i>
-          </div>
-
-          <!-- User info: tampilkan hanya jika ada user login -->
-          <!-- Catatan: tambahkan th:if supaya user info hanya muncul kalau session.loggedInUser ada -->
-          <div
-            th:if="${session.loggedInUser != null}"
-            class="user-info"
-            style="cursor: pointer;"
-            data-bs-toggle="modal"
-            data-bs-target="#logoutModal"
-          >
-            <i class="bi bi-person-circle text-white"></i>
-            <span th:text="${session.loggedInUser}">Username</span>
-          </div>
+      <!-- Right side: search, cart, user -->
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 justify-content-lg-end mt-3 mt-lg-0">
+        <!-- Search -->
+        <div class="search-wrapper">
+          <input type="text" placeholder="Cari novel..." class="form-control form-control-sm" />
+          <i class="bi bi-search"></i>
         </div>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Modal Logout -->
-  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark text-white">
-        <div class="modal-header border-0">
-          <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body">
-          Apakah Anda yakin ingin logout?
-        </div>
-        <div class="modal-footer border-0">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <a href="/auth/login" class="btn btn-outline-light">Logout</a>
+        <!-- User info -->
+        <div
+          th:if="${session.loggedInUser != null}"
+          class="user-info"
+          style="cursor: pointer;"
+          data-bs-toggle="modal"
+          data-bs-target="#logoutModal"
+        >
+          <i class="bi bi-person-circle text-white"></i>
+          <span th:text="${session.loggedInUser}">Username</span>
         </div>
       </div>
     </div>
   </div>
+</nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Modal Logout -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin logout?
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <a href="/auth/login" class="btn btn-outline-light">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
