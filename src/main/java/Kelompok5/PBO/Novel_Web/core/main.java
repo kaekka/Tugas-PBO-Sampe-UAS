@@ -12,28 +12,28 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)) {
 
             ArrayList<Novel> listNovel = new ArrayList<>();
-            listNovel.add(new Novel("Seporsi Mie Ayam Sebelum mati", "romance", 60000, 0, 2025, 216));
-            listNovel.add(new Novel("The Lord of the Rings", "adventure", 70000, 0, 1954, 450));
-            listNovel.add(new Novel("The Godfather", "crime", 50000, 0, 1969, 400));
-            listNovel.add(new Novel("Omniscient Reader's Viewpoint", "modern", 78000, 8, 2021, 450));
-            listNovel.add(new Novel("3726 mdpl", "romance", 85000, 0, 2019, 350));
-            listNovel.add(new Novel("Danur", "horror", 60000, 0, 2017, 320));
-            listNovel.add(new Novel("The Chronicles of Narnia", "fantasi", 72000, 0, 1950, 420));
-            listNovel.add(new Novel("Dilan: Dia adalah Dilanku tahun 1990", "romance", 55000, 0, 2018, 300));
-            listNovel.add(new Novel("Charlie dan Pabrik Coklat", "adventure", 75555, 5, 1964, 215));
+            listNovel.add(new Novel("Seporsi Mie Ayam Sebelum mati", "Brian Khrisna", "romance", 60000, 0, 2025, 216));
+            listNovel.add(new Novel("The Lord of the Rings", "J. R. R. Tolkien.", "adventure", 70000, 0, 1954, 450));
+            listNovel.add(new Novel("The Godfather", "Mario Puzo", "crime", 50000, 0, 1969, 400));
+            listNovel.add(new Novel("Omniscient Reader's Viewpoint", "Sing Shong", "modern", 78000, 8, 2021, 450));
+            listNovel.add(new Novel("3726 mdpl", "Nurwina Sari", "romance", 85000, 0, 2019, 350));
+            listNovel.add(new Novel("Danur", "Risa Saraswati", "horror", 60000, 0, 2017, 320));
+            listNovel.add(new Novel("The Chronicles of Narnia", "Clive Staples Lewis", "fantasi", 72000, 0, 1950, 420));
+            listNovel.add(new Novel("Dilan: Dia adalah Dilanku tahun 1990", "Pidi Baiq", "romance", 55000, 0, 2018, 300));
+            listNovel.add(new Novel("Charlie dan Pabrik Coklat", "Roald Dahl", "adventure", 75555, 5, 1964, 215));
             
 
             ArrayList<NovelBestSeller> listBestSeller = new ArrayList<>();
-            listBestSeller.add(new NovelBestSeller("Harry Potter and the Sorcerer's Stone", "fantasi", 100000, 0, 1997, 500));
-            listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "inspiratif", 58000, 10, 2005, 400));
-            listBestSeller.add(new NovelBestSeller("Solo Leveling", "fantasi", 95000, 10, 2021, 300));
-            listBestSeller.add(new NovelBestSeller("Bumi", "fantasi", 80000, 5, 2014, 440));
-            listBestSeller.add(new NovelBestSeller("Laut Bercerita", "romance", 78000, 0, 2017, 394));
+            listBestSeller.add(new NovelBestSeller("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "fantasi", 100000, 0, 1997, 500, 0));
+            listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "Andrea Hirata", "inspiratif", 58000, 10, 2005, 400, 0));
+            listBestSeller.add(new NovelBestSeller("Solo Leveling", "Chugong", "fantasi", 95000, 10, 2021, 300, 0));
+            listBestSeller.add(new NovelBestSeller("Bumi", "Tere Liye", "fantasi", 80000, 5, 2014, 440, 0));
+            listBestSeller.add(new NovelBestSeller("Laut Bercerita", "Leila S. Chudori", "romance", 78000, 0, 2017, 394, 0));
 
             ArrayList<NovelDigital> listDigital = new ArrayList<>();
-            listDigital.add(new NovelDigital("Ebook Adventure", "fantasi", 60000, 0, 2022, 300));
-            listDigital.add(new NovelDigital("Digital Mystery", "thriller", 55000, 15, 2021, 350));
-            listDigital.add(new NovelDigital("Sci-Fi Saga", "science fiction", 70000, 0, 2023, 400));
+            listDigital.add(new NovelDigital("Johnny Star The Most Wanted", "Nitin Nain Singh", "fiksi", 60000, 0, 2022, 300));
+            listDigital.add(new NovelDigital("Salvation of a Saint", "Keigo Higashino", "misteri", 55000, 15, 2021, 350));
+            listDigital.add(new NovelDigital("Negeri 5 Menara", "Ahmad Fuadi", "fiksi", 70000, 0, 2023, 400));
         }
     }
 
