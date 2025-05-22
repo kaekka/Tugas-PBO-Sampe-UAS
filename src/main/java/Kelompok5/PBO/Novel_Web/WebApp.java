@@ -24,4 +24,15 @@ public class WebApp {
     public String Aboutus() {
         return "fragments/aboutus";
     }
+
+    @GetMapping("/keranjang")
+    public String keranjang() {
+        return "shop/keranjang";
+    }
+
+    @GetMapping("/detail-novel")
+    public String detail() {
+        return "detail-novel";
+    }
 }
+

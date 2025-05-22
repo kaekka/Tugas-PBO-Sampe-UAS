@@ -1,0 +1,381 @@
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    /* Navbar Styles (punya kamu) */
+    .navbar {
+      background-color: #000;
+      border-bottom: 1px solid #000000;
+    }
+    .navbar-brand {
+      color: white;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .navbar-brand span.fw-bold {
+      font-weight: 700;
+    }
+    .navbar-nav .nav-link {
+      position: relative;
+      color: white !important;
+      margin: 0 12px;
+      padding: 8px 0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link::before,
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #c19759;
+      transition: all 0.4s ease;
+    }
+    .navbar-nav .nav-link::before {
+      left: 50%;
+    }
+    .navbar-nav .nav-link::after {
+      right: 50%;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #c19759 !important;
+    }
+    .navbar-nav .nav-link:hover::before,
+    .navbar-nav .nav-link:hover::after {
+      width: 50%;
+    }
+    .icon-link {
+      color: white;
+      font-size: 1.25rem;
+      transition: color 0.3s ease;
+    }
+    .icon-link:hover {
+      color: #c19759;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .search-wrapper {
+      position: relative;
+    }
+    .search-wrapper input {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 50px;
+      padding: 6px 36px 6px 12px;
+    }
+    .search-wrapper input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .search-wrapper i {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .user-info i {
+      font-size: 1.25rem;
+    }
+    .user-info span {
+      font-size: 0.95rem;
+      color: white;
+    }
+    @media (max-width: 991.98px) {
+      .navbar-collapse .user-info {
+        margin-top: 1rem;
+      }
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(145deg, #3f3f3f, #1a1a1a);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #c19759;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 12px;
+      color: #ccc;
+    }
+
+    .btn-novel {
+      background-color: #c19759;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      color: rgb(0, 0, 0);
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-novel:hover {
+      background-color: #d8aa6f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+    }
+
+    .section-wrapper {
+      position: relative;
+      padding: 50px 0;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: none;
+      font-size: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      z-index: 2;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-50%) scale(1.1);
+      background-color: #f0f0f0;
+    }
+
+    .nav-btn.left { left: 10px; }
+    .nav-btn.right { right: 10px; }
+
+    .novel-container {
+      display: flex;
+      gap: 24px;
+      padding: 20px 60px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .novel-card {
+      display: flex;
+      background: #ffffff;
+      border-radius: 20px;
+      min-width: 550px;
+      max-width: 600px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      align-items: flex-end;
+      position: relative;
+    }
+
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 30px;
+    }
+
+    .novel-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .novel-cover {
+      width: 150px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .novel-details {
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .novel-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .novel-author {
+      font-size: 1rem;
+      color: #666;
+      margin: 6px 0 12px;
+    }
+
+    .novel-rating {
+      font-size: 1rem;
+      color: #f39c12;
+      margin-bottom: 10px;
+    }
+
+    .novel-voters {
+      font-size: 0.85rem;
+      color: #888;
+      margin-left: 8px;
+    }
+
+    .novel-desc {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      max-width: 320px;
+    }
+
+    .btn-see-book {
+      background: transparent;
+      color: #c19759;
+      border: 2px solid #c19759;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: start;
+    }
+
+    .btn-see-book:hover {
+      background-color: #c19759;
+      color: white;
+    }
+
+    .cover-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .icon-btn {
+      background: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      position: placeholder;
+      color: #c19759;
+      font-size: 16px;
+    }
+
+    .icon-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .genre-icon .tooltip-text {
+    visibility: hidden;
+    width: 140px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    pointer-events: none;
+    }
+
+    .genre-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    }
+
+    .cart-icon .tooltip-text {
+    white-space: nowrap;
+    visibility: hidden;
+    width: 150px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    pointer-events: none;
+    }
+
+    .cart-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    }
+
+    .novel-container::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .novel-container {
+    cursor: grab;
+    user-select: none; /* supaya teks gak ke-select waktu drag */
+    }
+
+    .novel-container.active {
+    cursor: grabbing;
+    }
+
+   .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #c19759;
+    text-align: center;
+    margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .novel-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+
+    .search-wrapper ul li img {
+      object-fit: cover;
+      border-radius: 4px;
+    }

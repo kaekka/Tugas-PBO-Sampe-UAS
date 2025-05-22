@@ -1,211 +1,43 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Navbar NOVELKU</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .navbar {
-      background-color: #000;
-      border-bottom: 1px solid #3b2f2f;
-    }
-
-    .navbar-brand {
-      color: white;
-      font-weight: 400;
-      font-size: 1.5rem;
-      text-decoration: none;
-      pointer-events: none;
-    }
-
-    .navbar-brand span.fw-bold {
-      font-weight: 700;
-    }
-
-    .navbar-nav .nav-link {
-      position: relative;
-      color: white !important;
-      margin: 0 12px;
-      padding: 8px 0;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link::before,
-    .navbar-nav .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      width: 0%;
-      height: 2px;
-      background-color: #c19759;
-      transition: all 0.4s ease;
-    }
-
-    .navbar-nav .nav-link::before {
-      left: 50%;
-    }
-
-    .navbar-nav .nav-link::after {
-      right: 50%;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: #c19759 !important;
-    }
-
-    .navbar-nav .nav-link:hover::before,
-    .navbar-nav .nav-link:hover::after {
-      width: 50%;
-    }
-
-    .icon-link {
-      color: white;
-      font-size: 1.25rem;
-      transition: color 0.3s ease;
-    }
-
-    .icon-link:hover {
-      color: #c19759;
-    }
-
-    .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    .search-wrapper {
-      position: relative;
-    }
-
-    .search-wrapper input {
-      background-color: transparent;
-      color: white;
-      border: 2px solid white;
-      border-radius: 50px;
-      padding: 6px 36px 6px 12px;
-    }
-
-    .search-wrapper input::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .search-wrapper i {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .user-info i {
-      font-size: 1.25rem;
-    }
-
-    .user-info span {
-      font-size: 0.95rem;
-      color: white;
-    }
-
-    @media (max-width: 991.98px) {
-      .navbar-collapse .user-info {
-        margin-top: 1rem;
-      }
-    }
-
-    /* Hapus hover effect untuk brand */
-    .navbar-brand:hover {
-      color: white !important;
-    }
-  </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg px-4 py-2">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg px-4 py-2">
   <div class="container-fluid">
-    <!-- Logo -->
-    <a class="navbar-brand" href="#">
-      NOVEL<span class="fw-bold">KU</span>
-    </a>
-
-    <!-- Toggle button -->
+    <a class="navbar-brand" href="#">NOVEL<span class="fw-bold">KU</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <!-- Navbar content -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse justidy navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Koleksi</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Keranjang</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="aboutme.html">About Me</a>
-        </li>
+        <li class="nav-item"><a class="nav-link " href="index">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Koleksi</a></li>
+        <li class="nav-item"><a class="nav-link" href="keranjang">Keranjang</a></li>
+        <li class="nav-item"><a class="nav-link" href="aboutus">About</a></li>
       </ul>
-
-      <!-- Right side: search, cart, user -->
       <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 justify-content-lg-end mt-3 mt-lg-0">
-        <!-- Search -->
-        <div class="search-wrapper">
-          <input type="text" placeholder="Cari novel..." class="form-control form-control-sm" />
+        <div class="search-wrapper position-relative" style="width: 300px;">
+          <input type="text" class="form-control" placeholder="Cari novel...">
           <i class="bi bi-search"></i>
         </div>
-
-        <!-- User info -->
-        <div
-          th:if="${session.loggedInUser != null}"
-          class="user-info"
-          style="cursor: pointer;"
-          data-bs-toggle="modal"
-          data-bs-target="#logoutModal"
-        >
+        <div th:if="${session.loggedInUser}" class="user-info" style="cursor: pointer;" data-bs-toggle="modal"
+          data-bs-target="#logoutModal">
           <i class="bi bi-person-circle text-white"></i>
           <span th:text="${session.loggedInUser}">Username</span>
         </div>
       </div>
     </div>
   </div>
-</nav>
-
-<!-- Modal Logout -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-dark text-white">
-      <div class="modal-header border-0">
-        <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
-      </div>
-      <div class="modal-body">
-        Apakah Anda yakin ingin logout?
-      </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <a href="/auth/login" class="btn btn-outline-light">Logout</a>
+      <!-- Modal Logout -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+          </div>
+          <div class="modal-body">Apakah Anda yakin ingin logout?</div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <a href="/auth/login" class="btn btn-outline-light">Logout</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</nav>

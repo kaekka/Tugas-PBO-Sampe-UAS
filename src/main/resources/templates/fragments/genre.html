@@ -1,71 +1,56 @@
-<!DOCTYPE html>
-<html lang="id" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Beranda</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  
-</head>
-<body>
-
-  <!-- fragments/genre.html -->
-  <div th:fragment="genre" class="genre-container">
-    <!-- All -->
-    <div class="genre-item active" title="Semua Genre">
-      <div class="genre-icon">
-        <i class="bi bi-book"></i>
-      </div>
-      <div class="genre-label">All</div>
+<!-- fragments/genre.html -->
+<div th:fragment="genre" class="genre-container">
+  <!-- All -->
+  <div class="genre-item active" title="Semua Genre">
+    <div class="genre-icon">
+      <i class="bi bi-book"></i>
     </div>
-
-    <!-- Romansa -->
-    <div class="genre-item" title="Romansa">
-      <div class="genre-icon">
-        <i class="bi bi-suit-heart"></i>
-      </div>
-      <div class="genre-label">Romansa</div>
-    </div>
-
-    <!-- Fantasi -->
-    <div class="genre-item" title="Fantasi">
-      <div class="genre-icon">
-        <i class="bi bi-magic"></i>
-      </div>
-      <div class="genre-label">Fantasi</div>
-    </div>
-
-    <!-- Horor -->
-    <div class="genre-item" title="Horor">
-      <div class="genre-icon">
-       <i class="fa-solid fa-skull"></i>
-      </div>
-      <div class="genre-label">Horor</div>
-    </div>
-
-    <!-- Edukasi -->
-    <div class="genre-item" title="Edukasi">
-      <div class="genre-icon">
-       <i class="bi bi-mortarboard-fill"></i>
-      </div>
-      <div class="genre-label">Edukasi</div>
-    </div>
-
-    <!-- Komedi -->
-    <div class="genre-item" title="Komedi">
-      <div class="genre-icon">
-       <i class="bi bi-emoji-laughing"></i>
-      </div>
-      <div class="genre-label">Komedi</div>
-    </div>
+    <div class="genre-label">All</div>
   </div>
 
-  <th:block th:replace="fragments/genre :: genreFragment"></th:block>
+  <!-- Romansa -->
+  <div class="genre-item" title="Romansa">
+    <div class="genre-icon">
+      <i class="bi bi-suit-heart"></i>
+    </div>
+    <div class="genre-label">Romansa</div>
+  </div>
 
-  <script>
-    lucide.createIcons();
-  </script>
+  <!-- Fantasi -->
+  <div class="genre-item" title="Fantasi">
+    <div class="genre-icon">
+      <i class="bi bi-magic"></i>
+    </div>
+    <div class="genre-label">Fantasi</div>
+  </div>
 
-</body>
-</html>
+  <!-- Horor -->
+  <div class="genre-item" title="Horor">
+    <div class="genre-icon">
+      <i class="fa-solid fa-skull"></i>
+    </div>
+    <div class="genre-label">Horor</div>
+  </div>
+
+  <!-- Edukasi -->
+  <div class="genre-item" title="Edukasi">
+    <div class="genre-icon">
+      <i class="bi bi-mortarboard-fill"></i>
+    </div>
+    <div class="genre-label">Edukasi</div>
+  </div>
+
+  <!-- Komedi -->
+  <div class="genre-item" title="Komedi">
+    <div class="genre-icon">
+      <i class="bi bi-emoji-laughing"></i>
+    </div>
+    <div class="genre-label">Komedi</div>
+  </div>
+</div>
+
+<th:block th:replace="fragments/genre :: genreFragment"></th:block>
+
+<script>
+  lucide.createIcons();
+</script>
