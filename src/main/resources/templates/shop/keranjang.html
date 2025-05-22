@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Keranjang Buku Interaktif</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/keranjang.css}" />
+</head>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    
+  <div class="cart-container">
+    <h3 class="mb-4">Keranjang Buku</h3>
+    <div id="cart-items">
+      <div class="cart-item" data-price="45000">
+        <img src="https://via.placeholder.com/80x100" alt="Sampul Buku">
+        <div class="cart-details">
+          <div class="cart-title">Judul Buku 1</div>
+          <div class="text-muted">Penulis: Penulis Satu</div>
+          <div class="cart-price">Rp45.000</div>
+        </div>
+        <div class="input-group w-auto align-items-center mt-2 mt-md-0">
+          <button class="btn btn-outline-dark btn-decrease">-</button>
+          <input type="text" class="form-control text-center item-qty" value="1" style="max-width: 60px;" readonly>
+          <button class="btn btn-outline-dark btn-increase">+</button>
+        </div>
+        <button class="btn btn-link text-danger mt-2 mt-md-0 btn-remove"><i class="bi bi-trash"></i> Hapus</button>
+      </div>
+
+      <div class="cart-item" data-price="55000">
+        <img src="https://via.placeholder.com/80x100" alt="Sampul Buku">
+        <div class="cart-details">
+          <div class="cart-title">Judul Buku 2</div>
+          <div class="text-muted">Penulis: Penulis Dua</div>
+          <div class="cart-price">Rp55.000</div>
+        </div>
+        <div class="input-group w-auto align-items-center mt-2 mt-md-0">
+          <button class="btn btn-outline-dark btn-decrease">-</button>
+          <input type="text" class="form-control text-center item-qty" value="2" style="max-width: 60px;" readonly>
+          <button class="btn btn-outline-dark btn-increase">+</button>
+        </div>
+        <button class="btn btn-link text-danger mt-2 mt-md-0 btn-remove"><i class="bi bi-trash"></i> Hapus</button>
+      </div>
+    </div>
+
+    <div class="total-section mt-4">
+      <h5>Total: <span id="cart-total" class="cart-price">Rp0</span></h5>
+      <button class="checkout-btn mt-2">Checkout</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function formatRupiah(number) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
+    }
+
+    function updateTotal() {
+      const items = document.querySelectorAll('.cart-item');
+      let total = 0;
+      items.forEach(item => {
+        const price = parseInt(item.dataset.price);
+        const qty = parseInt(item.querySelector('.item-qty').value);
+        total += price * qty;
+      });
+      document.getElementById('cart-total').innerText = formatRupiah(total);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateTotal();
+
+      document.querySelectorAll('.btn-increase').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const qtyInput = btn.parentElement.querySelector('.item-qty');
+          qtyInput.value = parseInt(qtyInput.value) + 1;
+          updateTotal();
+        });
+      });
+
+      document.querySelectorAll('.btn-decrease').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const qtyInput = btn.parentElement.querySelector('.item-qty');
+          let qty = parseInt(qtyInput.value);
+          if (qty > 1) {
+            qtyInput.value = qty - 1;
+            updateTotal();
+          }
+        });
+      });
+
+      document.querySelectorAll('.btn-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.cart-item').remove();
+          updateTotal();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

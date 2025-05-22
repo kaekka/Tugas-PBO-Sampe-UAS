@@ -8,10 +8,6 @@ import Kelompok5.PBO.Novel_Web.models.Novel;
 import Kelompok5.PBO.Novel_Web.models.NovelBestSeller;
 import Kelompok5.PBO.Novel_Web.models.NovelDigital;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Main {
 
     private static final List<Novel> allNovels = new ArrayList<>();
@@ -19,29 +15,29 @@ public class Main {
     static {
         // Novel biasa
         ArrayList<Novel> listNovel = new ArrayList<>();
-        listNovel.add(new Novel("Seporsi Mie Ayam Sebelum mati", "Brian Khrisna", "romance", 60000, 0, 2025, 216, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("The Lord of the Rings", "J. R. R. Tolkien.", "adventure", 70000, 0, 1954, 450, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("The Godfather", "Mario Puzo", "crime", 50000, 0, 1969, 400, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("Omniscient Reader's Viewpoint", "Sing Shong", "modern", 78000, 8, 2021, 450, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("3726 mdpl", "Nurwina Sari", "romance", 85000, 0, 2019, 350, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("Danur", "Risa Saraswati", "horror", 60000, 0, 2017, 320, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("The Chronicles of Narnia", "Clive Staples Lewis", "fantasi", 72000, 0, 1950, 420, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("Dilan: Dia adalah Dilanku tahun 1990", "Pidi Baiq", "romance", 55000, 0, 2018, 300,"https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listNovel.add(new Novel("Charlie dan Pabrik Coklat", "Roald Dahl", "adventure", 75555, 5, 1964, 215, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
+        listNovel.add(new Novel("Seporsi Mie Ayam Sebelum mati", "Brian Khrisna", "romance", 60000, 0, 2025, 216, "https://cdn.gramedia.com/uploads/products/95ob5m98ur.jpg"));
+        listNovel.add(new Novel("The Lord of the Rings", "J. R. R. Tolkien.", "adventure", 70000, 0, 1954, 450, "https://i.harperapps.com/hcanz/covers/9780008537760/y648.jpg"));
+        listNovel.add(new Novel("The Godfather", "Mario Puzo", "crime", 50000, 0, 1969, 400, "https://th.bing.com/th/id/OIP.0VOP2vdDOkr9DwOV2nT85QHaKh?w=113&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listNovel.add(new Novel("Omniscient Reader's Viewpoint", "Sing Shong", "modern", 78000, 8, 2021, 450, "https://th.bing.com/th/id/OIP.APIAdyguMRyPxxTETVQ9sQHaKn?w=208&h=299&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listNovel.add(new Novel("3726 mdpl", "Nurwina Sari", "romance", 85000, 0, 2019, 350, "https://th.bing.com/th/id/OIP.gRA4vBrWl1TX3RU8dC5unwAAAA?w=118&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listNovel.add(new Novel("Danur", "Risa Saraswati", "horror", 60000, 0, 2017, 320, "https://th.bing.com/th/id/OIP.1noJKVtSEZyAzPwqeVi2IwHaKs?w=130&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listNovel.add(new Novel("The Chronicles of Narnia", "Clive Staples Lewis", "fantasi", 72000, 0, 1950, 420, "https://www.themoviedb.org/t/p/original/44dKzGtSDw0oFHEvAduduwjyVSZ.jpg"));
+        listNovel.add(new Novel("Dilan: Dia adalah Dilanku tahun 1990", "Pidi Baiq", "romance", 55000, 0, 2018, 300,"https://th.bing.com/th/id/OIP.66WliD2UszlNkpNs8ZTqBwHaKs?w=135&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listNovel.add(new Novel("Charlie dan Pabrik Coklat", "Roald Dahl", "adventure", 75555, 5, 1964, 215, "https://th.bing.com/th/id/OIP.-SgsKMGoRV7B1xyeCoJmWgHaLJ?w=119&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
 
         // Novel Best Seller
         ArrayList<NovelBestSeller> listBestSeller = new ArrayList<>();
-        listBestSeller.add(new NovelBestSeller("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "fantasi", 100000, 0, 1997, 500, 0, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "Andrea Hirata", "inspiratif", 58000, 10, 2005, 400, 0, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
+        listBestSeller.add(new NovelBestSeller("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "fantasi", 100000, 0, 1997, 500, 0, "https://th.bing.com/th/id/OIP.dE3s91kmIVSPXmZ3ZdF2owHaFj?w=234&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "Andrea Hirata", "inspiratif", 58000, 10, 2005, 400, 0, "https://th.bing.com/th/id/OIP.Ctt7dvydYLCRrnmrFBEPxQHaLw?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
         listBestSeller.add(new NovelBestSeller("Solo Leveling", "Chugong", "fantasi", 95000, 10, 2021, 300, 0, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listBestSeller.add(new NovelBestSeller("Bumi", "Tere Liye", "fantasi", 80000, 5, 2014, 440, 0, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listBestSeller.add(new NovelBestSeller("Laut Bercerita", "Leila S. Chudori", "romance", 78000, 0, 2017, 394, 0, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
+        listBestSeller.add(new NovelBestSeller("Bumi", "Tere Liye", "fantasi", 80000, 5, 2014, 440, 0, "https://th.bing.com/th/id/OIP.-evealEHjqsYVlWN7fv82AHaK-?w=146&h=217&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listBestSeller.add(new NovelBestSeller("Laut Bercerita", "Leila S. Chudori", "romance", 78000, 0, 2017, 394, 0, "https://static.diksia.com/media/id/2024/02/Resensi-Novel-Laut-Bercerita-karya-Leila-S-Chudori.webp"));
 
         // Novel Digital
         ArrayList<NovelDigital> listDigital = new ArrayList<>();
-        listDigital.add(new NovelDigital("Johnny Star The Most Wanted", "Nitin Nain Singh", "fiksi", 60000, 0, 2022, 300, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listDigital.add(new NovelDigital("Salvation of a Saint", "Keigo Higashino", "misteri", 55000, 15, 2021, 350, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
-        listDigital.add(new NovelDigital("Negeri 5 Menara", "Ahmad Fuadi", "fiksi", 70000, 0, 2023, 400, "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
+        listDigital.add(new NovelDigital("Johnny Star The Most Wanted", "Nitin Nain Singh", "fiksi", 60000, 0, 2022, 300, "https://th.bing.com/th/id/OIP.6zce8mYXATMjx0WXTOqu9gAAAA?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listDigital.add(new NovelDigital("Salvation of a Saint", "Keigo Higashino", "misteri", 55000, 15, 2021, 350, "https://th.bing.com/th/id/OIP.x2Yq8YUS4rsa0vYiUNp4RAHaKy?w=118&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
+        listDigital.add(new NovelDigital("Negeri 5 Menara", "Ahmad Fuadi", "fiksi", 70000, 0, 2023, 400, "https://th.bing.com/th/id/OIP.3y07_XDORlyEP7OgumG5-wHaK5?w=123&h=181&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
 
         // Gabungkan semua ke allNovels
         allNovels.addAll(listNovel);
