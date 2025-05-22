@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Novel Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+    }
+
+    .section-wrapper {
+      position: relative;
+      padding: 50px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: none;
+      font-size: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      z-index: 2;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-50%) scale(1.1);
+      background-color: #f0f0f0;
+    }
+
+    .nav-btn.left { left: 10px; }
+    .nav-btn.right { right: 10px; }
+
+    .novel-container {
+      display: flex;
+      gap: 24px;
+      padding: 20px 60px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .novel-container.active {
+      cursor: grabbing;
+    }
+
+    .novel-card {
+      display: flex;
+      background: #ffffff;
+      border-radius: 20px;
+      min-width: 550px;
+      max-width: 600px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      align-items: flex-end;
+      position: relative;
+    }
+
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 30px;
+    }
+
+    .novel-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .novel-cover {
+      width: 150px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .novel-details {
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .novel-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .novel-author {
+      font-size: 1rem;
+      color: #666;
+      margin: 6px 0 12px;
+    }
+
+    .novel-rating {
+      font-size: 1rem;
+      color: #f39c12;
+      margin-bottom: 10px;
+    }
+
+    .novel-voters {
+      font-size: 0.85rem;
+      color: #888;
+      margin-left: 8px;
+    }
+
+    .novel-desc {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      max-width: 320px;
+    }
+
+    .btn-see-book {
+      background: transparent;
+      color: #c19759;
+      border: 2px solid #c19759;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: start;
+    }
+
+    .btn-see-book:hover {
+      background-color: #c19759;
+      color: white;
+    }
+
+    .cover-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .icon-btn {
+      background: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      position: relative;
+      color: #c19759;
+      font-size: 16px;
+    }
+
+    .icon-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .genre-icon .tooltip-text {
+      visibility: hidden;
+      width: 140px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -70px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.75rem;
+      pointer-events: none;
+    }
+
+    .genre-icon:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .novel-container::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section-wrapper">
+    <h2 class="section-title">GENRE ROMANSA</h2>
+    <button class="nav-btn left" onclick="scrollBooks(-1, 'scrollContainer1')">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="novel-container" id="scrollContainer1">
+      <!-- Card 1 -->
+      <div class="novel-card">
+        <div class="left-section">
+          <img src="https://cdn.gramedia.com/uploads/products/95ob5m98ur.jpg" alt="Seporsi Mie Ayam Sebelum Mati" class="novel-cover">
+          <div class="cover-icons">
+            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+            <button class="icon-btn genre-icon">
+              <i class="fas fa-tags"></i>
+              <span class="tooltip-text">Lihat genre serupa</span>
+            </button>
+          </div>
+        </div>
+        <div class="novel-details">
+          <h4 class="novel-title">Seporsi Mie Ayam Sebelum Mati</h4>
+          <p class="novel-author">by Brian Khrisna</p>
+          <div class="novel-rating">
+            ★ ★ ★ ★ ★ <span class="novel-voters">(1.911 voters)</span>
+          </div>
+          <p class="novel-desc">
+            Perjalanan seorang pemuda yang pulang kampung dan menemukan makna hidup, kematian, dan kenangan melalui seporsi mie ayam yang sederhana namun sarat makna.
+          </p>
+          <button class="btn-see-book">See The Book</button>
+        </div>
+      </div>
+
+      <!-- Salin kartu ini untuk menambahkan novel lainnya -->
+      <div class="novel-card">
+        <div class="left-section">
+          <img src="https://th.bing.com/th/id/OIP.gRA4vBrWl1TX3RU8dC5unwAAAA?w=118&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Novel Sample" class="novel-cover">
+          <div class="cover-icons">
+            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+            <button class="icon-btn genre-icon">
+              <i class="fas fa-tags"></i>
+              <span class="tooltip-text">Lihat genre serupa</span>
+            </button>
+          </div>
+        </div>
+        <div class="novel-details">
+          <h4 class="novel-title">3726 mdpl</h4>
+          <p class="novel-author">by Nurwina Sari</p>
+          <div class="novel-rating">
+            ★ ★ ★ ★ ☆ <span class="novel-voters">(835 voters)</span>
+          </div>
+          <p class="novel-desc">
+            Cerita tentang cinta dan perjalanan dua mahasiswa, Rangga dan Andini, yang menemukan arti ketulusan dan keberanian saat mendaki Gunung Rinjani.
+          </p>
+          <button class="btn-see-book">See The Book</button>
+        </div>
+      </div>
+
+            <div class="novel-card">
+        <div class="left-section">
+          <img src="https://th.bing.com/th/id/OIP.66WliD2UszlNkpNs8ZTqBwHaKs?w=135&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Novel Sample" class="novel-cover">
+          <div class="cover-icons">
+            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+            <button class="icon-btn genre-icon">
+              <i class="fas fa-tags"></i>
+              <span class="tooltip-text">Lihat genre serupa</span>
+            </button>
+          </div>
+        </div>
+        <div class="novel-details">
+          <h4 class="novel-title">Dilan: Dia adalah Dilanku tahun 1990</h4>
+          <p class="novel-author">by Pidi Baiq</p>
+          <div class="novel-rating">
+            ★ ★ ★ ★ ☆ <span class="novel-voters">(838 voters)</span>
+          </div>
+          <p class="novel-desc">
+            Romansa remaja antara Milea dan Dilan, seorang murid SMA yang unik, lucu, dan penuh kejutan, di Bandung tahun 1990. Cinta mereka tumbuh di tengah kenakalan dan kehangatan masa sekolah.
+          </p>
+          <button class="btn-see-book">See The Book</button>
+        </div>
+      </div>
+
+            <div class="novel-card">
+        <div class="left-section">
+          <img src="https://static.diksia.com/media/id/2024/02/Resensi-Novel-Laut-Bercerita-karya-Leila-S-Chudori.webp" alt="Novel Sample" class="novel-cover">
+          <div class="cover-icons">
+            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+            <button class="icon-btn genre-icon">
+              <i class="fas fa-tags"></i>
+              <span class="tooltip-text">Lihat genre serupa</span>
+            </button>
+          </div>
+        </div>
+        <div class="novel-details">
+          <h4 class="novel-title">Laut Bercerita</h4>
+          <p class="novel-author">by Leila S. Chudori</p>
+          <div class="novel-rating">
+            ★ ★ ★ ★ ☆ <span class="novel-voters">(997 voters)</span>
+          </div>
+          <p class="novel-desc">
+            Perjuangan Laut, aktivis mahasiswa yang diculik dan hilang pada era Orde Baru. Melalui sudut pandangnya dan keluarganya, novel ini menggambarkan luka, kehilangan, dan harapan dalam bayang-bayang pelanggaran HAM.
+          </p>
+          <button class="btn-see-book">See The Book</button>
+        </div>
+      </div>
+    </div>
+    
+
+    <button class="nav-btn right" onclick="scrollBooks(1, 'scrollContainer1')">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <script>
+    function scrollBooks(direction, containerId) {
+      const container = document.getElementById(containerId);
+      container.scrollBy({ left: direction * 600, behavior: 'smooth' });
+    }
+
+    const container = document.getElementById('scrollContainer1');
+    let isDown = false, startX, scrollLeft;
+
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.classList.add('active');
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = x - startX;
+      container.scrollLeft = scrollLeft - walk;
+    });
+  </script>
+
+</body>
+</html>

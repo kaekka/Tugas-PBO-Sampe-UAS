@@ -2,6 +2,7 @@ package Kelompok5.PBO.Novel_Web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebApp {
@@ -12,7 +13,7 @@ public class WebApp {
 
     @GetMapping("/")
     public String login() {
-        return "redirect:/auth/login"; 
+        return "redirect:/auth/login";
     }
 
     @GetMapping("index")
@@ -20,7 +21,7 @@ public class WebApp {
         return "index";
     }
 
-     @GetMapping("/aboutus")
+    @GetMapping("/aboutus")
     public String Aboutus() {
         return "fragments/aboutus";
     }
@@ -34,5 +35,24 @@ public class WebApp {
     public String detail() {
         return "detail-novel";
     }
-}
 
+    @GetMapping("/romansa")
+    public String showRomansaPage() {
+        return "fragments/romansa";
+    }
+
+    @GetMapping("/horror")
+    public String showHororPage() {
+        return "fragments/horror";
+    }
+
+    @GetMapping("/edukasi")
+    public String showEdukasiPage() {
+        return "fragments/edukasi";
+    }
+
+    @GetMapping("/fantasi")
+    public String showFantasiPage() {
+        return "fragments/fantasi";
+    }
+}

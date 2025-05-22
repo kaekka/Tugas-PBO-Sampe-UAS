@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>Beranda - NOVELKU</title>
@@ -13,10 +14,11 @@
   <link rel="stylesheet" th:href="@{/css/diskon.css}" />
 
 </head>
+
 <body id="home">
 
 
-<div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
   <!-- Hero section -->
   <section class="hero" id="hero">
     <h1>Selamat Datang di NOVELKU</h1>
@@ -26,159 +28,175 @@
 
 
 
-<div class="section-wrapper">
+  <div class="section-wrapper">
     <button class="nav-btn left" onclick="scrollBooks(-1)">
       <i class="fas fa-chevron-left"></i>
     </button>
 
-<section class="novel-section .bg-black">
-  <h2 class="section-title text-center mb-4">Novel Best Seller</h2>
-    <div class="novel-container" id="scrollContainer">
+    <section class="novel-section .bg-black">
+      <h2 class="section-title text-center mb-4">Novel Best Seller</h2>
+      <div class="novel-container" id="scrollContainer">
 
-      <!-- Novel Card 1-->
-       <a th:href="@{/detail-novel}">
-      <div class="novel-card">
-        <div class="left-section">
-          <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg" alt="The Great Gatsby" class="novel-cover">
-          <div class="cover-icons">
-            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-            <button class="icon-btn cart-icon " title="Tambah ke Keranjang">
-              <i class="fas fa-cart-plus"></i>
-              <span class="tooltip-text">Tambah ke Keranjang</span>
-            </button>
-            <button class="icon-btn genre-icon">
-              <i class="fas fa-tags"></i>
-              <span class="tooltip-text">Lihat genre serupa</span>
-            </button>
+        <!-- Novel Card 1-->
+
+        <div class="novel-card">
+          <div class="left-section">
+            <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg"
+              alt="The Great Gatsby" class="novel-cover">
+            <div class="cover-icons">
+              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+              <button class="icon-btn cart-icon " title="Tambah ke Keranjang">
+                <i class="fas fa-cart-plus"></i>
+                <span class="tooltip-text">Tambah ke Keranjang</span>
+              </button>
+              <button class="icon-btn genre-icon">
+                <i class="fas fa-tags"></i>
+                <span class="tooltip-text">Lihat genre serupa</span>
+              </button>
+            </div>
+          </div>
+          <div class="novel-details">
+            <h4 class="novel-title">Harry Potter and the Sorcerer's Stone</h4>
+            <p class="novel-author">by J. K. Rowling</p>
+            <div class="novel-rating">
+              ★ ★ ★ ★ ★ <span class="novel-voters">(2.997 voters)</span>
+            </div>
+            <p class="novel-desc">
+              Masuki dunia sihir penuh petualangan dan misteri bersama Harry Potter di novel fantasi legendaris karya
+              J.K. Rowling ini.
+            </p>
+            <a th:href="@{/detail-novel}">
+              <button class="btn-see-book">See The Book</button>
+            </a>
           </div>
         </div>
-        <div class="novel-details">
-          <h4 class="novel-title">Harry Potter and the Sorcerer's Stone</h4>
-          <p class="novel-author">by J. K. Rowling</p>
-          <div class="novel-rating">
-            ★ ★ ★ ★ ★ <span class="novel-voters">(2.997 voters)</span>
+
+
+        <!-- Novel Card 2-->
+
+        <div class="novel-card">
+          <div class="left-section">
+            <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg"
+              alt="Solo Leveling" class="novel-cover">
+            <div class="cover-icons">
+              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              <button class="icon-btn genre-icon">
+                <i class="fas fa-tags"></i>
+                <span class="tooltip-text">Lihat genre serupa</span>
+              </button>
+            </div>
           </div>
-          <p class="novel-desc">
-            Masuki dunia sihir penuh petualangan dan misteri bersama Harry Potter di novel fantasi legendaris karya J.K. Rowling ini.
-          </p>
-          <button class="btn-see-book">See The Book</button>
+          <div class="novel-details">
+            <h4 class="novel-title">Solo Leveling</h4>
+            <p class="novel-author">by Chugong</p>
+            <div class="novel-rating">
+              ★ ★ ★ ★ ★ <span class="novel-voters">(1.564 voters)</span>
+            </div>
+            <p class="novel-desc">
+              Petualangan Sung Jin-Woo naik level dari terlemah menjadi terkuat dalam dunia penuh monster dan gerbang
+              misterius.
+            </p>
+            <a th:href="@{/detail-novel}">
+              <button class="btn-see-book">See The Book</button>
+            </a>
+          </div>
         </div>
+
+
+        <!-- Novel Card 3 -->
+        <div class="novel-card">
+          <div class="left-section">
+            <img src="https://upload.wikimedia.org/wikipedia/id/8/8e/Laskar_pelangi_sampul.jpg" alt="Laskar Pelangi"
+              class="novel-cover">
+            <div class="cover-icons">
+              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              <button class="icon-btn genre-icon">
+                <i class="fas fa-tags"></i>
+                <span class="tooltip-text">Lihat genre serupa</span>
+              </button>
+            </div>
+          </div>
+          <div class="novel-details">
+            <h4 class="novel-title">Laskar Pelangi</h4>
+            <p class="novel-author">by Andrea Hirata</p>
+            <div class="novel-rating">
+              ★ ★ ★ ★ ★ <span class="novel-voters">(1.987 voters)</span>
+            </div>
+            <p class="novel-desc">
+              Kisah inspiratif anak-anak Belitong yang penuh semangat, mimpi besar, dan perjuangan menghadapi
+              keterbatasan pendidikan.
+            </p>
+            <button class="btn-see-book">See The Book</button>
+          </div>
+        </div>
+
+        <!-- Novel Card 4 -->
+        <div class="novel-card">
+          <div class="left-section">
+            <img src="https://cdn.gramedia.com/uploads/items/9786020332956_Bumi-New-Cover.jpg" alt="Bumi"
+              class="novel-cover">
+            <div class="cover-icons">
+              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              <button class="icon-btn genre-icon">
+                <i class="fas fa-tags"></i>
+                <span class="tooltip-text">Lihat genre serupa</span>
+              </button>
+            </div>
+          </div>
+          <div class="novel-details">
+            <h4 class="novel-title">Bumi</h4>
+            <p class="novel-author">by Tere Liye</p>
+            <div class="novel-rating">
+              ★ ★ ★ ★ ★ <span class="novel-voters">(1.334 voters)</span>
+            </div>
+            <p class="novel-desc">
+              Perjalanan Raib dan sahabatnya melintasi dunia paralel, menghadapi misteri, kekuatan magis, dan bahaya
+              tersembunyi.
+            </p>
+            <button class="btn-see-book">See The Book</button>
+          </div>
+        </div>
+
+        <!-- Novel Card 5 -->
+        <div class="novel-card">
+          <div class="left-section">
+            <img src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.jpg" alt="Laut Bercerita"
+              class="novel-cover">
+            <div class="cover-icons">
+              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
+              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              <button class="icon-btn genre-icon">
+                <i class="fas fa-tags"></i>
+                <span class="tooltip-text">Lihat genre serupa</span>
+              </button>
+            </div>
+          </div>
+          <div class="novel-details">
+            <h4 class="novel-title">Laut Bercerita</h4>
+            <p class="novel-author">by Leila S. Chudori</p>
+            <div class="novel-rating">
+              ★ ★ ★ ★ ★ <span class="novel-voters">(1.122 voters)</span>
+            </div>
+            <p class="novel-desc">
+              Potret pilu perjuangan aktivis muda era Orde Baru, tentang kehilangan, harapan, dan luka sejarah yang
+              dalam.
+            </p>
+            <button class="btn-see-book">See The Book</button>
+          </div>
+        </div>
+
       </div>
-       </a>
 
-       <!-- Novel Card 2-->
-      <div class="novel-card">
-        <div class="left-section">
-          <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg" alt="Solo Leveling" class="novel-cover">
-          <div class="cover-icons">
-            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-            <button class="icon-btn genre-icon">
-              <i class="fas fa-tags"></i>
-              <span class="tooltip-text">Lihat genre serupa</span>
-            </button>
-          </div>
-        </div>
-        <div class="novel-details">
-          <h4 class="novel-title">Solo Leveling</h4>
-          <p class="novel-author">by 	Chugong</p>
-          <div class="novel-rating">
-            ★ ★ ★ ★ ★ <span class="novel-voters">(1.564 voters)</span>
-          </div>
-          <p class="novel-desc">
-            Petualangan Sung Jin-Woo naik level dari terlemah menjadi terkuat dalam dunia penuh monster dan gerbang misterius.
-          </p>
-          <button class="btn-see-book">See The Book</button>
-        </div>
-      </div>
-
-       <!-- Novel Card 3 -->
-      <div class="novel-card">
-        <div class="left-section">
-          <img src="https://upload.wikimedia.org/wikipedia/id/8/8e/Laskar_pelangi_sampul.jpg" alt="Laskar Pelangi" class="novel-cover">
-          <div class="cover-icons">
-            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-            <button class="icon-btn genre-icon">
-              <i class="fas fa-tags"></i>
-              <span class="tooltip-text">Lihat genre serupa</span>
-            </button>
-          </div>
-        </div>
-        <div class="novel-details">
-          <h4 class="novel-title">Laskar Pelangi</h4>
-          <p class="novel-author">by Andrea Hirata</p>
-          <div class="novel-rating">
-            ★ ★ ★ ★ ★ <span class="novel-voters">(1.987 voters)</span>
-          </div>
-          <p class="novel-desc">
-            Kisah inspiratif anak-anak Belitong yang penuh semangat, mimpi besar, dan perjuangan menghadapi keterbatasan pendidikan.
-          </p>
-          <button class="btn-see-book">See The Book</button>
-        </div>
-      </div>
-
-      <!-- Novel Card 4 -->
-      <div class="novel-card">
-        <div class="left-section">
-          <img src="https://cdn.gramedia.com/uploads/items/9786020332956_Bumi-New-Cover.jpg" alt="Bumi" class="novel-cover">
-          <div class="cover-icons">
-            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-            <button class="icon-btn genre-icon">
-              <i class="fas fa-tags"></i>
-              <span class="tooltip-text">Lihat genre serupa</span>
-            </button>
-          </div>
-        </div>
-        <div class="novel-details">
-          <h4 class="novel-title">Bumi</h4>
-          <p class="novel-author">by Tere Liye</p>
-          <div class="novel-rating">
-            ★ ★ ★ ★ ★ <span class="novel-voters">(1.334 voters)</span>
-          </div>
-          <p class="novel-desc">
-            Perjalanan Raib dan sahabatnya melintasi dunia paralel, menghadapi misteri, kekuatan magis, dan bahaya tersembunyi.
-          </p>
-          <button class="btn-see-book">See The Book</button>
-        </div>
-      </div>
-
-      <!-- Novel Card 5 -->
-      <div class="novel-card">
-        <div class="left-section">
-          <img src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.jpg" alt="Laut Bercerita" class="novel-cover">
-          <div class="cover-icons">
-            <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-            <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-            <button class="icon-btn genre-icon">
-              <i class="fas fa-tags"></i>
-              <span class="tooltip-text">Lihat genre serupa</span>
-            </button>
-          </div>
-        </div>
-        <div class="novel-details">
-          <h4 class="novel-title">Laut Bercerita</h4>
-          <p class="novel-author">by Leila S. Chudori</p>
-          <div class="novel-rating">
-            ★ ★ ★ ★ ★ <span class="novel-voters">(1.122 voters)</span>
-          </div>
-          <p class="novel-desc">
-            Potret pilu perjuangan aktivis muda era Orde Baru, tentang kehilangan, harapan, dan luka sejarah yang dalam.
-          </p>
-          <button class="btn-see-book">See The Book</button>
-        </div>
-      </div>
-      
-    </div>
-
-    <button class="nav-btn right" onclick="scrollBooks(1)">
-      <i class="fas fa-chevron-right"></i>
-    </button>
+      <button class="nav-btn right" onclick="scrollBooks(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
   </div>
-</section>
+  </section>
 
-<div th:replace="~{fragments/genre :: genre}"></div>
+  <div th:replace="~{fragments/genre :: genre}"></div>
 
   <div class="container">
     <!-- Left: Promo Diskon -->
@@ -243,119 +261,120 @@
     </div>
   </div>
 
-  <!-- Footer --> 
-<footer class="mt-5 py-4 bg-black text-center text-white border-top border-secondary">
-  <div class="container">
-    <p class="mb-1">&copy; 2025 NOVELKU. Apakah akan jadi web ilegal di masa depan?</p>
-    <p class="mb-0">
-      <a href="#" class="text-decoration-none text-light me-3">Tentang Kami</a>
-      <a href="#" class="text-decoration-none text-light me-3">Tim 5</a>
-      <a href="#" class="text-decoration-none text-light">Mengucapkan Terimakasih</a>
-    </p>
-  </div>
-</footer>
+  <!-- Footer -->
+  <footer class="mt-5 py-4 bg-black text-center text-white border-top border-secondary">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 NOVELKU. Apakah akan jadi web ilegal di masa depan?</p>
+      <p class="mb-0">
+        <a href="#" class="text-decoration-none text-light me-3">Tentang Kami</a>
+        <a href="#" class="text-decoration-none text-light me-3">Tim 5</a>
+        <a href="#" class="text-decoration-none text-light">Mengucapkan Terimakasih</a>
+      </p>
+    </div>
+  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-  const container = document.getElementById('scrollContainer');
+    const container = document.getElementById('scrollContainer');
 
-  function scrollBooks(direction) {
-    container.scrollBy({ left: direction * 600, behavior: 'smooth' });
-  }
+    function scrollBooks(direction) {
+      container.scrollBy({ left: direction * 600, behavior: 'smooth' });
+    }
 
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-  container.addEventListener('mousedown', (e) => {
-    isDown = true;
-    container.classList.add('active');
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-  });
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.classList.add('active');
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
 
-  container.addEventListener('mouseleave', () => {
-    isDown = false;
-    container.classList.remove('active');
-  });
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
 
-  container.addEventListener('mouseup', () => {
-    isDown = false;
-    container.classList.remove('active');
-  });
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
 
-  container.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = x - startX;
-    container.scrollLeft = scrollLeft - walk;
-  });
-</script>
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = x - startX;
+      container.scrollLeft = scrollLeft - walk;
+    });
+  </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function () {
-    const input = $('.search-wrapper input');
-    const suggestionBox = $('<ul class="list-group position-absolute w-100 mt-1 bg-white shadow" style="z-index: 999;"></ul>');
-    $('.search-wrapper').append(suggestionBox);
-    suggestionBox.hide();
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      const input = $('.search-wrapper input');
+      const suggestionBox = $('<ul class="list-group position-absolute w-100 mt-1 bg-white shadow" style="z-index: 999;"></ul>');
+      $('.search-wrapper').append(suggestionBox);
+      suggestionBox.hide();
 
-    input.on('input', function () {
-      const query = $(this).val().trim();
+      input.on('input', function () {
+        const query = $(this).val().trim();
 
-      if (query.length === 0) {
-        suggestionBox.hide();
-        return;
-      }
+        if (query.length === 0) {
+          suggestionBox.hide();
+          return;
+        }
 
-      $.ajax({
-        url: '/search',
-        type: 'GET',
-        data: { query: query },
-        success: function (data) {
-          suggestionBox.empty();
+        $.ajax({
+          url: '/search',
+          type: 'GET',
+          data: { query: query },
+          success: function (data) {
+            suggestionBox.empty();
 
-          if (!data || data.length === 0) {
-            suggestionBox.hide();
-            return;
-          }
+            if (!data || data.length === 0) {
+              suggestionBox.hide();
+              return;
+            }
 
-          data.forEach(function (novel) {
-            const listItem = $(`
+            data.forEach(function (novel) {
+              const listItem = $(`
               <li class="list-group-item list-group-item-action d-flex align-items-center gap-2">
                 <img src="${novel.cover}" alt="cover" width="40" height="60" style="object-fit: cover; border-radius: 4px;">
                 <span>${novel.judul}</span>
               </li>
             `);
 
-            // Isi input saat diklik
-            listItem.on('click', function () {
-              input.val(novel.judul);
-              suggestionBox.hide();
+              // Isi input saat diklik
+              listItem.on('click', function () {
+                input.val(novel.judul);
+                suggestionBox.hide();
+              });
+
+              suggestionBox.append(listItem);
             });
 
-            suggestionBox.append(listItem);
-          });
+            suggestionBox.show();
+          },
+          error: function () {
+            suggestionBox.hide();
+          }
+        });
+      });
 
-          suggestionBox.show();
-        },
-        error: function () {
+      // Tutup jika klik di luar
+      $(document).on('click', function (e) {
+        if (!$(e.target).closest('.search-wrapper').length) {
           suggestionBox.hide();
         }
       });
     });
-
-    // Tutup jika klik di luar
-    $(document).on('click', function (e) {
-      if (!$(e.target).closest('.search-wrapper').length) {
-        suggestionBox.hide();
-      }
-    });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
