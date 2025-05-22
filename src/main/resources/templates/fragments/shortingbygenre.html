@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daftar Buku</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fffaf5;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+    }
+
+    .genre-container {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #000;
+      color: #fff;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .genre-item {
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .genre-item.active {
+      background-color: #c19759;
+      color: #fff;
+      box-shadow: 0 0 0 3px #c1975980;
+      transform: scale(1.05);
+    }
+
+    .genre-item:hover {
+      background-color: #c19759;
+      color: #fff;
+    }
+
+    .genre-icon {
+      margin-right: 8px;
+    }
+
+    .book-list-container {
+      padding: 2rem;
+      opacity: 1;
+      transform: scale(1);
+      transition: all 0.3s ease;
+    }
+
+    .book-list-container.fade-out {
+      opacity: 0;
+      transform: scale(0.98);
+      pointer-events: none;
+    }
+
+    .book-list-container.fade-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .book-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .book-info {
+      padding: 1rem;
+    }
+
+    .book-info h3 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .book-info p {
+      margin: 0.3rem 0;
+    }
+
+    .price {
+      color: #c19759;
+      font-weight: bold;
+    }
+
+    .book-actions {
+      display: flex;
+      justify-content: space-around;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid #eee;
+      background-color: #fafafa;
+    }
+
+    .book-actions i {
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #888;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .book-actions i:hover {
+      color: #c19759;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Filter Genre -->
+  <div class="genre-container">
+    <a th:href="@{/books}" class="genre-item" th:classappend="${selectedGenre} == null ? 'active' : ''">
+      <div class="genre-icon"><i class="bi bi-book"></i></div>
+      <div class="genre-label">All</div>
+    </a>
+    <a th:href="@{/books(genre='Romansa')}" class="genre-item" th:classappend="${selectedGenre} == 'Romansa' ? 'active' : ''">
+      <div class="genre-icon"><i class="bi bi-suit-heart"></i></div>
+      <div class="genre-label">Romansa</div>
+    </a>
+    <a th:href="@{/books(genre='Fantasi')}" class="genre-item" th:classappend="${selectedGenre} == 'Fantasi' ? 'active' : ''">
+      <div class="genre-icon"><i class="bi bi-magic"></i></div>
+      <div class="genre-label">Fantasi</div>
+    </a>
+    <a th:href="@{/books(genre='Horor')}" class="genre-item" th:classappend="${selectedGenre} == 'Horor' ? 'active' : ''">
+      <div class="genre-icon"><i class="bi bi-emoji-dizzy"></i></div>
+      <div class="genre-label">Horor</div>
+    </a>
+    <a th:href="@{/books(genre='Edukasi')}" class="genre-item" th:classappend="${selectedGenre} == 'Edukasi' ? 'active' : ''">
+      <div class="genre-icon"><i class="bi bi-mortarboard-fill"></i></div>
+      <div class="genre-label">Edukasi</div>
+    </a>
+    <a th:href="@{/books(genre='Komedi')}" class="genre-item" th:classappend="${selectedGenre} == 'Komedi' ? 'active' : ''">
+      <div class="genre-icon"><i class="bi bi-emoji-laughing"></i></div>
+      <div class="genre-label">Komedi</div>
+    </a>
+  </div>
+
+  <!-- Daftar Buku -->
+  <div class="book-list-container">
+    <div class="grid">
+      <div th:each="book : ${books}" class="book-card">
+        <img th:src="@{${book.imageUrl}}" alt="Cover Buku" class="book-image" />
+        <div class="book-info">
+          <h3 th:text="${book.title}">Judul Buku</h3>
+          <p th:text="${book.author}">Penulis</p>
+          <p class="price" th:text="${book.price}">Rp0</p>
+        </div>
+        <div class="book-actions">
+          <i class="bi bi-heart" title="Suka"></i>
+          <i class="bi bi-cart" title="Masukkan Keranjang"></i>
+          <i class="bi bi-share" title="Bagikan"></i>
+        </div>
+      </div>
+    </div>
+
+    <div th:if="${books.size()} == 0" style="text-align: center; margin-top: 2rem;">
+      <p>Tidak ada buku untuk genre ini.</p>
+    </div>
+  </div>
+
+  <!-- Script Transisi Halaman -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const genreLinks = document.querySelectorAll(".genre-item");
+      const bookContainer = document.querySelector(".book-list-container");
+
+      genreLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const href = link.getAttribute("href");
+
+          bookContainer.classList.remove("fade-in");
+          bookContainer.classList.add("fade-out");
+
+          setTimeout(() => {
+            window.location.href = href;
+          }, 300);
+        });
+      });
+
+      bookContainer.classList.add("fade-in");
+    });
+  </script>
+
+</body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import Kelompok5.PBO.Novel_Web.core.Main;
 import Kelompok5.PBO.Novel_Web.models.Novel;
 
+
 @RestController
 public class SearchController {
 
@@ -33,4 +34,3 @@ public class SearchController {
                 .collect(Collectors.toList());
     }
 }
-

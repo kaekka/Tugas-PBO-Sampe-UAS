@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <link rel="stylesheet" th:href="@{/css/genre.css}" />
   <style>
     body {
       margin: 0;
@@ -412,7 +413,7 @@
           <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Koleksi</a></li>
           <li class="nav-item"><a class="nav-link" href="keranjang">Keranjang</a></li>
-          <li class="nav-item"><a class="nav-link" href="aboutme">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus">About Me</a></li>
         </ul>
         <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 justify-content-lg-end mt-3 mt-lg-0">
           <div class="search-wrapper position-relative" style="width: 300px;">
@@ -457,7 +458,7 @@
       <i class="fas fa-chevron-left"></i>
     </button>
 
-<section class="novel-section">
+<section class="novel-section .bg-black">
   <h2 class="section-title text-center mb-4">Novel Best Seller</h2>
     <div class="novel-container" id="scrollContainer">
 
@@ -604,9 +605,9 @@
   </div>
 </section>
 
+<div th:replace="~{fragments/genre :: genre}"></div>
 
-
-  <!-- Footer -->
+  <!-- Footer --> 
 <footer class="mt-5 py-4 bg-black text-center text-white border-top border-secondary">
   <div class="container">
     <p class="mb-1">&copy; 2025 NOVELKU. Apakah akan jadi web ilegal di masa depan?</p>
