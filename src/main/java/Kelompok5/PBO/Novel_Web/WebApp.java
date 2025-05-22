@@ -17,6 +17,11 @@ public class WebApp {
 
     @GetMapping("index")
     public String index() {
-        return "index"; 
+        return "index";
+    }
+
+     @GetMapping("/aboutus")
+    public String Aboutus() {
+        return "fragments/aboutus";
     }
 }
