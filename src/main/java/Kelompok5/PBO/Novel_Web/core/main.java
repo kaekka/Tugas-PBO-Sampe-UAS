@@ -31,7 +31,7 @@ public class Main {
                 "https://www.themoviedb.org/t/p/original/44dKzGtSDw0oFHEvAduduwjyVSZ.jpg"));
         listNovel.add(new Novel("Dilan: Dia adalah Dilanku tahun 1990", "Pidi Baiq", "romance", 55000, 0, 2018, 300,
                 "https://th.bing.com/th/id/OIP.66WliD2UszlNkpNs8ZTqBwHaKs?w=135&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
-        listNovel.add(new Novel("Charlie dan Pabrik Coklat", "Roald Dahl", "adventure", 75555, 5, 1964, 215,
+        listNovel.add(new Novel("Charlie dan Pabrik Coklat", "Roald Dahl", "adventure", 75000, 5, 1964, 215,
                 "https://th.bing.com/th/id/OIP.-SgsKMGoRV7B1xyeCoJmWgHaLJ?w=119&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
 
         // Novel Best Seller
@@ -42,7 +42,7 @@ public class Main {
         listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "Andrea Hirata", "inspiratif", 58000, 10, 2005, 400, 0,
                 "https://th.bing.com/th/id/OIP.Ctt7dvydYLCRrnmrFBEPxQHaLw?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
         listBestSeller.add(new NovelBestSeller("Solo Leveling", "Chugong", "fantasi", 95000, 10, 2021, 300, 0,
-                "https://upload.wikimedia.org/wikipedia/id/thumb/9/99/Solo_Leveling_Webtoon.png/500px-Solo_Leveling_Webtoon.png"));
+                "https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg"));
         listBestSeller.add(new NovelBestSeller("Bumi", "Tere Liye", "fantasi", 80000, 5, 2014, 440, 0,
                 "https://th.bing.com/th/id/OIP.-evealEHjqsYVlWN7fv82AHaK-?w=146&h=217&c=7&r=0&o=5&dpr=1.3&pid=1.7"));
         listBestSeller.add(new NovelBestSeller("Laut Bercerita", "Leila S. Chudori", "romance", 78000, 0, 2017, 394, 0,
