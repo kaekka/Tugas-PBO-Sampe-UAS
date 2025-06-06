@@ -78,6 +78,14 @@ public class Novel {
     return coverurl;
     }
 
+    public double getHargaSetelahDiskon() {
+        if (diskon <= 0) {
+            return this.harga;
+        }
+        double potongan = this.harga * (this.diskon / 100.0);
+        return this.harga - potongan;
+    }
+
 
     public static Novel cariNovelByJudul(ArrayList<Novel> daftar, String judul) {
         for (Novel m : daftar) {
@@ -120,5 +128,18 @@ public class Novel {
     @Override
     public String toString() {
         return toStringWithoutDiscount() + " (Tahun Terbit: " + tahunTerbit + ", Halaman: " + jumlahHalaman + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Novel novel = (Novel) o;
+        return judul.equals(novel.judul);
+    }
+
+    @Override
+    public int hashCode() {
+        return judul.hashCode();
     }
 }

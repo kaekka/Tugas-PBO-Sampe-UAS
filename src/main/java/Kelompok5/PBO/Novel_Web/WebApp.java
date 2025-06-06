@@ -26,10 +26,10 @@ public class WebApp {
         return "fragments/aboutus";
     }
 
-    @GetMapping("/keranjang")
-    public String keranjang() {
-        return "shop/keranjang";
-    }
+    // @GetMapping("/keranjang")
+    // public String keranjang() {
+    //     return "shop/keranjang";
+    // }
 
     @GetMapping("/detail-novel")
     public String detail() {

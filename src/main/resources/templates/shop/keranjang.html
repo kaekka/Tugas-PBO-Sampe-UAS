@@ -14,93 +14,48 @@
 <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    
-  <div class="cart-container">
-    <h3 class="mb-4">Keranjang Buku</h3>
-    <div id="cart-items">
-      <div class="cart-item" data-price="45000">
-        <img src="https://th.bing.com/th/id/OIP.Ctt7dvydYLCRrnmrFBEPxQHaLw?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sampul Buku">
-        <div class="cart-details">
-          <div class="cart-title">Laskar Pelangi</div>
-          <div class="text-muted">by Andrea Hirata</div>
-          <div class="cart-price">Rp58.000</div>
-        </div>
-        <div class="input-group w-auto align-items-center mt-2 mt-md-0">
-          <button class="btn btn-outline-dark btn-decrease">-</button>
-          <input type="text" class="form-control text-center item-qty" value="1" style="max-width: 60px;" readonly>
-          <button class="btn btn-outline-dark btn-increase">+</button>
-        </div>
-        <button class="btn btn-link text-danger mt-2 mt-md-0 btn-remove"><i class="bi bi-trash"></i> Hapus</button>
-      </div>
+    <div class="cart-container">
+        <h3 class="mb-4">Keranjang Buku Anda</h3>
 
-      <div class="cart-item" data-price="55000">
-        <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg" alt="Sampul Buku">
-        <div class="cart-details">
-          <div class="cart-title">Solo Leveling</div>
-          <div class="text-muted">by Chugong</div>
-          <div class="cart-price">Rp95.000</div>
+        <div th:if="${#lists.isEmpty(cartItems)}" class="text-center p-5">
+            <h4>Keranjang Anda masih kosong.</h4>
+            <a th:href="@{/index}" class="btn checkout-btn mt-3">Mulai Belanja</a>
         </div>
-        <div class="input-group w-auto align-items-center mt-2 mt-md-0">
-          <button class="btn btn-outline-dark btn-decrease">-</button>
-          <input type="text" class="form-control text-center item-qty" value="2" style="max-width: 60px;" readonly>
-          <button class="btn btn-outline-dark btn-increase">+</button>
+
+        <div id="cart-items" th:if="${not #lists.isEmpty(cartItems)}">
+            <div th:each="item : ${cartItems}" class="cart-item">
+                <img th:src="${item.novel.coverUrl}" alt="Sampul Buku" style="width: 80px; height: 120px; object-fit: cover;">
+                <div class="cart-details">
+                    <div class="cart-title" th:text="${item.novel.judul}">Judul Novel</div>
+                    <div class="text-muted" th:text="'by ' + ${item.novel.penulis}">by Penulis</div>
+                    <div class="cart-price" th:text="${item.getFormattedHarga()}">Rp0</div>
+                </div>
+                
+                <div class="d-flex align-items-center" style="gap: 1rem;">
+                    <div class="input-group w-auto">
+                        <form th:action="@{/keranjang/kurangSatu/{novelId}(novelId=${T(Kelompok5.PBO.Novel_Web.core.Main).getAllNovels().indexOf(item.novel)})}" method="post" class="m-0">
+                            <button type="submit" class="btn btn-outline-secondary" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">-</button>
+                        </form>
+                        
+                        <input type="text" class="form-control text-center px-2" th:value="${item.quantity}" readonly style="max-width: 45px; background-color: white; border-left: 0; border-right: 0;">
+                        
+                        <form th:action="@{/keranjang/tambahSatu/{novelId}(novelId=${T(Kelompok5.PBO.Novel_Web.core.Main).getAllNovels().indexOf(item.novel)})}" method="post" class="m-0">
+                            <button type="submit" class="btn btn-outline-secondary" style="border-top-left-radius: 0; border-bottom-left-radius: 0;">+</button>
+                        </form>
+                    </div>
+
+                    <form th:action="@{/keranjang/hapus/{novelId}(novelId=${T(Kelompok5.PBO.Novel_Web.core.Main).getAllNovels().indexOf(item.novel)})}" method="post">
+                        <button type="submit" class="btn btn-link text-danger text-decoration-none p-0"><i class="bi bi-trash"></i> Hapus</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <button class="btn btn-link text-danger mt-2 mt-md-0 btn-remove"><i class="bi bi-trash"></i> Hapus</button>
-      </div>
+        <div class="total-section mt-4" th:if="${not #lists.isEmpty(cartItems)}">
+            <h5>Total: <span id="cart-total" class="cart-price" th:text="${totalFormatted}">Rp0</span></h5>
+            <button class="checkout-btn mt-2">Checkout</button>
+        </div>
     </div>
 
-    <div class="total-section mt-4">
-      <h5>Total: <span id="cart-total" class="cart-price">Rp0</span></h5>
-      <button class="checkout-btn mt-2">Checkout</button>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function formatRupiah(number) {
-      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
-    }
-
-    function updateTotal() {
-      const items = document.querySelectorAll('.cart-item');
-      let total = 0;
-      items.forEach(item => {
-        const price = parseInt(item.dataset.price);
-        const qty = parseInt(item.querySelector('.item-qty').value);
-        total += price * qty;
-      });
-      document.getElementById('cart-total').innerText = formatRupiah(total);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      updateTotal();
-
-      document.querySelectorAll('.btn-increase').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const qtyInput = btn.parentElement.querySelector('.item-qty');
-          qtyInput.value = parseInt(qtyInput.value) + 1;
-          updateTotal();
-        });
-      });
-
-      document.querySelectorAll('.btn-decrease').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const qtyInput = btn.parentElement.querySelector('.item-qty');
-          let qty = parseInt(qtyInput.value);
-          if (qty > 1) {
-            qtyInput.value = qty - 1;
-            updateTotal();
-          }
-        });
-      });
-
-      document.querySelectorAll('.btn-remove').forEach(btn => {
-        btn.addEventListener('click', () => {
-          btn.closest('.cart-item').remove();
-          updateTotal();
-        });
-      });
-    });
-  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

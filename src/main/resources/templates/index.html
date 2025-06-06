@@ -33,11 +33,9 @@
       <i class="fas fa-chevron-left"></i>
     </button>
 
-    <section class="novel-section .bg-black">
+<section class="novel-section .bg-black">
       <h2 class="section-title text-center mb-4">Novel Best Seller</h2>
       <div class="novel-container" id="scrollContainer">
-
-        <!-- Novel Card 1-->
 
         <div class="novel-card">
           <div class="left-section">
@@ -45,10 +43,14 @@
               alt="The Great Gatsby" class="novel-cover">
             <div class="cover-icons">
               <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              <button class="icon-btn cart-icon " title="Tambah ke Keranjang">
-                <i class="fas fa-cart-plus"></i>
-                <span class="tooltip-text">Tambah ke Keranjang</span>
-              </button>
+              
+              <form th:action="@{/keranjang/tambah/9}" method="post" style="display: inline;">
+                <button type="submit" class="icon-btn cart-icon " title="Tambah ke Keranjang">
+                  <i class="fas fa-cart-plus"></i>
+                  <span class="tooltip-text">Tambah ke Keranjang</span>
+                </button>
+              </form>
+
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -72,15 +74,17 @@
         </div>
 
 
-        <!-- Novel Card 2-->
-
         <div class="novel-card">
           <div class="left-section">
             <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg"
               alt="Solo Leveling" class="novel-cover">
             <div class="cover-icons">
               <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              
+              <form th:action="@{/keranjang/tambah/11}" method="post" style="display: inline;">
+                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              </form>
+              
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -104,14 +108,17 @@
         </div>
 
 
-        <!-- Novel Card 3 -->
         <div class="novel-card">
           <div class="left-section">
             <img src="https://upload.wikimedia.org/wikipedia/id/8/8e/Laskar_pelangi_sampul.jpg" alt="Laskar Pelangi"
               class="novel-cover">
             <div class="cover-icons">
               <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              
+              <form th:action="@{/keranjang/tambah/10}" method="post" style="display: inline;">
+                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              </form>
+
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -132,14 +139,17 @@
           </div>
         </div>
 
-        <!-- Novel Card 4 -->
         <div class="novel-card">
           <div class="left-section">
             <img src="https://cdn.gramedia.com/uploads/items/9786020332956_Bumi-New-Cover.jpg" alt="Bumi"
               class="novel-cover">
             <div class="cover-icons">
               <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+
+              <form th:action="@{/keranjang/tambah/12}" method="post" style="display: inline;">
+                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              </form>
+              
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -160,14 +170,17 @@
           </div>
         </div>
 
-        <!-- Novel Card 5 -->
         <div class="novel-card">
           <div class="left-section">
             <img src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.jpg" alt="Laut Bercerita"
               class="novel-cover">
             <div class="cover-icons">
               <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              <button class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+
+              <form th:action="@{/keranjang/tambah/13}" method="post" style="display: inline;">
+                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
+              </form>
+              
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -189,12 +202,7 @@
         </div>
 
       </div>
-
-      <button class="nav-btn right" onclick="scrollBooks(1)">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-  </div>
-  </section>
+    </section>
 
   <div th:replace="~{fragments/genre :: genre}"></div>
 
