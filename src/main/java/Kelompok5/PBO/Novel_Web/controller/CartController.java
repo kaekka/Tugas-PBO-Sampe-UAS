@@ -23,12 +23,16 @@ public class CartController {
     @GetMapping
     public String showCart(HttpSession session, Model model) {
         model.addAttribute("cartItems", cartService.getAllItems(session));
-        
+
         double total = cartService.getTotal(session);
         Locale indonesianLocale = new Locale("in", "ID");
         NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(indonesianLocale);
+
+        // [TAMBAHKAN BARIS INI] Memberitahu formatter untuk tidak menampilkan desimal
+        rupiahFormat.setMaximumFractionDigits(0);
+
         model.addAttribute("totalFormatted", rupiahFormat.format(total));
-        
+
         // Menambahkan pesan debug (opsional, bisa dihapus jika sudah tidak perlu)
         model.addAttribute("debugMessage", "Versi Controller SUDAH TERBARU.");
 
@@ -44,7 +48,7 @@ public class CartController {
         }
         return "redirect:/keranjang";
     }
-    
+
     // [ENDPOINT BARU] Untuk tombol +
     @PostMapping("/tambahSatu/{novelId}")
     public String tambahSatu(@PathVariable("novelId") int novelId, HttpSession session) {

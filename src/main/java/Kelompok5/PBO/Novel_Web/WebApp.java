@@ -1,58 +1,79 @@
 package Kelompok5.PBO.Novel_Web;
 
+import Kelompok5.PBO.Novel_Web.core.Main;
+import Kelompok5.PBO.Novel_Web.models.Novel;
+import Kelompok5.PBO.Novel_Web.models.NovelView;
+import Kelompok5.PBO.Novel_Web.services.LikeService;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 @Controller
 public class WebApp {
-    @GetMapping("/debugging")
-    public String hello() {
-        return "Welcome to Novelku Web App!";
-    }
 
-    @GetMapping("/")
-    public String login() {
-        return "redirect:/auth/login";
-    }
+    @Autowired
+    private LikeService likeService;
 
-    @GetMapping("index")
-    public String index() {
+    @GetMapping({ "/index", "/home" })
+    public String index(Model model, HttpSession session) {
+        // Menyiapkan data 'liked' di sini, di dalam controller
+        Map<Integer, Boolean> likedStatus = new HashMap<>();
+        int[] idsOnIndexPage = {9, 10, 11, 12, 13}; // ID novel yang ada di index.html
+        for (int id : idsOnIndexPage) {
+            likedStatus.put(id, likeService.isLiked(session, id));
+        }
+        // Kirim data yang sudah jadi ke template
+        model.addAttribute("likedStatus", likedStatus);
+
+        model.addAttribute("session", session); // Untuk info user di navbar
         return "index";
     }
 
-    @GetMapping("/aboutus")
-    public String Aboutus() {
-        return "fragments/aboutus";
+    @GetMapping("/koleksi")
+    public String showFavoriteCollection(Model model, HttpSession session) {
+        model.addAttribute("novelViews", likeService.getLikedNovelViews(session));
+        model.addAttribute("session", session); // Untuk info user di navbar
+        return "koleksi";
     }
 
-    // @GetMapping("/keranjang")
-    // public String keranjang() {
-    //     return "shop/keranjang";
-    // }
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/auth/login";
+    }
+
+@GetMapping("/aboutus")
+public String aboutUs(HttpSession session, Model model) {
+    model.addAttribute("session", session);
+    return "fragments/aboutus";
+}
 
     @GetMapping("/detail-novel")
-    public String detail() {
+    public String detailNovel() {
         return "detail-novel";
     }
 
-    @GetMapping("/romansa")
-    public String showRomansaPage() {
-        return "fragments/romansa";
-    }
-
-    @GetMapping("/horror")
-    public String showHororPage() {
-        return "fragments/horror";
-    }
-
-    @GetMapping("/edukasi")
-    public String showEdukasiPage() {
-        return "fragments/edukasi";
-    }
-
-    @GetMapping("/fantasi")
-    public String showFantasiPage() {
-        return "fragments/fantasi";
+    @GetMapping("/genre")
+    public String showGenreCollection(@RequestParam(name = "tipe") String genre, Model model, HttpSession session) {
+        List<Novel> allNovels = Main.getAllNovels();
+        List<NovelView> filteredNovelViews = new ArrayList<>();
+        for (int i = 0; i < allNovels.size(); i++) {
+            Novel novel = allNovels.get(i);
+            if (novel.getGenre().equalsIgnoreCase(genre)) {
+                filteredNovelViews.add(new NovelView(i, novel));
+            }
+        }
+        model.addAttribute("novelViews", filteredNovelViews);
+        model.addAttribute("selectedGenre", genre);
+        model.addAttribute("session", session);
+        return "koleksi-genre";
     }
 }

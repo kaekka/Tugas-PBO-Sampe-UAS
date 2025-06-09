@@ -11,15 +11,18 @@
       background-color: #000;
       border-bottom: 1px solid #000000;
     }
+
     .navbar-brand {
       color: white;
       font-weight: 400;
       font-size: 1.5rem;
       text-decoration: none;
     }
+
     .navbar-brand span.fw-bold {
       font-weight: 700;
     }
+
     .navbar-nav .nav-link {
       position: relative;
       color: white !important;
@@ -28,6 +31,7 @@
       text-decoration: none;
       transition: color 0.3s ease;
     }
+
     .navbar-nav .nav-link::before,
     .navbar-nav .nav-link::after {
       content: '';
@@ -38,33 +42,42 @@
       background-color: #c19759;
       transition: all 0.4s ease;
     }
+
     .navbar-nav .nav-link::before {
       left: 50%;
     }
+
     .navbar-nav .nav-link::after {
       right: 50%;
     }
+
     .navbar-nav .nav-link:hover {
       color: #c19759 !important;
     }
+
     .navbar-nav .nav-link:hover::before,
     .navbar-nav .nav-link:hover::after {
       width: 50%;
     }
+
     .icon-link {
       color: white;
       font-size: 1.25rem;
       transition: color 0.3s ease;
     }
+
     .icon-link:hover {
       color: #c19759;
     }
+
     .navbar-toggler-icon {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
+
     .search-wrapper {
       position: relative;
     }
+
     .search-wrapper input {
       background-color: transparent;
       color: white;
@@ -72,9 +85,11 @@
       border-radius: 50px;
       padding: 6px 36px 6px 12px;
     }
+
     .search-wrapper input::placeholder {
       color: rgba(255, 255, 255, 0.7);
     }
+
     .search-wrapper i {
       position: absolute;
       right: 12px;
@@ -82,18 +97,22 @@
       transform: translateY(-50%);
       color: white;
     }
+
     .user-info {
       display: flex;
       align-items: center;
       gap: 6px;
     }
+
     .user-info i {
       font-size: 1.25rem;
     }
+
     .user-info span {
       font-size: 0.95rem;
       color: white;
     }
+
     @media (max-width: 991.98px) {
       .navbar-collapse .user-info {
         margin-top: 1rem;
@@ -162,6 +181,10 @@
       cursor: pointer;
       z-index: 2;
       transition: transform 0.2s, background 0.3s;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .nav-btn:hover {
@@ -169,8 +192,13 @@
       background-color: #f0f0f0;
     }
 
-    .nav-btn.left { left: 10px; }
-    .nav-btn.right { right: 10px; }
+    .nav-btn.left {
+      left: 10px;
+    }
+
+    .nav-btn.right {
+      right: 10px;
+    }
 
     .novel-container {
       display: flex;
@@ -295,73 +323,74 @@
     }
 
     .genre-icon .tooltip-text {
-    visibility: hidden;
-    width: 140px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -70px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.75rem;
-    pointer-events: none;
+      visibility: hidden;
+      width: 140px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -70px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.75rem;
+      pointer-events: none;
     }
 
     .genre-icon:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
+      visibility: visible;
+      opacity: 1;
     }
 
     .cart-icon .tooltip-text {
-    white-space: nowrap;
-    visibility: hidden;
-    width: 150px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -70px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.75rem;
-    pointer-events: none;
+      white-space: nowrap;
+      visibility: hidden;
+      width: 150px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -70px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.75rem;
+      pointer-events: none;
     }
 
     .cart-icon:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
+      visibility: visible;
+      opacity: 1;
     }
 
     .novel-container::-webkit-scrollbar {
       display: none;
     }
-    
+
     .novel-container {
-    cursor: grab;
-    user-select: none; /* supaya teks gak ke-select waktu drag */
+      cursor: grab;
+      user-select: none;
+      /* supaya teks gak ke-select waktu drag */
     }
 
     .novel-container.active {
-    cursor: grabbing;
+      cursor: grabbing;
     }
 
-   .section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #c19759;
-    text-align: center;
-    margin-bottom: 20px;
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #c19759;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     a {
@@ -379,3 +408,85 @@
       object-fit: cover;
       border-radius: 4px;
     }
+
+    /* CSS untuk animasi gambar terbang */
+    .flying-novel-img {
+      position: fixed;
+      z-index: 10000;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.7s cubic-bezier(0.55, -0.44, 0.95, 0.73);
+      /* cubic-bezier untuk efek 'melengkung' */
+    }
+
+    /* CSS untuk notifikasi/toast */
+    .toast-notification {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #28a745;
+      /* Hijau sukses */
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      z-index: 10001;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s, visibility 0.5s, bottom 0.5s;
+      font-weight: 500;
+    }
+
+    .toast-notification.show {
+      bottom: 40px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-btn.left {
+      background: white !important;
+      border-radius: 50% !important;
+      width: 44px !important;
+      height: 44px !important;
+      border: none !important;
+    }
+
+.icon-btn.like-btn.liked .fa-heart {
+    color: #e74c3c;
+    font-weight: 900;
+}
+
+/* ============================================= */
+/* ===== KODE ANIMASI TOMBOL LIKE (PASTIKAN ADA) ===== */
+/* ============================================= */
+
+/* Base state untuk transisi yang mulus saat unlike */
+.like-btn .fa-heart {
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Definisi animasi 'ledakan' atau 'pop' */
+@keyframes heart-pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+        color: #ff5777;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Terapkan animasi saat kelas .liked ditambahkan */
+.icon-btn.like-btn.liked .fa-heart {
+    color: #e74c3c;
+    font-weight: 900;
+    animation: heart-pop 0.3s ease-out;
+}
+
+/* (Opsional) Efek hover kecil agar lebih interaktif */
+.icon-btn.like-btn:hover .fa-heart {
+    transform: scale(1.2);
+}

@@ -1,7 +1,7 @@
 package Kelompok5.PBO.Novel_Web.models;
 
-import java.text.NumberFormat; // <-- TAMBAHKAN IMPORT
-import java.util.Locale;       // <-- TAMBAHKAN IMPORT
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class CartItem {
     private Novel novel;
@@ -33,9 +33,19 @@ public class CartItem {
         return novel.getHargaSetelahDiskon() * quantity;
     }
     
-    public String getFormattedHarga() {
+    // Metode untuk memformat harga ASLI (sebelum diskon)
+    public String getFormattedOriginalHarga() {
         Locale indonesianLocale = new Locale("in", "ID");
         NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(indonesianLocale);
+        rupiahFormat.setMaximumFractionDigits(0);
+        return rupiahFormat.format(this.novel.getHarga());
+    }
+    
+    // Metode untuk memformat harga SETELAH diskon
+    public String getFormattedHargaSetelahDiskon() {
+        Locale indonesianLocale = new Locale("in", "ID");
+        NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(indonesianLocale);
+        rupiahFormat.setMaximumFractionDigits(0);
         return rupiahFormat.format(this.novel.getHargaSetelahDiskon());
     }
 }

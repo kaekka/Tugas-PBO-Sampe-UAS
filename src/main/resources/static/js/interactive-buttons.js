@@ -1,0 +1,140 @@
+
+document.addEventListener('DOMContentLoaded', function () {
+    
+// ==============================================
+// BAGIAN UNTUK TOMBOL SUKA (HATI) - VERSI LENGKAP
+// ==============================================
+const allLikeButtons = document.querySelectorAll('.like-btn');
+allLikeButtons.forEach(button => {
+    button.addEventListener('mousedown', function (event) {
+        event.stopPropagation();
+        const novelId = event.currentTarget.dataset.novelId;
+        const clickedButton = event.currentTarget;
+
+        fetch(`/api/like/${novelId}`, { method: 'POST' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Server response was not OK.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                let message = "";
+                if (data.isLiked) {
+                    clickedButton.classList.add('liked');
+                    message = "Novel ditambahkan ke koleksi!";
+                } else {
+                    clickedButton.classList.remove('liked');
+                    message = "Novel dihapus dari koleksi.";
+
+                    // --- LOGIKA BARU UNTUK LIVE UPDATE ---
+                    // Cek apakah kita berada di halaman koleksi (dengan mencari kartu novel)
+                    const novelCardWrapper = clickedButton.closest('.col-lg-3.col-md-4.col-sm-6');
+                    if (novelCardWrapper) {
+                        // Tambahkan animasi fade-out lalu hapus kartu
+                        novelCardWrapper.style.transition = 'opacity 0.4s ease';
+                        novelCardWrapper.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            novelCardWrapper.remove();
+                            
+                            // Cek apakah masih ada novel tersisa di koleksi
+                            const remainingCards = document.querySelectorAll('.book-card-koleksi');
+                            if (remainingCards.length === 0) {
+                                // Jika tidak ada, tampilkan pesan "koleksi kosong"
+                                const emptyMessage = document.getElementById('empty-collection-message');
+                                if (emptyMessage) {
+                                    emptyMessage.style.display = 'block';
+                                }
+                            }
+                        }, 400); // Tunggu animasi selesai
+                    }
+                    // --- AKHIR LOGIKA BARU ---
+                }
+                showToast(message);
+            })
+            .catch(error => {
+                console.error('Error liking novel:', error);
+                showToast('Terjadi kesalahan.');
+            });
+    });
+});
+
+
+    // ==============================================
+    // BAGIAN UNTUK TOMBOL TAMBAH KE KERANJANG
+    // ==============================================
+    const cartNavIcon = document.getElementById('cart-icon-nav');
+    const allAddToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+    allAddToCartButtons.forEach(button => {
+        button.addEventListener('mousedown', function (event) {
+            // [FIX] Mencegah event "bubble up" ke elemen induk (container scroll)
+            event.stopPropagation();
+            
+            const novelCard = event.currentTarget.closest('.novel-card, .book-card-koleksi');
+            if (!novelCard) return;
+
+            const novelImg = novelCard.querySelector('.novel-cover, .book-cover');
+            const novelId = event.currentTarget.dataset.novelId;
+
+            flyToCart(novelImg);
+
+            fetch(`/api/keranjang/tambah/${novelId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message);
+                } else {
+                    showToast('Gagal menambahkan novel!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Terjadi kesalahan.');
+            });
+        });
+    });
+
+
+    // ==============================================
+    // FUNGSI BANTUAN (TIDAK PERLU DIUBAH)
+    // ==============================================
+    function flyToCart(imgElement) {
+        if (!imgElement || !cartNavIcon) {
+            console.error("Elemen gambar atau ikon keranjang tidak ditemukan!");
+            return;
+        }
+        const imgClone = imgElement.cloneNode(true);
+        const startRect = imgElement.getBoundingClientRect();
+        imgClone.classList.add('flying-novel-img');
+        imgClone.style.top = startRect.top + 'px';
+        imgClone.style.left = startRect.left + 'px';
+        imgClone.style.width = startRect.width + 'px';
+        imgClone.style.height = startRect.height + 'px';
+        document.body.appendChild(imgClone);
+
+        requestAnimationFrame(() => {
+            const endRect = cartNavIcon.getBoundingClientRect();
+            imgClone.style.top = (endRect.top + endRect.height / 2) + 'px';
+            imgClone.style.left = (endRect.left + endRect.width / 2) + 'px';
+            imgClone.style.width = '0px';
+            imgClone.style.height = '0px';
+            imgClone.style.opacity = '0';
+        });
+
+        setTimeout(() => { imgClone.remove(); }, 700);
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById('toast-notification');
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    }
+
+});

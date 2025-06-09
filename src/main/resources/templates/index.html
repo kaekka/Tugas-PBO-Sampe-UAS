@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <link rel="stylesheet" th:href="@{/css/navbar.css}" />
   <link rel="stylesheet" th:href="@{/css/genre.css}" />
   <link rel="stylesheet" th:href="@{/css/index.css}" />
   <link rel="stylesheet" th:href="@{/css/diskon.css}" />
@@ -16,6 +17,7 @@
 </head>
 
 <body id="home">
+
 
 
   <div th:replace="~{fragments/navbar :: navbar}"></div>
@@ -33,24 +35,31 @@
       <i class="fas fa-chevron-left"></i>
     </button>
 
-<section class="novel-section .bg-black">
+    <section class="novel-section .bg-black">
+    </section>
+
+    <button class="nav-btn right" onclick="scrollBooks(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <section class="novel-section .bg-black">
       <h2 class="section-title text-center mb-4">Novel Best Seller</h2>
       <div class="novel-container" id="scrollContainer">
 
         <div class="novel-card">
           <div class="left-section">
             <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg"
-              alt="The Great Gatsby" class="novel-cover">
+              alt="Harry Potter" class="novel-cover">
             <div class="cover-icons">
-              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              
-              <form th:action="@{/keranjang/tambah/9}" method="post" style="display: inline;">
-                <button type="submit" class="icon-btn cart-icon " title="Tambah ke Keranjang">
-                  <i class="fas fa-cart-plus"></i>
-                  <span class="tooltip-text">Tambah ke Keranjang</span>
-                </button>
-              </form>
-
+<button class="icon-btn like-btn" title="Suka"
+        th:data-novel-id="9"
+        th:classappend="${likedStatus.get(9)} ? 'liked'">
+    <i class="fas fa-heart"></i>
+</button>
+              <button class="icon-btn cart-icon add-to-cart-btn" title="Tambah ke Keranjang" data-novel-id="9">
+                <i class="fas fa-cart-plus"></i>
+                <span class="tooltip-text">Tambah ke Keranjang</span>
+              </button>
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -64,8 +73,8 @@
               ★ ★ ★ ★ ★ <span class="novel-voters">(2.997 voters)</span>
             </div>
             <p class="novel-desc">
-              Masuki dunia sihir penuh petualangan dan misteri bersama Harry Potter di novel fantasi legendaris karya
-              J.K. Rowling ini.
+              Masuki dunia sihir penuh petualangan dan misteri bersama Harry Potter di novel fantasi
+              legendaris karya J.K. Rowling ini.
             </p>
             <a th:href="@{/detail-novel}">
               <button class="btn-see-book">See The Book</button>
@@ -73,18 +82,20 @@
           </div>
         </div>
 
-
         <div class="novel-card">
           <div class="left-section">
             <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg"
               alt="Solo Leveling" class="novel-cover">
             <div class="cover-icons">
-              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              
-              <form th:action="@{/keranjang/tambah/11}" method="post" style="display: inline;">
-                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-              </form>
-              
+<button class="icon-btn like-btn" title="Suka"
+        th:data-novel-id="11"
+        th:classappend="${likedStatus.get(11)} ? 'liked'">
+    <i class="fas fa-heart"></i>
+</button>
+              <button class="icon-btn cart-icon add-to-cart-btn" title="Tambah ke Keranjang" data-novel-id="11">
+                <i class="fas fa-cart-plus"></i>
+                <span class="tooltip-text">Tambah ke Keranjang</span>
+              </button>
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -98,8 +109,8 @@
               ★ ★ ★ ★ ★ <span class="novel-voters">(1.564 voters)</span>
             </div>
             <p class="novel-desc">
-              Petualangan Sung Jin-Woo naik level dari terlemah menjadi terkuat dalam dunia penuh monster dan gerbang
-              misterius.
+              Petualangan Sung Jin-Woo naik level dari terlemah menjadi terkuat dalam dunia penuh monster
+              dan gerbang misterius.
             </p>
             <a th:href="@{/detail-novel}">
               <button class="btn-see-book">See The Book</button>
@@ -107,18 +118,20 @@
           </div>
         </div>
 
-
         <div class="novel-card">
           <div class="left-section">
             <img src="https://upload.wikimedia.org/wikipedia/id/8/8e/Laskar_pelangi_sampul.jpg" alt="Laskar Pelangi"
               class="novel-cover">
             <div class="cover-icons">
-              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-              
-              <form th:action="@{/keranjang/tambah/10}" method="post" style="display: inline;">
-                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-              </form>
-
+<button class="icon-btn like-btn" title="Suka"
+        th:data-novel-id="10"
+        th:classappend="${likedStatus.get(10)} ? 'liked'">
+    <i class="fas fa-heart"></i>
+</button>
+              <button class="icon-btn cart-icon add-to-cart-btn" title="Tambah ke Keranjang" data-novel-id="10">
+                <i class="fas fa-cart-plus"></i>
+                <span class="tooltip-text">Tambah ke Keranjang</span>
+              </button>
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -132,8 +145,8 @@
               ★ ★ ★ ★ ★ <span class="novel-voters">(1.987 voters)</span>
             </div>
             <p class="novel-desc">
-              Kisah inspiratif anak-anak Belitong yang penuh semangat, mimpi besar, dan perjuangan menghadapi
-              keterbatasan pendidikan.
+              Kisah inspiratif anak-anak Belitong yang penuh semangat, mimpi besar, dan perjuangan
+              menghadapi keterbatasan pendidikan.
             </p>
             <button class="btn-see-book">See The Book</button>
           </div>
@@ -144,12 +157,15 @@
             <img src="https://cdn.gramedia.com/uploads/items/9786020332956_Bumi-New-Cover.jpg" alt="Bumi"
               class="novel-cover">
             <div class="cover-icons">
-              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-
-              <form th:action="@{/keranjang/tambah/12}" method="post" style="display: inline;">
-                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-              </form>
-              
+<button class="icon-btn like-btn" title="Suka"
+        th:data-novel-id="12"
+        th:classappend="${likedStatus.get(12)} ? 'liked'">
+    <i class="fas fa-heart"></i>
+</button>
+              <button class="icon-btn cart-icon add-to-cart-btn" title="Tambah ke Keranjang" data-novel-id="12">
+                <i class="fas fa-cart-plus"></i>
+                <span class="tooltip-text">Tambah ke Keranjang</span>
+              </button>
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -163,8 +179,8 @@
               ★ ★ ★ ★ ★ <span class="novel-voters">(1.334 voters)</span>
             </div>
             <p class="novel-desc">
-              Perjalanan Raib dan sahabatnya melintasi dunia paralel, menghadapi misteri, kekuatan magis, dan bahaya
-              tersembunyi.
+              Perjalanan Raib dan sahabatnya melintasi dunia paralel, menghadapi misteri, kekuatan magis,
+              dan bahaya tersembunyi.
             </p>
             <button class="btn-see-book">See The Book</button>
           </div>
@@ -175,12 +191,15 @@
             <img src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.jpg" alt="Laut Bercerita"
               class="novel-cover">
             <div class="cover-icons">
-              <button class="icon-btn" title="Suka"><i class="fas fa-heart"></i></button>
-
-              <form th:action="@{/keranjang/tambah/13}" method="post" style="display: inline;">
-                <button type="submit" class="icon-btn" title="Tambah ke Keranjang"><i class="fas fa-cart-plus"></i></button>
-              </form>
-              
+<button class="icon-btn like-btn" title="Suka"
+        th:data-novel-id="13"
+        th:classappend="${likedStatus.get(13)} ? 'liked'">
+    <i class="fas fa-heart"></i>
+</button>
+              <button class="icon-btn cart-icon add-to-cart-btn" title="Tambah ke Keranjang" data-novel-id="13">
+                <i class="fas fa-cart-plus"></i>
+                <span class="tooltip-text">Tambah ke Keranjang</span>
+              </button>
               <button class="icon-btn genre-icon">
                 <i class="fas fa-tags"></i>
                 <span class="tooltip-text">Lihat genre serupa</span>
@@ -194,8 +213,8 @@
               ★ ★ ★ ★ ★ <span class="novel-voters">(1.122 voters)</span>
             </div>
             <p class="novel-desc">
-              Potret pilu perjuangan aktivis muda era Orde Baru, tentang kehilangan, harapan, dan luka sejarah yang
-              dalam.
+              Potret pilu perjuangan aktivis muda era Orde Baru, tentang kehilangan, harapan, dan luka
+              sejarah yang dalam.
             </p>
             <button class="btn-see-book">See The Book</button>
           </div>
@@ -204,13 +223,19 @@
       </div>
     </section>
 
+    <button class="nav-btn right" onclick="scrollBooks(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
   <div th:replace="~{fragments/genre :: genre}"></div>
 
   <div class="container">
     <!-- Left: Promo Diskon -->
     <div class="left">
       <div class="promo-content">
-        <img src="https://th.bing.com/th/id/OIP.-evealEHjqsYVlWN7fv82AHaK-?w=146&h=217&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Cover Novel" class="promo-img" />
+        <img src="https://th.bing.com/th/id/OIP.-evealEHjqsYVlWN7fv82AHaK-?w=146&h=217&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+          alt="Cover Novel" class="promo-img" />
         <div class="promo-text">
           <div class="promo-tag">🔥 Promo Spesial</div>
           <div class="promo-title">Diskon Hingga 50%</div>
@@ -234,7 +259,8 @@
     <div class="scroll-section">
       <div class="scroll-wrapper">
         <div class="book-card">
-          <img src="https://th.bing.com/th/id/OIP.APIAdyguMRyPxxTETVQ9sQHaKn?w=208&h=299&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Cover Novel" class="promo-img" />
+          <img src="https://th.bing.com/th/id/OIP.APIAdyguMRyPxxTETVQ9sQHaKn?w=208&h=299&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+            alt="Cover Novel" class="promo-img" />
           <div class="book-info">
             <h3>Omniscient Reader's Viewpoint</h3>
             <p class="author">Sing Shong</p>
@@ -242,7 +268,8 @@
           </div>
         </div>
         <div class="book-card">
-          <img src="https://th.bing.com/th/id/OIP.-SgsKMGoRV7B1xyeCoJmWgHaLJ?w=119&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Cover Novel" class="promo-img" />
+          <img src="https://th.bing.com/th/id/OIP.-SgsKMGoRV7B1xyeCoJmWgHaLJ?w=119&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+            alt="Cover Novel" class="promo-img" />
           <div class="book-info">
             <h3>Charlie dan Pabrik Coklat</h3>
             <p class="author">Roald Dahl</p>
@@ -250,7 +277,8 @@
           </div>
         </div>
         <div class="book-card">
-          <img src="https://www.themoviedb.org/t/p/original/44dKzGtSDw0oFHEvAduduwjyVSZ.jpg" alt="Cover Novel" class="promo-img" />
+          <img src="https://www.themoviedb.org/t/p/original/44dKzGtSDw0oFHEvAduduwjyVSZ.jpg" alt="Cover Novel"
+            class="promo-img" />
           <div class="book-info">
             <h3>The Chronicles of Narnia</h3>
             <p class="author">Clive Staples Lewis
@@ -260,7 +288,8 @@
           </div>
         </div>
         <div class="book-card">
-          <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg" alt="Cover Novel" class="promo-img" />
+          <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg"
+            alt="Cover Novel" class="promo-img" />
           <div class="book-info">
             <h3>Harry Potter and the Sorcerer's Stone</h3>
             <p class="author">J. K. Rowling</p>
@@ -384,6 +413,12 @@
       });
     });
   </script>
+
+  <div id="toast-notification" class="toast-notification"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script th:src="@{/js/interactive-buttons.js}"></script>
 
 </body>
 
