@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detail Buku</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
@@ -30,7 +31,7 @@
       background-color: var(--white);
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
       color: var(--dark);
     }
 
@@ -47,7 +48,7 @@
       width: 100%;
       max-width: 280px;
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
     .book-details {
@@ -97,13 +98,14 @@
     }
 
     .price {
-    font-size: 20x; /* Lebih besar dan lebih menonjol */
-    font-weight: 700;
-    background-color: var(--dark);
-    color: var(--primary);
-    padding: 10px 24px;
-    border-radius: 12px;
-  }
+      font-size: 20x;
+      /* Lebih besar dan lebih menonjol */
+      font-weight: 700;
+      background-color: var(--dark);
+      color: var(--primary);
+      padding: 10px 24px;
+      border-radius: 12px;
+    }
 
     .cart-btn {
       background-color: var(--primary);
@@ -117,7 +119,7 @@
       align-items: center;
       gap: 8px;
       transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .cart-btn:hover {
@@ -158,48 +160,57 @@
       .container {
         flex-direction: column;
       }
-      .book-image, .book-details {
+
+      .book-image,
+      .book-details {
         padding: 20px;
       }
     }
   </style>
 </head>
+
 <body>
 
-<div class="container">
-  <div class="book-image">
-    <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg" alt="Harry Potter Cover" />
-  </div>
-  <div class="book-details">
-    <h1>Harry Potter and the Sorcerer's Stone</h1>
-    <h3>J.K. Rowling</h3>
-    <div class="novel-rating">
-      <span class="stars">★ ★ ★ ★ ★</span>
-      <span class="novel-voters">(2.997 voters)</span>
+  <div class="container">
+    <div class="book-image">
+      <img src="https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg"
+        alt="Harry Potter Cover" />
     </div>
-    <p class="description">
-      Harry Potter and the Sorcerer's Stone mengisahkan seorang anak yatim piatu bernama Harry Potter yang pada ulang tahunnya yang ke-11 mengetahui bahwa ia adalah seorang penyihir. Ia diterima di sekolah sihir Hogwarts, di mana ia menemukan teman sejati, menghadapi tantangan magis, dan mulai mengungkap rahasia masa lalunya. Di tahun pertamanya, Harry bersama Ron dan Hermione mencoba mencegah batu bertuah yang kuat jatuh ke tangan penyihir jahat, Lord Voldemort.
-    </p>
-    <div class="actions">
-      <div class="price">Rp100.000</div>
-      <button class="cart-btn">
-        <i data-lucide="shopping-cart"></i> Tambah ke Keranjang
-      </button>
-      <div class="icon-buttons">
-        <button class="icon-button" title="Koleksi">
-          <i data-lucide="heart"></i>
+    <div class="book-details">
+      <h1>Harry Potter and the Sorcerer's Stone</h1>
+      <h3>J.K. Rowling</h3>
+      <div class="novel-rating">
+        <span class="stars">★ ★ ★ ★ ★</span>
+        <span class="novel-voters">(2.997 voters)</span>
+      </div>
+      <p class="description">
+        Harry Potter and the Sorcerer's Stone mengisahkan seorang anak yatim piatu bernama Harry Potter yang pada ulang
+        tahunnya yang ke-11 mengetahui bahwa ia adalah seorang penyihir. Ia diterima di sekolah sihir Hogwarts, di mana
+        ia menemukan teman sejati, menghadapi tantangan magis, dan mulai mengungkap rahasia masa lalunya. Di tahun
+        pertamanya, Harry bersama Ron dan Hermione mencoba mencegah batu bertuah yang kuat jatuh ke tangan penyihir
+        jahat, Lord Voldemort.
+      </p>
+      <div class="actions">
+        <div class="price">Rp100.000</div>
+        <button class="cart-btn">
+          <i data-lucide="shopping-cart"></i> Tambah ke Keranjang
         </button>
-        <button class="icon-button" title="Bagikan">
-          <i data-lucide="share-2"></i>
-        </button>
+        <div class="icon-buttons">
+          <button class="icon-button" title="Koleksi">
+            <i data-lucide="heart"></i>
+          </button>
+          <button class="icon-button" title="Bagikan">
+            <i data-lucide="share-2"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  lucide.createIcons();
-</script>
+  <script>
+    lucide.createIcons();
+  </script>
 
 </body>
+
 </html>

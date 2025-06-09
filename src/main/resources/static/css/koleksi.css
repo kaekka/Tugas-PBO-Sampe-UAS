@@ -1,175 +1,185 @@
-/* ========================================================= */
-/* ===== GANTI SEMUA ISI FILE koleksi.css DENGAN KODE INI ===== */
-/* ========================================================= */
+ body {
+     background-color: #1a1a1a;
+     font-family: 'Poppins', sans-serif;
+     color: #fff;
+ }
 
-body {
-    background-color: #1a1a1a; /* Latar belakang gelap agar konsisten dengan tema */
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-}
+ .container.my-5 {
+     padding-top: 3rem;
+     padding-bottom: 3rem;
+     min-height: 80vh;
+ }
 
-.container.my-5 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    min-height: 80vh; /* Memberi tinggi minimal agar footer tidak menempel */
-}
-
-/* Judul Halaman Utama */
-.section-title-koleksi {
-    font-weight: 700;
-    color: #c19759;
-    font-size: 2.2rem; /* Ukuran font sedikit disesuaikan */
-    margin: 0 auto 4rem auto !important; /* Otomatis di tengah, margin bawah lebih besar */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    display: flex; /* Wajib untuk alignment garis */
-    align-items: center; /* Membuat garis sejajar dengan teks */
-    width: 80%; /* Lebar total judul dan garis */
-    max-width: 800px;
-}
-
-/* TAMBAHKAN kode ini SETELAH .section-title-koleksi */
-.section-title-koleksi::before,
-.section-title-koleksi::after {
-    content: '';
-    flex-grow: 1;
-    height: 1px;
-    background: #444; /* Warna garis yang lebih lembut */
-    margin: 0 1.5rem; /* Jarak antara garis dan teks */
-}
-/* Kartu Novel */
-/* Modifikasi .book-card-koleksi menjadi seperti ini */
-.book-card-koleksi {
-    position: relative;
-    border: none;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    background-color: #252525;
-    aspect-ratio: 2 / 3; 
-}
-
-.book-card-koleksi:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(193, 151, 89, 0.2);
-}
-
-.book-card-koleksi .book-cover {
-    width: 100%;
-    height: 100%; /* Cover akan mengisi seluruh area kartu */
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.book-card-koleksi:hover .book-cover {
-    transform: scale(1.1); /* Efek zoom pada cover saat di-hover */
-}
-
-/* --- STYLING UNTUK OVERLAY INTERAKTIF --- */
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Gradien dari bawah (gelap) ke atas (transparan) */
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0) 100%);
-    color: #fff;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Posisikan semua konten di bagian bawah kartu */
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem 1rem;
-
-    opacity: 0; /* Sembunyikan secara default */
-    transition: opacity 0.3s ease-in-out;
-}
-
-.book-card-koleksi:hover .card-overlay {
-    opacity: 1; /* Tampilkan overlay saat kartu di-hover */
-}
-
-.overlay-title, .overlay-author, .overlay-buttons {
-    transform: translateY(20px); /* Posisikan sedikit ke bawah (untuk animasi) */
-    transition: transform 0.3s ease;
-}
-
-/* Animasi konten overlay agar muncul dari bawah ke atas */
-.book-card-koleksi:hover .overlay-title { transition-delay: 0.1s; transform: translateY(0); }
-.book-card-koleksi:hover .overlay-author { transition-delay: 0.2s; transform: translateY(0); }
-.book-card-koleksi:hover .overlay-buttons { transition-delay: 0.3s; transform: translateY(0); }
+ /* Judul Halaman Utama */
+ .section-title-koleksi {
+     font-weight: 700;
+     color: #c19759;
+     font-size: 2.2rem;
+     margin: 0 auto 4rem auto !important;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     display: flex;
+     align-items: center;
+     width: 80%;
+     max-width: 800px;
+ }
 
 
-.overlay-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
+ .section-title-koleksi::before,
+ .section-title-koleksi::after {
+     content: '';
+     flex-grow: 1;
+     height: 1px;
+     background: #444;
+     margin: 0 1.5rem;
+ }
 
-.overlay-author {
-    font-size: 0.85rem;
-    color: #ccc;
-    margin-bottom: 1rem;
-}
+ /* Kartu Novel */
 
-.overlay-buttons {
-    display: flex;
-    gap: 0.75rem;
-}
+ .book-card-koleksi {
+     position: relative;
+     border: none;
+     border-radius: 8px;
+     overflow: hidden;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     cursor: pointer;
+     background-color: #252525;
+     aspect-ratio: 2 / 3;
+ }
 
-.btn-action {
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s, transform 0.2s;
-}
+ .book-card-koleksi:hover {
+     transform: translateY(-10px);
+     box-shadow: 0 15px 40px rgba(193, 151, 89, 0.2);
+ }
 
-.btn-action:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-    color: #fff;
-}
+ .book-card-koleksi .book-cover {
+     width: 100%;
+     height: 100%;
+     transition: transform 0.4s ease;
+ }
 
-/* --- STYLING UNTUK PESAN "KOLEKSI KOSONG" --- */
-.empty-collection {
-    text-align: center;
-    padding: 5rem 1rem;
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 12px;
-    margin-top: 2rem;
-    color: #888;
-    border: 1px dashed #444;
-}
+ .book-card-koleksi:hover .book-cover {
+     transform: scale(1.1);
+ }
 
-.empty-collection .empty-icon {
-    font-size: 4rem;
-    color: #555;
-    margin-bottom: 1rem;
-}
+ /* --- STYLING UNTUK OVERLAY INTERAKTIF --- */
+ .card-overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
 
-/* Tombol untuk kembali belanja */
-.btn-novel {
-    background-color: #c19759;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 50px;
-    color: #000;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-}
-.btn-novel:hover {
-    background-color: #d8aa6f;
-    color: #000;
-}
+     background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0) 100%);
+     color: #fff;
+
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     align-items: center;
+     text-align: center;
+     padding: 1.5rem 1rem;
+
+     opacity: 0;
+     transition: opacity 0.3s ease-in-out;
+ }
+
+ .book-card-koleksi:hover .card-overlay {
+     opacity: 1;
+ }
+
+ .overlay-title,
+ .overlay-author,
+ .overlay-buttons {
+     transform: translateY(20px);
+     transition: transform 0.3s ease;
+ }
+
+ /* Animasi konten overlay agar muncul dari bawah ke atas */
+ .book-card-koleksi:hover .overlay-title {
+     transition-delay: 0.1s;
+     transform: translateY(0);
+ }
+
+ .book-card-koleksi:hover .overlay-author {
+     transition-delay: 0.2s;
+     transform: translateY(0);
+ }
+
+ .book-card-koleksi:hover .overlay-buttons {
+     transition-delay: 0.3s;
+     transform: translateY(0);
+ }
+
+
+ .overlay-title {
+     font-size: 1.1rem;
+     font-weight: 600;
+     margin-bottom: 0.25rem;
+ }
+
+ .overlay-author {
+     font-size: 0.85rem;
+     color: #ccc;
+     margin-bottom: 1rem;
+ }
+
+ .overlay-buttons {
+     display: flex;
+     gap: 0.75rem;
+ }
+
+ .btn-action {
+     background-color: rgba(255, 255, 255, 0.2);
+     backdrop-filter: blur(5px);
+     border: 1px solid rgba(255, 255, 255, 0.3);
+     color: #fff;
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     font-size: 1rem;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: background-color 0.2s, transform 0.2s;
+ }
+
+ .btn-action:hover {
+     background-color: rgba(255, 255, 255, 0.3);
+     transform: scale(1.1);
+     color: #fff;
+ }
+
+ /* --- STYLING UNTUK PESAN "KOLEKSI KOSONG" --- */
+ .empty-collection {
+     text-align: center;
+     padding: 5rem 1rem;
+     background-color: rgba(0, 0, 0, 0.2);
+     border-radius: 12px;
+     margin-top: 2rem;
+     color: #888;
+     border: 1px dashed #444;
+ }
+
+ .empty-collection .empty-icon {
+     font-size: 4rem;
+     color: #555;
+     margin-bottom: 1rem;
+ }
+
+ /* Tombol untuk kembali belanja */
+ .btn-novel {
+     background-color: #c19759;
+     border: none;
+     padding: 10px 24px;
+     border-radius: 50px;
+     color: #000;
+     font-weight: 600;
+     transition: background-color 0.3s ease;
+ }
+
+ .btn-novel:hover {
+     background-color: #d8aa6f;
+     color: #000;
+ }

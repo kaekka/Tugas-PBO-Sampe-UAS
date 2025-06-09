@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <title>Keranjang Buku Interaktif</title>
@@ -130,7 +131,7 @@
       background: #ffffff;
       border-radius: 15px;
       padding: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     .cart-item {
@@ -201,6 +202,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <nav class="navbar navbar-expand-lg px-4 py-2">
@@ -221,19 +223,15 @@
           <li class="nav-item"><a class="nav-link" href="aboutme">About Me</a></li>
         </ul>
 
-        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 justify-content-lg-end mt-3 mt-lg-0">
+        <div
+          class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 justify-content-lg-end mt-3 mt-lg-0">
           <div class="search-wrapper">
             <input type="text" placeholder="Cari novel..." class="form-control form-control-sm" />
             <i class="bi bi-search"></i>
           </div>
 
-          <div
-            th:if="${session.loggedInUser != null}"
-            class="user-info"
-            style="cursor: pointer;"
-            data-bs-toggle="modal"
-            data-bs-target="#logoutModal"
-          >
+          <div th:if="${session.loggedInUser != null}" class="user-info" style="cursor: pointer;" data-bs-toggle="modal"
+            data-bs-target="#logoutModal">
             <i class="bi bi-person-circle text-white"></i>
             <span th:text="${session.loggedInUser}">Username</span>
           </div>
@@ -349,4 +347,5 @@
     });
   </script>
 </body>
+
 </html>

@@ -1,64 +1,30 @@
-<!-- fragments/genre.html -->
 <div th:fragment="genre" class="genre-container">
-  <!-- All -->
-  <div class="genre-item active" title="Semua Genre">
-    <div class="genre-icon">
-      <i class="bi bi-book"></i>
-    </div>
+  <a th:href="@{/koleksi-semua}" class="genre-item" title="Semua Genre">
+    <div class="genre-icon"><i class="bi bi-book"></i></div>
     <div class="genre-label">All</div>
-  </div>
-
-  <!-- Romansa -->
-  <div class="genre-item" title="Romansa">
-    <div class="genre-icon">
-      <a th:href="@{/romansa}">
-      <i class="bi bi-suit-heart"></i>
-      </a>
-    </div>
-    <div class="genre-label">Romansa</div>
-  </div>
-
-  <!-- Fantasi -->
-  <div class="genre-item" title="Fantasi">
-    <div class="genre-icon">
-      <a th:href="@{/fantasi}">
-      <i class="bi bi-magic"></i>
-      </a>
-    </div>
+  </a>
+  <a th:href="@{/genre(tipe='romance')}" class="genre-item" title="Romansa">
+    <div class="genre-icon"><i class="bi bi-suit-heart"></i></div>
+    <div class="genre-label">Romance</div>
+  </a>
+  <a th:href="@{/genre(tipe='fantasi')}" class="genre-item" title="Fantasi">
+    <div class="genre-icon"><i class="bi bi-magic"></i></div>
     <div class="genre-label">Fantasi</div>
-  </div>
-
-  <!-- Horor -->
-  <div class="genre-item" title="Horror">
-    <div class="genre-icon">
-    <a th:href="@{/horror}">
-      <i class="fa-solid fa-skull"></i>
-    </a>
-    </div>
+  </a>
+  <a th:href="@{/genre(tipe='horror')}" class="genre-item" title="Horor">
+    <div class="genre-icon"><i class="fa-solid fa-skull"></i></div>
     <div class="genre-label">Horor</div>
-  </div>
-
-  <!-- Edukasi -->
-  <div class="genre-item" title="Edukasi">
-    <div class="genre-icon">
-      <a th:href="@{/edukasi}">
-      <i class="bi bi-mortarboard-fill"></i>
-      </a>
-    </div>
-    <div class="genre-label">Edukasi</div>
-  </div>
-
-  <!-- Komedi -->
-  <div class="genre-item" title="Komedi">
-    <div class="genre-icon">
-      <i class="bi bi-emoji-laughing"></i>
-    </div>
-    <div class="genre-label">Komedi</div>
-  </div>
+  </a>
+  <a th:href="@{/genre(tipe='inspiratif')}" class="genre-item" title="Inspiratif">
+    <div class="genre-icon"><i class="bi bi-mortarboard-fill"></i></div>
+    <div class="genre-label">Inspiratif</div>
+  </a>
+  <a th:href="@{/genre(tipe='adventure')}" class="genre-item" title="Petualangan">
+    <div class="genre-icon"><i class="bi bi-compass"></i></div>
+    <div class="genre-label">Adventure</div>
+  </a>
+  <a th:href="@{/genre(tipe='thriller')}" class="genre-item" title="Thriller">
+    <div class="genre-icon"><i class="fa-solid fa-user-secret"></i></div>
+    <div class="genre-label">Thriller</div>
+  </a>
 </div>
-
-<th:block th:replace="fragments/genre :: genreFragment"></th:block>
-
-<script>
-  lucide.createIcons();
-</script>

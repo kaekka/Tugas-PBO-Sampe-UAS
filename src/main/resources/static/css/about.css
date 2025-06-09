@@ -8,7 +8,7 @@ body {
     text-align: center;
     padding: 4rem 1rem;
     background-color: #222;
-    margin-top: 60px; /* Jarak dari fixed navbar */
+    margin-top: 60px; 
 }
 
 .about-header h1 {

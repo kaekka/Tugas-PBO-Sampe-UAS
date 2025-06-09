@@ -9,149 +9,160 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/index.css}" />
-    
-<style>
-    body {
-        margin: 0;
-        background-color: #1a1a1a;
-        color: #f0f0f0;
-        font-family: 'Poppins', sans-serif;
-        padding-top: 0px;
-    }
-    .about-header {
-        text-align: center;
-        padding: 3rem 1rem;
-        background-color: #222;
-    }
-    .about-header h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #c19759;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-    }
-    .about-description {
-        max-width: 800px;
-        margin: 3rem auto;
-        text-align: center;
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: #ccc;
-    }
-    .team-section {
-        padding-bottom: 4rem;
-    }
 
-    /* --- PERUBAHAN DI SINI --- */
+    <style>
+        body {
+            margin: 0;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            padding-top: 0px;
+        }
 
-    .leader-section {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem; /* Jarak dikurangi sedikit */
-    }
+        .about-header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #222;
+        }
 
-    /* Mengatur grid untuk anggota */
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 320px); /* Semua kartu akan berukuran 320px */
-        justify-content: center; /* Memposisikan grid di tengah */
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
-    
-    /* Mengatur gaya untuk SEMUA kartu, termasuk ketua */
-.team-card {
-    width: 320px;
-    min-height: 350px; 
-    background-color: #252525;
-    border-radius: 10px;
-    padding: 2rem 1.5rem; 
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-}
+        .about-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c19759;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
 
-    
-    /* Efek hover ini akan berlaku untuk SEMUA kartu */
-    .team-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(193, 151, 89, 0.2);
-    }
-    
-    /* --- AKHIR PERUBAHAN --- */
+        .about-description {
+            max-width: 800px;
+            margin: 3rem auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #ccc;
+        }
 
-    .team-card .profile-pic {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 auto 1rem auto;
-        border: 4px solid #333;
-    }
-    .team-card .member-name {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #c19759;
-        margin-bottom: 0.25rem;
-    }
-    .team-card .member-role {
-        color: #aaa;
-        margin-bottom: 1rem;
-        font-style: italic;
-        min-height: 40px;
-    }
-    .team-card .social-links a {
-        color: #888;
-        font-size: 1.5rem;
-        margin: 0 0.5rem;
-        transition: color 0.3s ease;
-    }
-    .team-card .social-links a:hover {
-        color: #c19759;
-    }
+        .team-section {
+            padding-bottom: 4rem;
+        }
+
+        /* --- PERUBAHAN DI SINI --- */
+
+        .leader-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            /* Jarak dikurangi sedikit */
+        }
+
+        /* Mengatur grid untuk anggota */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 320px);
+            /* Semua kartu akan berukuran 320px */
+            justify-content: center;
+            /* Memposisikan grid di tengah */
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Mengatur gaya untuk SEMUA kartu, termasuk ketua */
+        .team-card {
+            width: 320px;
+            min-height: 350px;
+            background-color: #252525;
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
 
-.github-link-section {
-    text-align: center;
-    padding: 4rem 0;  
-}
+        /* Efek hover ini akan berlaku untuk SEMUA kartu */
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(193, 151, 89, 0.2);
+        }
 
-.github-link-section a {
-    text-decoration: none;
-    color: #888;
-    display: inline-block;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
+        /* --- AKHIR PERUBAHAN --- */
 
-.github-link-section a:hover {
-    transform: scale(1.1);
-    color: #fff;
-}
+        .team-card .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem auto;
+            border: 4px solid #333;
+        }
 
-.github-link-section img {
-    width: 50px;
-    filter: invert(1);
-    opacity: 0.7;
-    margin-bottom: 0.5rem;
-    transition: opacity 0.3s ease;
-}
+        .team-card .member-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #c19759;
+            margin-bottom: 0.25rem;
+        }
 
-.github-link-section a:hover img {
-    opacity: 1;
-}
+        .team-card .member-role {
+            color: #aaa;
+            margin-bottom: 1rem;
+            font-style: italic;
+            min-height: 40px;
+        }
 
-.github-link-section p {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-</style>
+        .team-card .social-links a {
+            color: #888;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .team-card .social-links a:hover {
+            color: #c19759;
+        }
+
+
+        .github-link-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .github-link-section a {
+            text-decoration: none;
+            color: #888;
+            display: inline-block;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .github-link-section a:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        .github-link-section img {
+            width: 50px;
+            filter: invert(1);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .github-link-section a:hover img {
+            opacity: 1;
+        }
+
+        .github-link-section p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 
 <body>
@@ -164,85 +175,94 @@
 
     <main class="container-fluid">
         <section class="about-description">
-            <p>Novelku adalah destinasi utama Anda untuk menemukan dan membeli novel original. Kami menawarkan berbagai judul dari dan berbagai genre, memastikan para pecinta buku di seluruh Indonesia dapat dengan mudah melengkapi koleksi mereka.</p>
+            <p>Novelku adalah destinasi utama Anda untuk menemukan dan membeli novel original. Kami menawarkan berbagai
+                judul dari dan berbagai genre, memastikan para pecinta buku di seluruh Indonesia dapat dengan mudah
+                melengkapi koleksi mereka.</p>
         </section>
 
-<section class="team-section">
+        <section class="team-section">
 
-    <div class="leader-section">
-        <div class="team-card">
-            <img src="https://github.com/kaekka/Tugas-PBO-Sampe-UAS/blob/Novel-Web/src/main/resources/static/asset/eka.JPG?raw=true" alt="Foto Eka" class="profile-pic">
-            <h3 class="member-name">Eka Verarina</h3>
-            <p class="member-role">24111814004 - Project Lead</p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <div class="leader-section">
+                <div class="team-card">
+                    <img src="https://github.com/kaekka/Tugas-PBO-Sampe-UAS/blob/Novel-Web/src/main/resources/static/asset/eka.JPG?raw=true"
+                        alt="Foto Eka" class="profile-pic">
+                    <h3 class="member-name">Eka Verarina</h3>
+                    <p class="member-role">24111814004 - Project Lead</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="team-grid">
-        <div class="team-card">
-            <img src="https://raw.githubusercontent.com/kaekka/Tugas-PBO-Sampe-UAS/Novel-Web/src/main/resources/static/asset/rahma.jpg" alt="Foto Prima" class="profile-pic">
-            <h3 class="member-name">Prima Miftakhul Rahma</h3>
-            <p class="member-role">24111814005 - Content Strategist</p>
-            <div class="social-links">
-                <a href="https://github.com/PrimaRahma" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/rhma.taa?igsh=MWU2eTkzb2VqdnRxZw==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://raw.githubusercontent.com/kaekka/Tugas-PBO-Sampe-UAS/Novel-Web/src/main/resources/static/asset/rahma.jpg"
+                        alt="Foto Prima" class="profile-pic">
+                    <h3 class="member-name">Prima Miftakhul Rahma</h3>
+                    <p class="member-role">24111814005 - Content Strategist</p>
+                    <div class="social-links">
+                        <a href="https://github.com/PrimaRahma" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/rhma.taa?igsh=MWU2eTkzb2VqdnRxZw==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img th:src="@{/asset/alucrott.jpg}" alt="Foto Dwi" class="profile-pic">
+                    <h3 class="member-name">Muhammad Dwi Saputra</h3>
+                    <p class="member-role">24111814080 - King</p>
+                    <div class="social-links">
+                        <a href="https://github.com/POKSI77" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/aartup__?igsh=MTBwZDAzaWtmNWhvZw==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img th:src="@{/asset/Guah.jpg}" alt="Foto Jenar" class="profile-pic">
+                    <h3 class="member-name">Jenar Aditiya Bagaskara</h3>
+                    <p class="member-role">24111814093 - BOT</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://raw.githubusercontent.com/kaekka/Tugas-PBO-Sampe-UAS/Novel-Web/src/main/resources/static/asset/Farid.jpeg"
+                        alt="Foto Farid" class="profile-pic">
+                    <h3 class="member-name">Farid Ade Novian</h3>
+                    <p class="member-role">24111814140 - Saber</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://github.com/kaekka/Tugas-PBO-Sampe-UAS/blob/Novel-Web/src/main/resources/static/asset/jeki.jpg?raw=true"
+                        alt="Foto Dzacky" class="profile-pic">
+                    <h3 class="member-name">M. Dzacky Maulana Yahya</h3>
+                    <p class="member-role">24111814127 - Saber</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img th:src="@{/asset/renza.jpg}" alt="Foto Renza" class="profile-pic">
+                    <h3 class="member-name">Renza Alvianino</h3>
+                    <p class="member-role">24111814011 - Makhluk Hidup</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="team-card">
-            <img th:src="@{/asset/alucrott.jpg}" alt="Foto Dwi" class="profile-pic">
-            <h3 class="member-name">Muhammad Dwi Saputra</h3>
-            <p class="member-role">24111814080 - King</p>
-            <div class="social-links">
-                <a href="https://github.com/POKSI77" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/aartup__?igsh=MTBwZDAzaWtmNWhvZw==" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="team-card">
-            <img th:src="@{/asset/Guah.jpg}" alt="Foto Jenar" class="profile-pic">
-            <h3 class="member-name">Jenar Aditiya Bagaskara</h3>
-            <p class="member-role">24111814093 - BOT</p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="team-card">
-            <img src="https://raw.githubusercontent.com/kaekka/Tugas-PBO-Sampe-UAS/Novel-Web/src/main/resources/static/asset/Farid.jpeg" alt="Foto Farid" class="profile-pic">
-            <h3 class="member-name">Farid Ade Novian</h3>
-            <p class="member-role">24111814140 - Saber</p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="team-card">
-            <img src="https://github.com/kaekka/Tugas-PBO-Sampe-UAS/blob/Novel-Web/src/main/resources/static/asset/jeki.jpg?raw=true" alt="Foto Dzacky" class="profile-pic">
-            <h3 class="member-name">M. Dzacky Maulana Yahya</h3>
-            <p class="member-role">24111814127 - Saber</p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="team-card">
-            <img th:src="@{/asset/renza.jpg}" alt="Foto Renza" class="profile-pic">
-            <h3 class="member-name">Renza Alvianino</h3>
-            <p class="member-role">24111814011 - Makhluk Hidup</p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </div>
-     </section> <section class="github-link-section">
+        </section>
+        <section class="github-link-section">
             <a href="https://github.com/kaekka/Tugas-PBO-Sampe-UAS" target="_blank" title="Lihat Repositori Kami">
                 <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
                 <p>Project Kami</p>
             </a>
-</section>
+        </section>
     </main>
 
     <div th:replace="~{fragments/footer :: footer}"></div>
@@ -252,4 +272,5 @@
     <script th:src="@{/js/script.js}"></script>
 
 </body>
+
 </html>

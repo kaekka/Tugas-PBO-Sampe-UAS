@@ -1,13 +1,12 @@
-
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f5f3eb; 
+    background-color: #f5f3eb;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-top: 70px; 
+    padding-top: 70px;
 }
 
 .cart-page-wrapper {
@@ -16,7 +15,7 @@ body {
     width: 100%;
     max-width: 1300px;
     margin: 2rem auto;
-    padding: 0 1rem 10rem 1rem; 
+    padding: 0 1rem 10rem 1rem;
 }
 
 
@@ -32,7 +31,7 @@ body {
     background-color: #ffffff;
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     gap: 1.5rem;
     align-items: center;
 }
@@ -55,6 +54,7 @@ body {
     font-weight: 600;
     color: #333;
 }
+
 .cart-author {
     color: #888;
     font-size: 0.9rem;
@@ -82,19 +82,22 @@ body {
     cursor: pointer;
     transition: color 0.2s;
 }
-.btn-remove:hover { color: #e74c3c; }
+
+.btn-remove:hover {
+    color: #e74c3c;
+}
 
 .order-summary {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     width: 100%;
-    max-width: 360px;      
+    max-width: 360px;
     z-index: 900;
     background-color: #ffffff;
-    padding: 1.5rem;       
+    padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
 
@@ -114,6 +117,7 @@ body {
     font-weight: 600;
     color: #333;
 }
+
 .summary-row span:last-child {
     color: #c19759;
 }
@@ -130,7 +134,10 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.checkout-btn:hover { background-color: #a17a3d; }
+
+.checkout-btn:hover {
+    background-color: #a17a3d;
+}
 
 
 .empty-cart-container {
@@ -142,7 +149,7 @@ body {
     text-align: center;
     padding: 3rem;
     margin: 2rem;
-    border: 2px dashed #d1c8b6; 
+    border: 2px dashed #d1c8b6;
     border-radius: 15px;
 }
 

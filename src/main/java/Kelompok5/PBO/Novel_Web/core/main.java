@@ -38,7 +38,7 @@ public class Main {
         ArrayList<NovelBestSeller> listBestSeller = new ArrayList<>();
         // [FIX] Memperbaiki pemanggilan konstruktor NovelBestSeller dengan jumlah argumen yang benar
         listBestSeller.add(new NovelBestSeller("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "fantasi",
-                100000, 0, 1997, 500,
+                100000, 20, 1997, 500,
                 "https://upload.wikimedia.org/wikipedia/id/b/bf/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg"));
         listBestSeller.add(new NovelBestSeller("Laskar Pelangi", "Andrea Hirata", "inspiratif", 58000, 10, 2005, 400,
                 "https://th.bing.com/th/id/OIP.Ctt7dvydYLCRrnmrFBEPxQHaLw?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"));

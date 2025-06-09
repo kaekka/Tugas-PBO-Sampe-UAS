@@ -1,4 +1,4 @@
-/* Navbar */
+ 
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -119,25 +119,22 @@
 
 
 .footer {
-    width: 100%; /* Pastikan footer mengambil lebar penuh */
-    text-align: right; /* Atur teks ke sebelah kanan */
-    padding: 20px; /* Tambahkan padding untuk ruang */
-    background-color: #000; /* Warna latar belakang */
-    color: #fff; /* Warna teks */
+    width: 100%;  
+    text-align: right; 
+    padding: 20px; 
+    background-color: #000;  
+    color: #fff;  
 }
 
 .footer .container {
-    max-width: 1200px; /* Atur lebar maksimum untuk konten */
-    margin: 0 auto; /* Pusatkan konten */
+    max-width: 1200px;  
+    margin: 0 auto;  
 }
 
 .footer h6, .footer p {
-    margin: 0; /* Hapus margin untuk menghindari pemotongan */
+    margin: 0; 
 }
 
-/*Media Queries */
-
-/* Laptop */
 @media (max-width: 1366px) {
   html {
     font-size: 75%;

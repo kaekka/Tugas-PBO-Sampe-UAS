@@ -23,26 +23,17 @@ public class WebApp {
     @Autowired
     private LikeService likeService;
 
+    // ... (method index dan root Anda tetap sama) ...
     @GetMapping({ "/index", "/home" })
     public String index(Model model, HttpSession session) {
-        // Menyiapkan data 'liked' di sini, di dalam controller
         Map<Integer, Boolean> likedStatus = new HashMap<>();
-        int[] idsOnIndexPage = {9, 10, 11, 12, 13}; // ID novel yang ada di index.html
+        int[] idsOnIndexPage = {9, 10, 11, 12, 13}; 
         for (int id : idsOnIndexPage) {
             likedStatus.put(id, likeService.isLiked(session, id));
         }
-        // Kirim data yang sudah jadi ke template
         model.addAttribute("likedStatus", likedStatus);
-
-        model.addAttribute("session", session); // Untuk info user di navbar
+        model.addAttribute("session", session);
         return "index";
-    }
-
-    @GetMapping("/koleksi")
-    public String showFavoriteCollection(Model model, HttpSession session) {
-        model.addAttribute("novelViews", likeService.getLikedNovelViews(session));
-        model.addAttribute("session", session); // Untuk info user di navbar
-        return "koleksi";
     }
 
     @GetMapping("/")
@@ -50,30 +41,75 @@ public class WebApp {
         return "redirect:/auth/login";
     }
 
-@GetMapping("/aboutus")
-public String aboutUs(HttpSession session, Model model) {
-    model.addAttribute("session", session);
-    return "fragments/aboutus";
-}
+    @GetMapping("/koleksi")
+    public String showFavoriteCollection(Model model, HttpSession session) {
+        List<NovelView> likedNovelViews = likeService.getLikedNovelViews(session);
+        Map<Integer, Boolean> likedStatus = new HashMap<>();
+        for(NovelView nv : likedNovelViews){
+            likedStatus.put(nv.getId(), true);
+        }
 
-    @GetMapping("/detail-novel")
-    public String detailNovel() {
-        return "detail-novel";
+        model.addAttribute("novelViews", likedNovelViews);
+        model.addAttribute("likedStatus", likedStatus);
+        model.addAttribute("session", session);
+        return "koleksi";
     }
 
+    // METHOD BARU untuk menampilkan SEMUA novel
+    @GetMapping("/koleksi-semua")
+    public String showAllCollection(Model model, HttpSession session) {
+        List<Novel> allNovels = Main.getAllNovels();
+        List<NovelView> allNovelViews = new ArrayList<>();
+        Map<Integer, Boolean> likedStatus = new HashMap<>();
+
+        for (int i = 0; i < allNovels.size(); i++) {
+            allNovelViews.add(new NovelView(i, allNovels.get(i)));
+            likedStatus.put(i, likeService.isLiked(session, i));
+        }
+
+        model.addAttribute("novelViews", allNovelViews);
+        model.addAttribute("selectedGenre", "Semua Novel");
+        model.addAttribute("likedStatus", likedStatus);
+        model.addAttribute("session", session);
+        return "koleksi-genre";
+    }
+
+    // METHOD LAMA yang DIPERBAIKI untuk menampilkan novel per genre
     @GetMapping("/genre")
     public String showGenreCollection(@RequestParam(name = "tipe") String genre, Model model, HttpSession session) {
         List<Novel> allNovels = Main.getAllNovels();
         List<NovelView> filteredNovelViews = new ArrayList<>();
+        Map<Integer, Boolean> likedStatus = new HashMap<>();
+
         for (int i = 0; i < allNovels.size(); i++) {
             Novel novel = allNovels.get(i);
-            if (novel.getGenre().equalsIgnoreCase(genre)) {
+            if (novel.getGenre().toLowerCase().contains(genre.toLowerCase())) {
                 filteredNovelViews.add(new NovelView(i, novel));
+                likedStatus.put(i, likeService.isLiked(session, i));
             }
         }
+        
         model.addAttribute("novelViews", filteredNovelViews);
         model.addAttribute("selectedGenre", genre);
+        model.addAttribute("likedStatus", likedStatus);
         model.addAttribute("session", session);
         return "koleksi-genre";
+    }
+
+    // ... (method about, detail-novel, dll tetap sama) ...
+    @GetMapping("/about")
+    public String aboutPage(Model model, HttpSession session) {
+        model.addAttribute("session", session);
+        return "about";
+    }
+
+    @GetMapping("/about-content")
+    public String aboutContent() {
+        return "fragments/about-content";
+    }
+
+    @GetMapping("/detail-novel")
+    public String detailNovel() {
+        return "detail-novel";
     }
 }
