@@ -2,6 +2,8 @@ package Kelompok5.PBO.Novel_Web.models;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Novel {
     protected String judul;
@@ -12,8 +14,9 @@ public class Novel {
     protected int tahunTerbit;
     protected int jumlahHalaman;
     private String coverurl;
+    private String deskripsi;
 
-    public Novel(String judul,String penulis, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman, String coverUrl) {
+    public Novel(String judul,String penulis, String genre, double harga, int diskon, int tahunTerbit, int jumlahHalaman, String coverUrl, String deskripsi) {
         this.judul = judul;
         this.penulis = penulis;
         this.genre = genre;
@@ -22,6 +25,7 @@ public class Novel {
         this.tahunTerbit = tahunTerbit;
         this.jumlahHalaman = jumlahHalaman;
         this.coverurl = coverUrl;
+        this.deskripsi = deskripsi;
     }
 
     public void displayInfo(){
@@ -86,6 +90,17 @@ public class Novel {
         return this.harga - potongan;
     }
 
+    public String getFormattedHargaSetelahDiskon() {
+        Locale indonesianLocale = new Locale("in", "ID");
+        NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(indonesianLocale);
+        rupiahFormat.setMaximumFractionDigits(0); 
+        return rupiahFormat.format(getHargaSetelahDiskon());
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
 
     public static Novel cariNovelByJudul(ArrayList<Novel> daftar, String judul) {
         for (Novel m : daftar) {
@@ -104,6 +119,13 @@ public class Novel {
             }
         }
         return hasil;
+    }
+
+        public String getFormattedOriginalHarga() {
+        Locale indonesianLocale = new Locale("in", "ID");
+        NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(indonesianLocale);
+        rupiahFormat.setMaximumFractionDigits(0);
+        return rupiahFormat.format(this.harga); 
     }
 
     public String toStringWithoutDiscount() {

@@ -27,27 +27,25 @@ allLikeButtons.forEach(button => {
                     clickedButton.classList.remove('liked');
                     message = "Novel dihapus dari koleksi.";
 
-                    // --- LOGIKA BARU UNTUK LIVE UPDATE ---
-                    // Cek apakah kita berada di halaman koleksi (dengan mencari kartu novel)
-                    const novelCardWrapper = clickedButton.closest('.col-lg-3.col-md-4.col-sm-6');
-                    if (novelCardWrapper) {
-                        // Tambahkan animasi fade-out lalu hapus kartu
-                        novelCardWrapper.style.transition = 'opacity 0.4s ease';
-                        novelCardWrapper.style.opacity = '0';
-                        
-                        setTimeout(() => {
-                            novelCardWrapper.remove();
+                    // --- LOGIKA BARU YANG LEBIH PINTAR ---
+                    // HANYA jalankan penghapusan jika kita berada di halaman koleksi favorit
+                    if (document.body.id === 'page-koleksi-favorit') {
+                        const novelCardWrapper = clickedButton.closest('.col-lg-3.col-md-4.col-sm-6');
+                        if (novelCardWrapper) {
+                            novelCardWrapper.style.transition = 'opacity 0.4s ease';
+                            novelCardWrapper.style.opacity = '0';
                             
-                            // Cek apakah masih ada novel tersisa di koleksi
-                            const remainingCards = document.querySelectorAll('.book-card-koleksi');
-                            if (remainingCards.length === 0) {
-                                // Jika tidak ada, tampilkan pesan "koleksi kosong"
-                                const emptyMessage = document.getElementById('empty-collection-message');
-                                if (emptyMessage) {
-                                    emptyMessage.style.display = 'block';
+                            setTimeout(() => {
+                                novelCardWrapper.remove();
+                                const remainingCards = document.querySelectorAll('.book-card-koleksi');
+                                if (remainingCards.length === 0) {
+                                    const emptyMessage = document.getElementById('empty-collection-message');
+                                    if (emptyMessage) {
+                                        emptyMessage.style.display = 'block';
+                                    }
                                 }
-                            }
-                        }, 400); // Tunggu animasi selesai
+                            }, 400);
+                        }
                     }
                     // --- AKHIR LOGIKA BARU ---
                 }
@@ -64,45 +62,54 @@ allLikeButtons.forEach(button => {
     // ==============================================
     // BAGIAN UNTUK TOMBOL TAMBAH KE KERANJANG
     // ==============================================
-    const cartNavIcon = document.getElementById('cart-icon-nav');
-    const allAddToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+const cartNavIcon = document.getElementById('cart-icon-nav');
+const allAddToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 
-    allAddToCartButtons.forEach(button => {
-        button.addEventListener('mousedown', function (event) {
-            // [FIX] Mencegah event "bubble up" ke elemen induk (container scroll)
-            event.stopPropagation();
-            
-            const novelCard = event.currentTarget.closest('.novel-card, .book-card-koleksi');
-            if (!novelCard) return;
+allAddToCartButtons.forEach(button => {
+    button.addEventListener('mousedown', function (event) {
+        event.stopPropagation();
+        
+        const novelId = event.currentTarget.dataset.novelId;
+        let novelImg = null;
 
-            const novelImg = novelCard.querySelector('.novel-cover, .book-cover');
-            const novelId = event.currentTarget.dataset.novelId;
+        // Mencari gambar untuk animasi dengan cara yang lebih fleksibel
+        const cardElement = event.currentTarget.closest('.novel-card, .book-card-koleksi');
+        const detailContainer = event.currentTarget.closest('.detail-container'); // <<< PERBAIKAN 1
 
+        if (cardElement) {
+            // Jika tombol ada di dalam kartu (halaman utama/koleksi)
+            novelImg = cardElement.querySelector('.novel-cover, .book-cover');
+        } else if (detailContainer) {
+            // Jika tombol ada di halaman detail
+            novelImg = detailContainer.querySelector('.detail-cover img'); // <<< PERBAIKAN 2
+        }
+
+        // Hanya jalankan animasi jika gambar ditemukan
+        if (novelImg) {
             flyToCart(novelImg);
+        }
 
-            fetch(`/api/keranjang/tambah/${novelId}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showToast(data.message);
-                } else {
-                    showToast('Gagal menambahkan novel!');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showToast('Terjadi kesalahan.');
-            });
+        // Tetap jalankan fungsi fetch untuk menambah ke keranjang
+        fetch(`/api/keranjang/tambah/${novelId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showToast(data.message);
+            } else {
+                showToast('Gagal menambahkan novel!');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showToast('Terjadi kesalahan.');
         });
     });
+});
 
 
-    // ==============================================
-    // FUNGSI BANTUAN (TIDAK PERLU DIUBAH)
-    // ==============================================
     function flyToCart(imgElement) {
         if (!imgElement || !cartNavIcon) {
             console.error("Elemen gambar atau ikon keranjang tidak ditemukan!");

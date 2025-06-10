@@ -27,11 +27,10 @@ public class CartApiController {
         if (novelId >= 0 && novelId < allNovels.size()) {
             Novel novel = allNovels.get(novelId);
             cartService.addItem(session, novelId, novel);
-            
-            // Mengembalikan respons JSON sebagai konfirmasi
+
             return ResponseEntity.ok(Map.of("success", true, "message", "Novel berhasil ditambahkan!"));
         }
-        
+
         return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Novel tidak ditemukan."));
     }
 }

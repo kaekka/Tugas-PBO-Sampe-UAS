@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Koleksi Favorit - NOVELKU</title>
@@ -11,12 +12,14 @@
     <link rel="stylesheet" th:href="@{/css/koleksi.css}" />
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
-<body>
+
+<body id="page-koleksi-favorit">
     <div th:replace="~{fragments/navbar :: navbar}"></div>
     <div class="container my-5">
         <h1 class="mb-4 text-center section-title-koleksi">Koleksi Novel Favorit Anda</h1>
         <div class="row g-4">
-            <div th:style="${not #lists.isEmpty(novelViews)} ? 'display:none;' : ''" class="col-12 text-center empty-collection" id="empty-collection-message">
+            <div th:style="${not #lists.isEmpty(novelViews)} ? 'display:none;' : ''"
+                class="col-12 text-center empty-collection" id="empty-collection-message">
                 <i class="far fa-heart empty-icon"></i>
                 <p class="fs-4 mt-3">Koleksi favorit Anda masih kosong.</p>
                 <a th:href="@{/index}" class="btn btn-novel mt-3">Mulai Menjelajah</a>
@@ -29,10 +32,13 @@
                             <h5 class="overlay-title" th:text="${novelView.novel.judul}"></h5>
                             <p class="overlay-author" th:text="${novelView.novel.penulis}"></p>
                             <div class="overlay-buttons">
-                                <button class="btn btn-sm btn-action like-btn liked" title="Suka" th:data-novel-id="${novelView.id}">
+                                <button class="btn btn-sm btn-action icon-btn like-btn" title="Suka"
+                                    th:data-novel-id="${novelView.id}"
+                                    th:classappend="${likedStatus.get(novelView.id)} ? 'liked'">
                                     <i class="fas fa-heart"></i>
                                 </button>
-                                <button class="btn btn-sm btn-action add-to-cart-btn" title="Tambah ke Keranjang" th:data-novel-id="${novelView.id}">
+                                <button class="btn btn-sm btn-action icon-btn add-to-cart-btn"
+                                    title="Tambah ke Keranjang" th:data-novel-id="${novelView.id}">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -47,4 +53,5 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script th:src="@{/js/interactive-buttons.js}"></script>
 </body>
+
 </html>

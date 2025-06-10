@@ -20,9 +20,9 @@ public class LikeApiController {
 
     @PostMapping("/{novelId}")
     public ResponseEntity<Map<String, Boolean>> toggleLike(@PathVariable int novelId, HttpSession session) {
-        // Melakukan toggle like dan mendapatkan status terbarunya
+
         boolean isLiked = likeService.toggleLike(session, novelId);
-        // Mengembalikan status baru dalam format JSON
+
         return ResponseEntity.ok(Map.of("isLiked", isLiked));
     }
 }

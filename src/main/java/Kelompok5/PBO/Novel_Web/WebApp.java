@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -23,11 +24,10 @@ public class WebApp {
     @Autowired
     private LikeService likeService;
 
-    // ... (method index dan root Anda tetap sama) ...
     @GetMapping({ "/index", "/home" })
     public String index(Model model, HttpSession session) {
         Map<Integer, Boolean> likedStatus = new HashMap<>();
-        int[] idsOnIndexPage = {9, 10, 11, 12, 13}; 
+        int[] idsOnIndexPage = { 9, 10, 11, 12, 13 };
         for (int id : idsOnIndexPage) {
             likedStatus.put(id, likeService.isLiked(session, id));
         }
@@ -45,7 +45,7 @@ public class WebApp {
     public String showFavoriteCollection(Model model, HttpSession session) {
         List<NovelView> likedNovelViews = likeService.getLikedNovelViews(session);
         Map<Integer, Boolean> likedStatus = new HashMap<>();
-        for(NovelView nv : likedNovelViews){
+        for (NovelView nv : likedNovelViews) {
             likedStatus.put(nv.getId(), true);
         }
 
@@ -55,7 +55,6 @@ public class WebApp {
         return "koleksi";
     }
 
-    // METHOD BARU untuk menampilkan SEMUA novel
     @GetMapping("/koleksi-semua")
     public String showAllCollection(Model model, HttpSession session) {
         List<Novel> allNovels = Main.getAllNovels();
@@ -74,7 +73,6 @@ public class WebApp {
         return "koleksi-genre";
     }
 
-    // METHOD LAMA yang DIPERBAIKI untuk menampilkan novel per genre
     @GetMapping("/genre")
     public String showGenreCollection(@RequestParam(name = "tipe") String genre, Model model, HttpSession session) {
         List<Novel> allNovels = Main.getAllNovels();
@@ -88,7 +86,7 @@ public class WebApp {
                 likedStatus.put(i, likeService.isLiked(session, i));
             }
         }
-        
+
         model.addAttribute("novelViews", filteredNovelViews);
         model.addAttribute("selectedGenre", genre);
         model.addAttribute("likedStatus", likedStatus);
@@ -96,20 +94,28 @@ public class WebApp {
         return "koleksi-genre";
     }
 
-    // ... (method about, detail-novel, dll tetap sama) ...
     @GetMapping("/about")
     public String aboutPage(Model model, HttpSession session) {
         model.addAttribute("session", session);
-        return "about";
+        return "fragments/aboutus";
     }
 
-    @GetMapping("/about-content")
-    public String aboutContent() {
-        return "fragments/about-content";
-    }
+    @GetMapping("/detail/{novelId}")
+    public String detailNovelDinamis(@PathVariable int novelId, Model model, HttpSession session) {
+        List<Novel> allNovels = Main.getAllNovels();
 
-    @GetMapping("/detail-novel")
-    public String detailNovel() {
+        if (novelId >= 0 && novelId < allNovels.size()) {
+            Novel novel = allNovels.get(novelId);
+            model.addAttribute("novel", novel);
+            model.addAttribute("novelId", novelId);
+
+            boolean isLiked = likeService.isLiked(session, novelId);
+            model.addAttribute("isLiked", isLiked);
+        } else {
+            return "redirect:/index";
+        }
+
+        model.addAttribute("session", session);
         return "detail-novel";
     }
 }

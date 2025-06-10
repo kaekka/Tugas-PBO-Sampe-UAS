@@ -6,7 +6,7 @@
       color: white;
     }
 
-    /* Navbar Styles (punya kamu) */
+    /* Navbar Styles */
     .navbar {
       background-color: #000;
       border-bottom: 1px solid #000000;
@@ -378,7 +378,6 @@
     .novel-container {
       cursor: grab;
       user-select: none;
-      /* supaya teks gak ke-select waktu drag */
     }
 
     .novel-container.active {
@@ -416,7 +415,6 @@
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
       transition: all 0.7s cubic-bezier(0.55, -0.44, 0.95, 0.73);
-      /* cubic-bezier untuk efek 'melengkung' */
     }
 
     /* CSS untuk notifikasi/toast */
@@ -426,7 +424,6 @@
       left: 50%;
       transform: translateX(-50%);
       background-color: #28a745;
-      /* Hijau sukses */
       color: white;
       padding: 12px 25px;
       border-radius: 50px;
@@ -451,42 +448,44 @@
       border: none !important;
     }
 
-.icon-btn.like-btn.liked .fa-heart {
-    color: #e74c3c;
-    font-weight: 900;
-}
-
-/* ============================================= */
-/* ===== KODE ANIMASI TOMBOL LIKE (PASTIKAN ADA) ===== */
-/* ============================================= */
-
-/* Base state untuk transisi yang mulus saat unlike */
-.like-btn .fa-heart {
-    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-/* Definisi animasi 'ledakan' atau 'pop' */
-@keyframes heart-pop {
-    0% {
-        transform: scale(1);
+    .icon-btn.like-btn.liked .fa-heart {
+      color: #e74c3c;
+      font-weight: 900;
     }
-    50% {
+
+    /* ============================================= */
+    /* =====     KODE ANIMASI TOMBOL LIKE      ===== */
+    /* ============================================= */
+
+    /* Base state untuk transisi yang mulus saat unlike */
+    .like-btn .fa-heart {
+      transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    /* Definisi animasi 'ledakan' atau 'pop' */
+    @keyframes heart-pop {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
         transform: scale(1.5);
         color: #ff5777;
-    }
-    100% {
+      }
+
+      100% {
         transform: scale(1);
+      }
     }
-}
 
-/* Terapkan animasi saat kelas .liked ditambahkan */
-.icon-btn.like-btn.liked .fa-heart {
-    color: #e74c3c;
-    font-weight: 900;
-    animation: heart-pop 0.3s ease-out;
-}
+    /* Terapkan animasi saat kelas .liked ditambahkan */
+    .icon-btn.like-btn.liked .fa-heart {
+      color: #e74c3c;
+      font-weight: 900;
+      animation: heart-pop 0.3s ease-out;
+    }
 
-/* (Opsional) Efek hover kecil agar lebih interaktif */
-.icon-btn.like-btn:hover .fa-heart {
-    transform: scale(1.2);
-}
+    /*  Efek hover kecil agar lebih interaktif */
+    .icon-btn.like-btn:hover .fa-heart {
+      transform: scale(1.2);
+    }

@@ -14,12 +14,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**") // Terapkan interceptor ke semua path
-                .excludePathPatterns( // Kecualikan path berikut dari interceptor
-                    "/auth/**",      // Semua path di bawah /auth (login, register)
-                    "/css/**",       // Semua file CSS
-                    "/js/**",        // Semua file JavaScript
-                    "/asset/**"      // Semua file aset/gambar
-                );
+                .addPathPatterns("/**")
+                .excludePathPatterns(
+                        "/auth/**",
+                        "/css/**",
+                        "/js/**",
+                        "/asset/**");
     }
 }

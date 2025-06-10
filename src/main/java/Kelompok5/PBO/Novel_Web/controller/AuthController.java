@@ -24,7 +24,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password, HttpServletRequest request, Model model) {
+    public String login(@RequestParam String username, @RequestParam String password, HttpServletRequest request,
+            Model model) {
         if (userutils.login(username, password)) {
             HttpSession session = request.getSession();
             session.setAttribute("loggedInUser", username);

@@ -43,10 +43,8 @@ public class CartService {
     }
 
     public void updateItemQuantity(HttpSession session, int novelId, int quantity) {
-        // ... (metode ini bisa Anda hapus jika mau, karena tidak akan dipakai lagi)
     }
 
-    // [TAMBAHKAN METODE BARU INI]
     public void tambahSatuItem(HttpSession session, int novelId) {
         Map<Integer, CartItem> cart = getCart(session);
         CartItem cartItem = cart.get(novelId);
@@ -55,7 +53,6 @@ public class CartService {
         }
     }
 
-    // [TAMBAHKAN METODE BARU INI JUGA]
     public void kurangSatuItem(HttpSession session, int novelId) {
         Map<Integer, CartItem> cart = getCart(session);
         CartItem cartItem = cart.get(novelId);
@@ -64,7 +61,7 @@ public class CartService {
             if (newQuantity > 0) {
                 cartItem.setQuantity(newQuantity);
             } else {
-                // Jika kuantitas menjadi 0, hapus item dari keranjang
+
                 cart.remove(novelId);
             }
         }
@@ -82,11 +79,10 @@ public class CartService {
 
         for (CartItem item : cart.values()) {
             double subtotal = item.getSubtotal();
-            // Mencetak detail setiap item ke konsol
-            System.out.println("Judul: " + item.getNovel().getJudul() + 
-                               " | Harga: " + item.getNovel().getHargaSetelahDiskon() + 
-                               " | Qty: " + item.getQuantity() + 
-                               " | Subtotal: " + subtotal);
+            System.out.println("Judul: " + item.getNovel().getJudul() +
+                    " | Harga: " + item.getNovel().getHargaSetelahDiskon() +
+                    " | Qty: " + item.getQuantity() +
+                    " | Subtotal: " + subtotal);
             total += subtotal;
         }
 

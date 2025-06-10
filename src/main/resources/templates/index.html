@@ -13,12 +13,9 @@
   <link rel="stylesheet" th:href="@{/css/genre.css}" />
   <link rel="stylesheet" th:href="@{/css/index.css}" />
   <link rel="stylesheet" th:href="@{/css/diskon.css}" />
-
 </head>
 
 <body id="home">
-
-
 
   <div th:replace="~{fragments/navbar :: navbar}"></div>
   <!-- Hero section -->
@@ -27,8 +24,6 @@
     <p>Temukan ribuan novel menarik, dari best seller hingga digital original!</p>
     <a href="#" class="btn btn-novel mt-4">Jelajahi Koleksi</a>
   </section>
-
-
 
   <div class="section-wrapper">
     <button class="nav-btn left" onclick="scrollBooks(-1)">
@@ -59,10 +54,12 @@
                 <i class="fas fa-cart-plus"></i>
                 <span class="tooltip-text">Tambah ke Keranjang</span>
               </button>
-              <button class="icon-btn genre-icon">
-                <i class="fas fa-tags"></i>
-                <span class="tooltip-text">Lihat genre serupa</span>
-              </button>
+              <a th:href="@{/genre(tipe='fantasi')}">
+                <button class="icon-btn genre-icon">
+                  <i class="fas fa-tags"></i>
+                  <span class="tooltip-text">Lihat genre serupa</span>
+                </button>
+              </a>
             </div>
           </div>
           <div class="novel-details">
@@ -75,7 +72,7 @@
               Masuki dunia sihir penuh petualangan dan misteri bersama Harry Potter di novel fantasi
               legendaris karya J.K. Rowling ini.
             </p>
-            <a th:href="@{/detail-novel}">
+            <a th:href="@{/detail/{id}(id=9)}">
               <button class="btn-see-book">See The Book</button>
             </a>
           </div>
@@ -94,10 +91,12 @@
                 <i class="fas fa-cart-plus"></i>
                 <span class="tooltip-text">Tambah ke Keranjang</span>
               </button>
-              <button class="icon-btn genre-icon">
-                <i class="fas fa-tags"></i>
-                <span class="tooltip-text">Lihat genre serupa</span>
-              </button>
+              <a th:href="@{/genre(tipe='fantasi')}">
+                <button class="icon-btn genre-icon">
+                  <i class="fas fa-tags"></i>
+                  <span class="tooltip-text">Lihat genre serupa</span>
+                </button>
+              </a>
             </div>
           </div>
           <div class="novel-details">
@@ -110,7 +109,7 @@
               Petualangan Sung Jin-Woo naik level dari terlemah menjadi terkuat dalam dunia penuh monster
               dan gerbang misterius.
             </p>
-            <a th:href="@{/detail-novel}">
+            <a th:href="@{/detail/{id}(id=11)}">
               <button class="btn-see-book">See The Book</button>
             </a>
           </div>
@@ -129,10 +128,12 @@
                 <i class="fas fa-cart-plus"></i>
                 <span class="tooltip-text">Tambah ke Keranjang</span>
               </button>
-              <button class="icon-btn genre-icon">
-                <i class="fas fa-tags"></i>
-                <span class="tooltip-text">Lihat genre serupa</span>
-              </button>
+              <a th:href="@{/genre(tipe='inspiratif')}">
+                <button class="icon-btn genre-icon">
+                  <i class="fas fa-tags"></i>
+                  <span class="tooltip-text">Lihat genre serupa</span>
+                </button>
+              </a>
             </div>
           </div>
           <div class="novel-details">
@@ -145,7 +146,9 @@
               Kisah inspiratif anak-anak Belitong yang penuh semangat, mimpi besar, dan perjuangan
               menghadapi keterbatasan pendidikan.
             </p>
-            <button class="btn-see-book">See The Book</button>
+            <a th:href="@{/detail/{id}(id=10)}">
+              <button class="btn-see-book">See The Book</button>
+            </a>
           </div>
         </div>
 
@@ -162,10 +165,12 @@
                 <i class="fas fa-cart-plus"></i>
                 <span class="tooltip-text">Tambah ke Keranjang</span>
               </button>
-              <button class="icon-btn genre-icon">
-                <i class="fas fa-tags"></i>
-                <span class="tooltip-text">Lihat genre serupa</span>
-              </button>
+              <a th:href="@{/genre(tipe='fantasi')}">
+                <button class="icon-btn genre-icon">
+                  <i class="fas fa-tags"></i>
+                  <span class="tooltip-text">Lihat genre serupa</span>
+                </button>
+              </a>
             </div>
           </div>
           <div class="novel-details">
@@ -178,7 +183,9 @@
               Perjalanan Raib dan sahabatnya melintasi dunia paralel, menghadapi misteri, kekuatan magis,
               dan bahaya tersembunyi.
             </p>
-            <button class="btn-see-book">See The Book</button>
+            <a th:href="@{/detail/{id}(id=12)}">
+              <button class="btn-see-book">See The Book</button>
+            </a>
           </div>
         </div>
 
@@ -195,10 +202,12 @@
                 <i class="fas fa-cart-plus"></i>
                 <span class="tooltip-text">Tambah ke Keranjang</span>
               </button>
-              <button class="icon-btn genre-icon">
-                <i class="fas fa-tags"></i>
-                <span class="tooltip-text">Lihat genre serupa</span>
-              </button>
+              <a th:href="@{/genre(tipe='romance')}">
+                <button class="icon-btn genre-icon">
+                  <i class="fas fa-tags"></i>
+                  <span class="tooltip-text">Lihat genre serupa</span>
+                </button>
+              </a>
             </div>
           </div>
           <div class="novel-details">
@@ -211,7 +220,9 @@
               Potret pilu perjuangan aktivis muda era Orde Baru, tentang kehilangan, harapan, dan luka
               sejarah yang dalam.
             </p>
-            <button class="btn-see-book">See The Book</button>
+            <a th:href="@{/detail/{id}(id=13)}">
+              <button class="btn-see-book">See The Book</button>
+            </a>
           </div>
         </div>
 

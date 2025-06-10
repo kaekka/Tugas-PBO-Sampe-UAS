@@ -30,14 +30,14 @@
                         <div class="card-overlay">
                             <h5 class="overlay-title" th:text="${novelView.novel.judul}"></h5>
                             <p class="overlay-author" th:text="${novelView.novel.penulis}"></p>
-                            <div class="overlay-buttons">
-                                <button class="btn btn-sm btn-action like-btn" title="Suka" th:data-novel-id="${novelView.id}" th:classappend="${likedStatus.get(novelView.id)} ? 'liked'">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="btn btn-sm btn-action add-to-cart-btn" title="Tambah ke Keranjang" th:data-novel-id="${novelView.id}">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
+<div class="overlay-buttons">
+    <button class="btn btn-sm btn-action icon-btn like-btn" title="Suka" th:data-novel-id="${novelView.id}">
+        <i class="fas fa-heart"></i>
+    </button>
+    <button class="btn btn-sm btn-action icon-btn add-to-cart-btn" title="Tambah ke Keranjang" th:data-novel-id="${novelView.id}">
+        <i class="fas fa-cart-plus"></i>
+    </button>
+</div>
                         </div>
                     </div>
                 </div>
