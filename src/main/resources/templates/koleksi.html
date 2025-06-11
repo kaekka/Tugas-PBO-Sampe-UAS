@@ -40,6 +40,11 @@
                                 <button class="btn btn-sm btn-action icon-btn add-to-cart-btn"
                                     title="Tambah ke Keranjang" th:data-novel-id="${novelView.id}">
                                     <i class="fas fa-cart-plus"></i>
+                                    <a th:href="@{/genre(tipe=${novelView.novel.genre})}">
+                                        <button class="btn btn-sm btn-action icon-btn" title="Lihat Genre Serupa">
+                                            <i class="fas fa-tags"></i>
+                                        </button>
+                                    </a>
                                 </button>
                             </div>
                         </div>

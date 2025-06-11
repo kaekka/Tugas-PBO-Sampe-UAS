@@ -1,113 +1,112 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    
-// ==============================================
-// BAGIAN UNTUK TOMBOL SUKA (HATI) - VERSI LENGKAP
-// ==============================================
-const allLikeButtons = document.querySelectorAll('.like-btn');
-allLikeButtons.forEach(button => {
-    button.addEventListener('mousedown', function (event) {
-        event.stopPropagation();
-        const novelId = event.currentTarget.dataset.novelId;
-        const clickedButton = event.currentTarget;
 
-        fetch(`/api/like/${novelId}`, { method: 'POST' })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Server response was not OK.');
-                }
-                return response.json();
-            })
-            .then(data => {
-                let message = "";
-                if (data.isLiked) {
-                    clickedButton.classList.add('liked');
-                    message = "Novel ditambahkan ke koleksi!";
-                } else {
-                    clickedButton.classList.remove('liked');
-                    message = "Novel dihapus dari koleksi.";
+    // ==============================================
+    // BAGIAN UNTUK TOMBOL SUKA (HATI)
+    // ==============================================
+    const allLikeButtons = document.querySelectorAll('.like-btn');
+    allLikeButtons.forEach(button => {
+        button.addEventListener('mousedown', function (event) {
+            event.stopPropagation();
+            const novelId = event.currentTarget.dataset.novelId;
+            const clickedButton = event.currentTarget;
 
-                    // --- LOGIKA BARU YANG LEBIH PINTAR ---
-                    // HANYA jalankan penghapusan jika kita berada di halaman koleksi favorit
-                    if (document.body.id === 'page-koleksi-favorit') {
-                        const novelCardWrapper = clickedButton.closest('.col-lg-3.col-md-4.col-sm-6');
-                        if (novelCardWrapper) {
-                            novelCardWrapper.style.transition = 'opacity 0.4s ease';
-                            novelCardWrapper.style.opacity = '0';
-                            
-                            setTimeout(() => {
-                                novelCardWrapper.remove();
-                                const remainingCards = document.querySelectorAll('.book-card-koleksi');
-                                if (remainingCards.length === 0) {
-                                    const emptyMessage = document.getElementById('empty-collection-message');
-                                    if (emptyMessage) {
-                                        emptyMessage.style.display = 'block';
+            fetch(`/api/like/${novelId}`, { method: 'POST' })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Server response was not OK.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let message = "";
+                    if (data.isLiked) {
+                        clickedButton.classList.add('liked');
+                        message = "Novel ditambahkan ke koleksi!";
+                    } else {
+                        clickedButton.classList.remove('liked');
+                        message = "Novel dihapus dari koleksi.";
+
+                        // --- LOGIKA BARU YANG LEBIH PINTAR ---
+                        // HANYA jalankan penghapusan jika kita berada di halaman koleksi favorit
+                        if (document.body.id === 'page-koleksi-favorit') {
+                            const novelCardWrapper = clickedButton.closest('.col-lg-3.col-md-4.col-sm-6');
+                            if (novelCardWrapper) {
+                                novelCardWrapper.style.transition = 'opacity 0.4s ease';
+                                novelCardWrapper.style.opacity = '0';
+
+                                setTimeout(() => {
+                                    novelCardWrapper.remove();
+                                    const remainingCards = document.querySelectorAll('.book-card-koleksi');
+                                    if (remainingCards.length === 0) {
+                                        const emptyMessage = document.getElementById('empty-collection-message');
+                                        if (emptyMessage) {
+                                            emptyMessage.style.display = 'block';
+                                        }
                                     }
-                                }
-                            }, 400);
+                                }, 400);
+                            }
                         }
                     }
-                    // --- AKHIR LOGIKA BARU ---
-                }
-                showToast(message);
-            })
-            .catch(error => {
-                console.error('Error liking novel:', error);
-                showToast('Terjadi kesalahan.');
-            });
+                    showToast(message);
+                })
+                .catch(error => {
+                    console.error('Error liking novel:', error);
+                    showToast('Terjadi kesalahan.');
+                });
+        });
     });
-});
 
 
     // ==============================================
     // BAGIAN UNTUK TOMBOL TAMBAH KE KERANJANG
     // ==============================================
-const cartNavIcon = document.getElementById('cart-icon-nav');
-const allAddToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const cartNavIcon = document.getElementById('cart-icon-nav');
+    const allAddToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 
-allAddToCartButtons.forEach(button => {
-    button.addEventListener('mousedown', function (event) {
-        event.stopPropagation();
-        
-        const novelId = event.currentTarget.dataset.novelId;
-        let novelImg = null;
+    allAddToCartButtons.forEach(button => {
+        button.addEventListener('mousedown', function (event) {
+            event.stopPropagation();
 
-        // Mencari gambar untuk animasi dengan cara yang lebih fleksibel
-        const cardElement = event.currentTarget.closest('.novel-card, .book-card-koleksi');
-        const detailContainer = event.currentTarget.closest('.detail-container'); // <<< PERBAIKAN 1
+            const novelId = event.currentTarget.dataset.novelId;
+            let novelImg = null;
 
-        if (cardElement) {
-            // Jika tombol ada di dalam kartu (halaman utama/koleksi)
-            novelImg = cardElement.querySelector('.novel-cover, .book-cover');
-        } else if (detailContainer) {
-            // Jika tombol ada di halaman detail
-            novelImg = detailContainer.querySelector('.detail-cover img'); // <<< PERBAIKAN 2
-        }
+            // Mencari gambar untuk animasi dengan cara yang lebih fleksibel
+            const cardElement = event.currentTarget.closest('.novel-card, .book-card-koleksi');
+            const detailContainer = event.currentTarget.closest('.detail-container'); // <<< PERBAIKAN 1
 
-        // Hanya jalankan animasi jika gambar ditemukan
-        if (novelImg) {
-            flyToCart(novelImg);
-        }
-
-        // Tetap jalankan fungsi fetch untuk menambah ke keranjang
-        fetch(`/api/keranjang/tambah/${novelId}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                showToast(data.message);
-            } else {
-                showToast('Gagal menambahkan novel!');
+            if (cardElement) {
+                // Jika tombol ada di dalam kartu (halaman utama/koleksi)
+                novelImg = cardElement.querySelector('.novel-cover, .book-cover');
+            } else if (detailContainer) {
+                // Jika tombol ada di halaman detail
+                novelImg = detailContainer.querySelector('.detail-cover img'); // <<< PERBAIKAN 2
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showToast('Terjadi kesalahan.');
+
+            // Hanya jalankan animasi jika gambar ditemukan
+            if (novelImg) {
+                flyToCart(novelImg);
+            }
+
+            // Tetap jalankan fungsi fetch untuk menambah ke keranjang
+            fetch(`/api/keranjang/tambah/${novelId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(data.message);
+                    } else {
+                        showToast('Gagal menambahkan novel!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('Terjadi kesalahan.');
+                });
         });
     });
-});
 
 
     function flyToCart(imgElement) {
